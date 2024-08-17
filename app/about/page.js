@@ -204,7 +204,7 @@ function about() {
                   Join Us in Preserving Hindu Heritage
                 </h2>
                 <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
-                  Whether you're a scholar, a seeker, or simply someone
+                  Whether youre a scholar, a seeker, or simply someone
                   interested in exploring the rich tapestry of Hindu philosophy,
                   we invite you to join{" "}
                 </p>
