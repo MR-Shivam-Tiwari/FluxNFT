@@ -18,7 +18,7 @@ function page() {
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <img
-                            src="https://m.media-amazon.com/images/I/71Ieu2PglwL._AC_UF1000,1000_QL80_.jpg"
+                            src="/geetaimage/ashteng.png"
                             alt="Book Cover"
                             width="300"
                             height="400"
@@ -26,13 +26,13 @@ function page() {
                             style={{ aspectRatio: "400/600", objectFit: "cover" }}
                         />
                     </div>
-                    <div class="flex-1 space-y-4 text-start md:text-left">
+                    <div className="flex-1 space-y-4 text-start md:text-left">
                         <div className="flex items-center mb-10 justify-between ">
-                            <h1 class="text-3xl  font-bold">Astavakra Geeta English</h1>
+                            <h1 className="text-3xl  font-bold">Astavakra Geeta English</h1>
 
                             <div className="hidden lg:block">
-                                <div class="bg-gray-200 w-full p-2 px-5 flex justify-between   ">
-                                    {/* <a class="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
+                                <div className="bg-gray-200 w-full p-2 px-5 flex justify-between   ">
+                                    {/* <a className="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
               Purchase
             </a> */}
                                     <Link href='/scriptures/geeta/viewbhagvad/bhagvadgeeta'>
@@ -62,8 +62,8 @@ function page() {
                             />       </div>
 
                         <div className="lg:hidden">
-                            <div class="bg-gray-200 w-full border   p-2 px-5 lg:px-20 flex justify-between fixed bottom-0 left-0">
-                                {/* <a class="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
+                            <div className="bg-gray-200 w-full border   p-2 px-5 lg:px-20 flex justify-between fixed bottom-0 left-0">
+                                {/* <a className="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
               Purchase
             </a> */}
                                 <button

@@ -2,28 +2,28 @@
 function Donate() {
   return (
     <div >
-      <div class="bg-white  min-h-screen flex flex-col">
-        <main class="flex-1 container mx-auto py-20 px-6 md:px-12">
-          <div class="grid  gap-12">
+      <div className="bg-white  min-h-screen flex flex-col">
+        <main className="flex-1 container mx-auto py-20 px-6 md:px-12">
+          <div className="grid  gap-12">
             <div>
-              <h1 class="text-4xl font-bold mb-5">
+              <h1 className="text-4xl font-bold mb-5">
                 Donate and Make a Difference
               </h1>
-              <p class="text-gray-600  mb-5 text-lg">
+              <p className="text-gray-600  mb-5 text-lg">
                 Your donations help us maintain and expand our digital library,
                 ensuring that these invaluable resources remain accessible to
                 all.
               </p>
-              <form class="bg-white  rounded-lg shadow-md p-10 space-y-8">
+              <form className="bg-white  rounded-lg shadow-md p-10 space-y-8">
                 <div>
                   <label
-                    class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
+                    className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
                     for="name"
                   >
                     Name
                   </label>
                   <input
-                    class="flex h-10 w-full border border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mt-2 p-3 rounded-md text-lg"
+                    className="flex h-10 w-full border border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mt-2 p-3 rounded-md text-lg"
                     id="name"
                     placeholder="Enter your name"
                     type="text"
@@ -31,13 +31,13 @@ function Donate() {
                 </div>
                 <div>
                   <label
-                    class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
+                    className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
                     for="email"
                   >
                     Email
                   </label>
                   <input
-                    class="flex h-10 w-full border border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mt-2 p-3 rounded-md text-lg"
+                    className="flex h-10 w-full border border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 mt-2 p-3 rounded-md text-lg"
                     id="email"
                     placeholder="Enter your email"
                     type="email"
@@ -45,15 +45,15 @@ function Donate() {
                 </div>
                 <div>
                   <label
-                    class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
+                    className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
                     for="amount"
                   >
                     Donation Amount
                   </label>
-                  <div class="flex items-center mt-2">
-                    <span class="mr-2 text-lg">$</span>
+                  <div className="flex items-center mt-2">
+                    <span className="mr-2 text-lg">$</span>
                     <input
-                      class="flex h-10 w-full border border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 p-3 rounded-md text-lg flex-1"
+                      className="flex h-10 w-full border border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 p-3 rounded-md text-lg flex-1"
                       id="amount"
                       placeholder="Enter amount"
                       type="number"
@@ -61,11 +61,11 @@ function Donate() {
                   </div>
                 </div>
                 <div>
-                  <label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg">
+                  <label className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg">
                     Payment Method
                   </label>
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-2">
-                    <button class="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-2">
+                    <button className="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -76,14 +76,14 @@ function Donate() {
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                         <line x1="2" x2="22" y1="10" y2="10"></line>
                       </svg>
                       Credit Card
                     </button>
-                    <button class="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
+                    <button className="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -94,7 +94,7 @@ function Donate() {
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <rect width="18" height="18" x="3" y="3" rx="2"></rect>
                         <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"></path>
@@ -102,7 +102,7 @@ function Donate() {
                       </svg>
                       Debit Card
                     </button>
-                    <button class="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
+                    <button className="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -113,14 +113,14 @@ function Donate() {
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <line x1="12" x2="12" y1="2" y2="22"></line>
                         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                       </svg>
                       UPI
                     </button>
-                    <button class="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
+                    <button className="whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-3 flex items-center justify-center gap-2 text-lg">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -131,7 +131,7 @@ function Donate() {
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <rect width="5" height="5" x="3" y="3" rx="1"></rect>
                         <rect width="5" height="5" x="16" y="3" rx="1"></rect>
@@ -150,7 +150,7 @@ function Donate() {
                     </button>
                   </div>
                 </div>
-                <button class="inline-flex items-center bg-black text-white justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-full px-6 py-4 text-lg">
+                <button className="inline-flex items-center bg-black text-white justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-full px-6 py-4 text-lg">
                   Donate Now
                 </button>
               </form>

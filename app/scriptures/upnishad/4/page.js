@@ -9,7 +9,7 @@ function page() {
         );
         return formattedDescription;
     };
-    const description = `The Atharvaveda, named after the Vedic sage Atharvan, stands as one of the four ancient sacred texts of Hinduism, collectively known as the Vedas.  Unlike the other Vedas, which primarily consist of hymns and rituals dedicated to deities, the Atharvaveda presents a diverse compilation of hymns, incantations, spells, and charms. This Veda encompasses a broad spectrum of subjects, ranging from spiritual and philosophical inquiries to practical concerns of everyday life. \n 'Deities Celebrated in the Atharvaveda:' \n 'Agni:' Revered as the god of fire, Agni plays a pivotal role in Vedic rituals, serving as a conduit between mortals and the divine, symbolizing purity and facilitating domestic and public ceremonies. \n 'Indra:' As the god of war and rain, Indras valor and victories over demons make him a central figure, often depicted as a protector and bringer of agricultural prosperity. \n  'Rudra:' Celebrated as a fierce aspect of Shiva, Rudra embodies both destruction and regeneration, symbolizing the cyclical nature of existence. \n 'Asuras and Devas:' The Atharvaveda addresses the conflict between the Asuras (demons) and Devas (gods), reflecting the eternal struggle between good and evil. \n 'Rita and Dharma:' Concepts of cosmic order (Rita) and moral righteousness (Dharma) find prominence, emphasizing the importance of living in harmony with divine laws and ethical principles. \n `;
+    const description = `'The Prasna Upanishad', associated with the 'Atharvaveda', is a significant philosophical text that elaborates on spiritual knowledge and philosophy. Its name, Prasna, translates to question or inquiring, as it is renowned for its question-and-answer format. \n In this 'Upanishad', a dialogue unfolds between a seeker (shishya) and a teacher (guru), wherein the seeker poses a series of profound questions regarding the nature of reality, existence, and the self. The guru responds with insightful explanations and teachings, elucidating the deeper truths of spiritual wisdom. \n Through this dialogue, the Prasna Upanishad explores various philosophical themes such as the nature of Brahman (the universal consciousness), the concept of Atman (the individual self), and the path to self-realization and liberation (moksha). \n Overall, 'the Prasna Upanishad' serves as a guide for seekers on the quest for spiritual enlightenment, offering profound insights into the fundamental aspects of existence and the journey towards realizing one's true nature.`;
 
     const formattedDescription = formatDescription(description);
     return (
@@ -18,7 +18,7 @@ function page() {
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <img
-                            src="https://nepalyogahome.com/wp-content/uploads/2021/05/Atharvaveda.jpg"
+                            src="/upnishadimage/prashna.png"
                             alt="Book Cover"
                             width="300"
                             height="400"
@@ -28,7 +28,7 @@ function page() {
                     </div>
                     <div className="flex-1 space-y-4 text-start md:text-left">
                         <div className="flex items-center mb-10 justify-between ">
-                            <h1 className="text-3xl  font-bold">Atharvaveda</h1>
+                            <h1 className="text-3xl  font-bold">Prashna Upanishad</h1>
 
                             <div className="hidden lg:block">
                                 <div className="bg-gray-200 w-full p-2 px-5 flex justify-between   ">

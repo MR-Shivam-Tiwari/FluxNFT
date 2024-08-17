@@ -1,12 +1,12 @@
 "use client"
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 export default function Layout({ children }) {
     const router = useRouter();
-    const { pathname } = router;
-  
+  const pathname = usePathname();
+    console.log("pathname", pathname)
     // Initialize selected route based on localStorage or current pathname
     const [selected, setSelected] = useState(() => {
       if (typeof window !== 'undefined') {
@@ -31,13 +31,13 @@ export default function Layout({ children }) {
     return (
       <div className="min-h-screen flex flex-col annapurna-sil-bold">
         <header className="flex justify-center ">
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap lg:gap-4 gap-3">
             {links.map(({ href, label }) => (
               <Link key={href} href={href} passHref>
                 <div
                   onClick={() => setSelected(href)}
-                  className={`px-4 py-1 mt-5 lg:text-lg text-sm font-semibold  rounded-[4px] cursor-pointer transition-colors ${
-                    pathname === href || selected === href
+                  className={`px-5 py-1 pt-2 mt-5 lg:text-lg text-sm font-semibold  rounded-[4px] cursor-pointer transition-colors ${
+                    pathname === href 
                       ? 'bg-orange-600 text-white '
                       : 'bg-gray-200 text-black hover:bg-gray-300'
                   }`}

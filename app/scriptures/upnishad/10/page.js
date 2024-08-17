@@ -9,7 +9,7 @@ function page() {
         );
         return formattedDescription;
     };
-    const description = `The Atharvaveda, named after the Vedic sage Atharvan, stands as one of the four ancient sacred texts of Hinduism, collectively known as the Vedas.  Unlike the other Vedas, which primarily consist of hymns and rituals dedicated to deities, the Atharvaveda presents a diverse compilation of hymns, incantations, spells, and charms. This Veda encompasses a broad spectrum of subjects, ranging from spiritual and philosophical inquiries to practical concerns of everyday life. \n 'Deities Celebrated in the Atharvaveda:' \n 'Agni:' Revered as the god of fire, Agni plays a pivotal role in Vedic rituals, serving as a conduit between mortals and the divine, symbolizing purity and facilitating domestic and public ceremonies. \n 'Indra:' As the god of war and rain, Indras valor and victories over demons make him a central figure, often depicted as a protector and bringer of agricultural prosperity. \n  'Rudra:' Celebrated as a fierce aspect of Shiva, Rudra embodies both destruction and regeneration, symbolizing the cyclical nature of existence. \n 'Asuras and Devas:' The Atharvaveda addresses the conflict between the Asuras (demons) and Devas (gods), reflecting the eternal struggle between good and evil. \n 'Rita and Dharma:' Concepts of cosmic order (Rita) and moral righteousness (Dharma) find prominence, emphasizing the importance of living in harmony with divine laws and ethical principles. \n `;
+    const description = `'The Brihadaranyaka Upanishad', one of the oldest and most extensive Upanishads, is a profound philosophical text belonging to the 'Shukla Yajurveda'. It consists of six chapters, each containing a series of discourses and dialogues that delve into the deepest questions of existence. \n This Upanishad is renowned for its comprehensive exploration of metaphysical concepts, ethical principles, and spiritual practices. It covers a wide range of topics, including the nature of reality, the self (Atman), and the ultimate reality (Brahman). \n 'The Brihadaranyaka Upanishad' contains profound philosophical dialogues between sages and spiritual seekers, including famous conversations such as the one between Yajnavalkya and Maitreyi. These dialogues illuminate the nature of consciousness, the significance of self-inquiry, and the path to spiritual liberation. \n Moreover, this Upanishad also discusses various rituals, sacrifices, and meditative practices aimed at realizing the unity of the individual soul with the supreme reality. It emphasizes the importance of ethical conduct, renunciation, and devotion on the path to self-realization. \n Overall, 'the Brihadaranyaka Upanishad' stands as a seminal text in the Vedantic tradition, offering profound insights into the nature of existence and the means to transcendental realization. It continues to inspire seekers of truth and spiritual aspirants across generations with its timeless wisdom and profound teachings.`;
 
     const formattedDescription = formatDescription(description);
     return (
@@ -18,7 +18,7 @@ function page() {
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <img
-                            src="https://nepalyogahome.com/wp-content/uploads/2021/05/Atharvaveda.jpg"
+                            src="/upnishadimage/brihadanyak.png"
                             alt="Book Cover"
                             width="300"
                             height="400"
@@ -28,7 +28,7 @@ function page() {
                     </div>
                     <div className="flex-1 space-y-4 text-start md:text-left">
                         <div className="flex items-center mb-10 justify-between ">
-                            <h1 className="text-3xl  font-bold">Atharvaveda</h1>
+                            <h1 className="text-3xl  font-bold">Brihadaranyaka Upanishad</h1>
 
                             <div className="hidden lg:block">
                                 <div className="bg-gray-200 w-full p-2 px-5 flex justify-between   ">

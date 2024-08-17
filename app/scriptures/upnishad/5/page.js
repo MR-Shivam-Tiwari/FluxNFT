@@ -9,7 +9,7 @@ function page() {
         );
         return formattedDescription;
     };
-    const description = `The Atharvaveda, named after the Vedic sage Atharvan, stands as one of the four ancient sacred texts of Hinduism, collectively known as the Vedas.  Unlike the other Vedas, which primarily consist of hymns and rituals dedicated to deities, the Atharvaveda presents a diverse compilation of hymns, incantations, spells, and charms. This Veda encompasses a broad spectrum of subjects, ranging from spiritual and philosophical inquiries to practical concerns of everyday life. \n 'Deities Celebrated in the Atharvaveda:' \n 'Agni:' Revered as the god of fire, Agni plays a pivotal role in Vedic rituals, serving as a conduit between mortals and the divine, symbolizing purity and facilitating domestic and public ceremonies. \n 'Indra:' As the god of war and rain, Indras valor and victories over demons make him a central figure, often depicted as a protector and bringer of agricultural prosperity. \n  'Rudra:' Celebrated as a fierce aspect of Shiva, Rudra embodies both destruction and regeneration, symbolizing the cyclical nature of existence. \n 'Asuras and Devas:' The Atharvaveda addresses the conflict between the Asuras (demons) and Devas (gods), reflecting the eternal struggle between good and evil. \n 'Rita and Dharma:' Concepts of cosmic order (Rita) and moral righteousness (Dharma) find prominence, emphasizing the importance of living in harmony with divine laws and ethical principles. \n `;
+    const description = `'The Mundaka Upanishad', found within the general Brahmana texts of the 'Atharvaveda', articulates various spiritual and Vedantic principles. It attempts to illuminate the path of spiritual realization, which is directed towards the attainment of liberation (moksha). \n One of the primary subjects addressed in the Mundaka Upanishad is the distinction between Vidya (knowledge) and Avidya (ignorance). Here, Vidya refers to spiritual knowledge, the truth of the self, and the experience of the ultimate reality (paramaatma), while Avidya represents ignorance or the lack of spiritual understanding. \n 'The Upanishad' elucidates the importance of acquiring Vidya, which leads to the realization of the true self and liberation from the cycle of birth and death. It emphasizes the significance of seeking guidance from a qualified spiritual teacher (guru) and engaging in practices such as meditation, self-inquiry, and contemplation to attain spiritual wisdom.`;
 
     const formattedDescription = formatDescription(description);
     return (
@@ -18,7 +18,7 @@ function page() {
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <img
-                            src="https://nepalyogahome.com/wp-content/uploads/2021/05/Atharvaveda.jpg"
+                            src="/upnishadimage/mundako.png"
                             alt="Book Cover"
                             width="300"
                             height="400"
@@ -28,7 +28,7 @@ function page() {
                     </div>
                     <div className="flex-1 space-y-4 text-start md:text-left">
                         <div className="flex items-center mb-10 justify-between ">
-                            <h1 className="text-3xl  font-bold">Atharvaveda</h1>
+                            <h1 className="text-3xl  font-bold">Mundaka Upanishad</h1>
 
                             <div className="hidden lg:block">
                                 <div className="bg-gray-200 w-full p-2 px-5 flex justify-between   ">
