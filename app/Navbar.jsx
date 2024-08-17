@@ -86,7 +86,7 @@ function Navbar() {
               <div
                 className="group inline-flex h-9 w-max items-center cursor-pointer justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#e0e0e0] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
                 data-radix-collection-item=""
-                onClick={() => router.push("/contact")}
+                // onClick={() => router.push("/contact")}
               >
                 Contact Us
               </div>
@@ -130,155 +130,67 @@ function Navbar() {
         </div>
       </header>
       {showModal && (
-        <div
-          id="default-modal"
-          tabIndex="-1"
-          aria-hidden="true"
-          className="fixed inset-0 z-50 flex items-center justify-center w-full   bg-black bg-opacity-50"
-        >
-          <div className="relative p-4 w-full max-w-2xl ">
-            <div className="relative bg-white rounded-lg shadow ">
-              <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 ">
-                    Report a Bug
-                  </h1>
-                  <p className="mt-2 text-gray-500 ">
-                    Help us improve by reporting any issues you encounter.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center "
-                  onClick={toggleModal}
-                >
-                  <svg
-                    className="w-3 h-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 14"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"
-                    />
-                  </svg>
-                  <span className="sr-only">Close modal</span>
-                </button>
+        <div id="default-modal" tabIndex="-1" aria-hidden="true" className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-50">
+        <div className="relative p-4 w-full max-w-2xl">
+          <div className="relative bg-white rounded-lg shadow">
+            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">Report a Bug</h1>
+                <p className="mt-2 text-gray-500">Help us improve by reporting any issues you encounter.</p>
               </div>
-              <div className="w-full max-w-2xl mx-auto py-5 px-4 sm:px-6 lg:px-8 overflow-y-auto   sm:max-h-screen">
-                <div className="space-y-6">
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div>
-                        <label
-                          for="name"
-                          className="block text-sm font-medium text-gray-700 "
-                        >
-                          Name
-                        </label>
-                        <div className="mt-1">
-                          <input
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                            id="name"
-                            placeholder="Enter your name"
-                            required=""
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label
-                          for="email"
-                          className="block text-sm font-medium text-gray-700 "
-                        >
-                          Email (optional)
-                        </label>
-                        <div className="mt-1">
-                          <input
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                            id="email"
-                            placeholder="Enter your email"
-                            required=""
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid lg:grid-cols-2  gap-6 ">
-                      <div>
-                        <label
-                          for="phone"
-                          className="block text-sm font-medium text-gray-700 "
-                        >
-                          Phone Number (optional)
-                        </label>
-                        <div className="mt-1">
-                          <input
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                            id="phone"
-                            placeholder="Enter your Phone"
-                            required=""
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label
-                          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                          for="multiple_files"
-                        >
-                          Upload a Screenshot of Bug
-                        </label>
-                        <form className="max-w-sm">
-                          <label for="file-input" className="sr-only">
-                            Choose file
-                          </label>
-                          <input
-                            type="file"
-                            name="file-input"
-                            id="file-input"
-                            className="block w-full border  border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none 
-    file:bg-gray-300 file:border-0
-    file:me-4
-    file:py-2 file:px-4
-    dark:file:bg-neutral-700 dark:file:text-neutral-400"
-                          />
-                        </form>
+              <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center" onClick={toggleModal}>
+                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span className="sr-only">Close modal</span>
+              </button>
+            </div>
+            <div className="w-full max-w-2xl mx-auto py-5 px-4 sm:px-6 lg:px-8 overflow-y-auto sm:max-h-screen">
+              <div className="space-y-6">
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                      <div className="mt-1">
+                        <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="name" placeholder="Enter your name" required />
                       </div>
                     </div>
                     <div>
-                      <label
-                        for="description"
-                        className="block text-sm font-medium text-gray-700 "
-                      >
-                        Bug Description
-                      </label>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email (optional)</label>
                       <div className="mt-1">
-                        <textarea
-                          className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]"
-                          id="description"
-                          placeholder="Describe the bug you encountered"
-                          required=""
-                        ></textarea>
+                        <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="Enter your email" required />
                       </div>
                     </div>
-
-                    <div className="flex justify-end">
-                      <button
-                        type="submit"
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      >
-                        Submit Bug Report
-                      </button>
+                  </div>
+                  <div className="grid lg:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number (optional)</label>
+                      <div className="mt-1">
+                        <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="phone" placeholder="Enter your Phone" required />
+                      </div>
                     </div>
-                  </form>
-                </div>
+                    <div>
+                      <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white" htmlFor="multiple_files">Upload a Screenshot of Bug</label>
+                      <label htmlFor="file-input" className="sr-only">Choose file</label>
+                      <input type="file" name="file-input" id="file-input" className="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-300 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400" />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">Bug Description</label>
+                    <div className="mt-1">
+                      <textarea className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]" id="description" placeholder="Describe the bug you encountered" required></textarea>
+                    </div>
+                  </div>
+                  <div className="flex justify-end">
+                    <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit Bug Report</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      
       )}
       {showslidebar && (
         <div className="fixed inset-0 z-50  w-full h-full bg-black bg-opacity-500">
@@ -355,7 +267,7 @@ function Navbar() {
                       About Us
                     </div>
 
-                    <div
+                    {/* <div
                       className={`group h-9 w-max cursor-pointer rounded-md px-4 py-2 text-lg font-medium transition-colors ${
                         activePage === "/contact"
                           ? "bg-[#e0e0e0] text-[#8b4513]"
@@ -367,7 +279,7 @@ function Navbar() {
                       }}
                     >
                       Contact Us
-                    </div>
+                    </div> */}
 
                     <div
                       className={`group h-9 w-max cursor-pointer rounded-md px-4 py-2 text-lg font-medium transition-colors ${

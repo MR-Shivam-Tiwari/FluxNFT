@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 function page() {
@@ -17,11 +18,11 @@ function page() {
             <div className=" ">
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
-                        <img
-                            src="https://m.media-amazon.com/images/I/51fkgWsI+qL.jpg"
+                        <Image
+                            src="/vedaimage/yajur.jpg"
                             alt="Book Cover"
                             width="300"
-                            height="400"
+                            height="400" priority={true}
                             className=" w-full rounded-lg shadow-lg"
                             style={{ aspectRatio: "400/600", objectFit: "cover" }}
                         />

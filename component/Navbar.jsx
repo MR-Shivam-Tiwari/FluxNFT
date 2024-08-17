@@ -363,7 +363,7 @@ function Navbar() {
                   <div style={modalStyles.inputContainer}>
                     <div>
                       <label
-                        htmlFor="name"
+                        htmlhtmlFor="name"
                         style={{
                           display: "block",
                           fontSize: "0.875rem",
@@ -383,7 +383,7 @@ function Navbar() {
                     </div>
                     <div>
                       <label
-                        htmlFor="email"
+                        htmlhtmlFor="email"
                         style={{
                           display: "block",
                           fontSize: "0.875rem",
@@ -405,7 +405,7 @@ function Navbar() {
                   <div style={{ display: "grid", gap: "1.5rem" }}>
                     <div>
                       <label
-                        htmlFor="phone"
+                        htmlhtmlFor="phone"
                         style={{
                           display: "block",
                           fontSize: "0.875rem",
@@ -425,7 +425,7 @@ function Navbar() {
                     </div>
                     <div>
                       <label
-                        htmlFor="multiple_files"
+                        htmlhtmlFor="multiple_files"
                         style={{
                           display: "block",
                           fontSize: "0.875rem",
@@ -444,7 +444,7 @@ function Navbar() {
                   </div>
                   <div>
                     <label
-                      htmlFor="description"
+                      htmlhtmlFor="description"
                       style={{
                         display: "block",
                         fontSize: "0.875rem",

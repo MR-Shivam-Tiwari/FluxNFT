@@ -13,7 +13,7 @@ function Donation() {
             <Image
               src={Donate}
               alt="Hindu Scriptures"
-              width="1920"
+              width="1920" priority={true}
               height="1080"
               className="absolute inset-0 h-full w-full object-cover"
               style={{ aspectRatio: "1920/1080", objectFit: "cover" }}
@@ -70,7 +70,7 @@ function Donation() {
                   src={Imaginate}
                   alt="Hindu Illustration"
                   width="500"
-                  height="400"
+                  height="400" priority={true}
                   className="mx-auto rounded-lg"
                   style={{ aspectRatio: "500/400", objectFit: "cover" }}
                 />

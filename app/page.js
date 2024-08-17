@@ -23,8 +23,10 @@ const Home = () => {
         <Image
           src={ExportEmage}
           alt="Hindu Scriptures"
-          layout="fill"
-          objectFit="cover"
+          fill 
+          priority={true}
+          style={{ objectFit: 'cover' }}
+          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
@@ -75,8 +77,10 @@ const Home = () => {
                   <Image
                     src={virat}
                     alt="Bhagavad Gita"
-                    layout="fill"
-                    objectFit="cover"
+                    fill 
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={true}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
@@ -109,8 +113,9 @@ const Home = () => {
                   <Image
                     src={upnishad}
                     alt="Upanishads"
-                    layout="fill"
-                    objectFit="cover"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    fill 
+                    style={{ objectFit: 'cover' }} priority={true}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
@@ -143,8 +148,9 @@ const Home = () => {
                   <Image
                     src={vedas}
                     alt="Vedas"
-                    layout="fill"
-                    objectFit="cover"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    fill 
+                    style={{ objectFit: 'cover' }} priority={true}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
@@ -177,8 +183,9 @@ const Home = () => {
                   <Image
                     src={epic}
                     alt="Epics"
-                    layout="fill"
-                    objectFit="cover"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    fill 
+                    style={{ objectFit: 'cover' }} priority={true}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
@@ -227,7 +234,7 @@ const Home = () => {
                   src={scripture}
                   alt="Discussion Forums"
                   width="400"
-                  height="300"
+                  height="300" priority={true}
                   className="w-full h-48 object-cover"
                   style={{ aspectRatio: "400/300", objectFit: "cover" }}
                 />
@@ -266,6 +273,7 @@ const Home = () => {
                   alt="Discussion Forums"
                   width="400"
                   height="300"
+                  priority={true}
                   className="w-full h-48 object-cover"
                   style={{ aspectRatio: "400/300", objectFit: "cover" }}
                 />
@@ -298,9 +306,9 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                <img
-                  src="https://img.freepik.com/free-photo/woman-sitting-yoga-pose-beach_1098-1454.jpg?t=st=1716402576~exp=1716406176~hmac=b7fd34237ea522857731056dcb2bd889157afa2854014d05ea09128ebb65fada&w=1380"
+              {/* <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <Image
+                  src="Image/image.png" priority={true}
                   alt="Meditation Guides"
                   width="400"
                   height="300"
@@ -335,21 +343,21 @@ const Home = () => {
                     </svg>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
-        <section className="container mx-auto py-12 px-4 md:px-6 lg:px-8">
+        {/* <section className="container mx-auto py-12 px-4 md:px-6 lg:px-8">
           <h2 className="mb-8 text-3xl font-serif text-[#333] ">
             Testimonials
           </h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-lg bg-[#f5f5f5]  p-6 shadow-lg">
-              <img
+              <Image
                 src="https://img.freepik.com/free-photo/young-girl-with-short-hair-wearing-polo-shirt-looking-camera-with-smile-face_141793-46444.jpg?t=st=1716402440~exp=1716406040~hmac=33accbe4f5587804b36c60a49063dbb49d65f0fa572718f55e4b5e2907241b2b&w=1380"
                 alt="Testimonial 1"
                 width="80"
-                height="80"
+                height="80" priority={true}
                 className="rounded-full"
                 style={{ aspectRatio: "80/80", objectFit: "cover" }}
               />
@@ -362,10 +370,10 @@ const Home = () => {
               </blockquote>
             </div>
             <div className="rounded-lg bg-[#f5f5f5]  p-6 shadow-lg">
-              <img
+              <Image
                 alt="Testimonial 2"
                 className="rounded-full"
-                height="80"
+                height="80" priority={true}
                 src="https://img.freepik.com/free-photo/young-adult-enjoying-virtual-date_23-2149328221.jpg?t=st=1716402442~exp=1716406042~hmac=0496aa220dc1c8faa5814758fccbb0593a7a174f68eb7c7ada4f03c4e38d651e&w=740"
                 width="80"
                 style={{ aspectRatio: "80/80", objectFit: "cover" }}
@@ -379,10 +387,10 @@ const Home = () => {
               </blockquote>
             </div>
             <div className="rounded-lg bg-[#f5f5f5]  p-6 shadow-lg">
-              <img
+              <Image
                 alt="Testimonial 3"
                 className="rounded-full"
-                height="80"
+                height="80" priority={true}
                 src="https://img.freepik.com/free-photo/selfie-portrait-videocall_23-2149186124.jpg?t=st=1716402445~exp=1716406045~hmac=fa148b63558a39a15f01d69c7ebcdb8b73f6aaf5b7a24cf9abf360e5cad3fb36&w=740"
                 width="80"
                 style={{ aspectRatio: "80/80", objectFit: "cover" }}
@@ -397,17 +405,17 @@ const Home = () => {
               </blockquote>
             </div>
           </div>
-        </section>
-        <section className="py-16 bg-white">
+        </section> */}
+        {/* <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl mb-3 font-bold tracking-tight">
               Daily Inspiration
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative h-64 rounded-lg overflow-hidden">
-                <img
+                <Image
                   src="https://img.freepik.com/free-photo/portrait-indian-man-celebrating-baisakhi-festival_23-2151216994.jpg?t=st=1716402742~exp=1716406342~hmac=1b764632906488ce9d050b9c3094d78af98fe8f8fc0ef251f54c9037a057bf0d&w=1380"
-                  alt="Daily Quote"
+                  alt="Daily Quote" priority={true}
                   className="object-cover h-full w-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
@@ -450,7 +458,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />

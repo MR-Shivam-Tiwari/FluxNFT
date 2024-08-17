@@ -18,7 +18,7 @@ function Donate() {
                 <div>
                   <label
                     className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
-                    for="name"
+                    htmlFor="name"
                   >
                     Name
                   </label>
@@ -32,7 +32,7 @@ function Donate() {
                 <div>
                   <label
                     className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
-                    for="email"
+                    htmlFor="email"
                   >
                     Email
                   </label>
@@ -46,7 +46,7 @@ function Donate() {
                 <div>
                   <label
                     className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-lg"
-                    for="amount"
+                    htmlFor="amount"
                   >
                     Donation Amount
                   </label>
@@ -73,9 +73,9 @@ function Donate() {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         className="h-6 w-6"
                       >
                         <rect width="20" height="14" x="2" y="5" rx="2"></rect>
@@ -91,9 +91,9 @@ function Donate() {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         className="h-6 w-6"
                       >
                         <rect width="18" height="18" x="3" y="3" rx="2"></rect>
@@ -110,9 +110,9 @@ function Donate() {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         className="h-6 w-6"
                       >
                         <line x1="12" x2="12" y1="2" y2="22"></line>
@@ -128,9 +128,9 @@ function Donate() {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         className="h-6 w-6"
                       >
                         <rect width="5" height="5" x="3" y="3" rx="1"></rect>

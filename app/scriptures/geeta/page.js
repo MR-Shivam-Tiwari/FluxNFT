@@ -56,10 +56,10 @@ export default async function Geeta() {
                             src={book.src}
                             alt={book.name}
                             width={250}
-                            height={300}
+                            height={300} priority={true}
                             className="w-full lg:h-[350px] object-cover rounded-t-md"
                             style={{ aspectRatio: '250 / 300', objectFit: 'cover', objectPosition: 'top' }} // Added objectPosition: 'top'
-                            loading="lazy"
+                            // loading="lazy"
                         />
 
                         <div className="absolute inset-0 rounded-t-md bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">

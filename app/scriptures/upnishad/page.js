@@ -7,57 +7,57 @@ const Upanishads = [
   {
     id: 1,
     name: "Isha Upanishad",
-    src: '/upnishadimage/isha.png'
+    src: '/upnishadimage/isha.jpg'
   },
   {
     id: 2,
     name: "Kena Upanishad",
-    src: "/upnishadimage/kena.png",
+    src: "/upnishadimage/kena.jpg",
   },
   {
     id: 3,
     name: "Katha Upanishad",
-    src: "/upnishadimage/katho.png",
+    src: "/upnishadimage/katha.jpg",
   },
   {
     id: 4,
     name: "Prashna Upanishad",
-    src: "/upnishadimage/prashna.png",
+    src: "/upnishadimage/prashna.jpg",
   },
   {
     id: 5,
     name: "Mundaka Upanishad",
-    src: "/upnishadimage/mundako.png",
+    src: "/upnishadimage/mundaka.jpg",
   },
   {
     id: 6,
     name: "Mandukya Upanishad",
-    src: "/upnishadimage/mandukyo.png",
+    src: "/upnishadimage/mandukya.jpg",
   },
   {
     id: 7,
     name: "Taittiriya Upanishad",
-    src: "/upnishadimage/taittriya.png",
+    src: "/upnishadimage/taittiriya.jpg",
   },
   {
     id: 8,
     name: "Aitareya Upanishad",
-    src: "/upnishadimage/aitarey.png",
+    src: "/upnishadimage/aitareya.jpg",
   },
   {
     id: 9,
     name: "Chandogya Upanishad",
-    src: "/upnishadimage/chhandogyo.png",
+    src: "/upnishadimage/chandogya.jpg",
   },
   {
     id: 10,
     name: "Brihadaranyaka Upanishad",
-    src: "/upnishadimage/brihadanyak.png",
+    src: "/upnishadimage/brihad.jpg",
   },
   {
     id: 11,
     name: "Shvetashvatara Upanishad",
-    src: "/upnishadimage/shweta.png",
+    src: "/upnishadimage/shveta.jpg",
   },
 ];
 
@@ -72,10 +72,10 @@ export default function Upnishad() {
               src={book.src}
               alt={book.name}
               width={250}
-              height={300}
+              height={300} priority={true}
               className="w-full lg:h-[350px] object-cover rounded-t-md"
               style={{ aspectRatio: '250 / 300', objectFit: 'cover', objectPosition: 'top' }} // Added objectPosition: 'top'
-              loading="lazy"
+              // loading="lazy"
             />
 
             <div className="absolute inset-0 rounded-t-md bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">

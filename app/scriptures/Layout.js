@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Layout({ children }) {
     const router = useRouter();
   const pathname = usePathname();
-    console.log("pathname", pathname)
+    // console.log("pathname", pathname)
     // Initialize selected route based on localStorage or current pathname
     const [selected, setSelected] = useState(() => {
       if (typeof window !== 'undefined') {

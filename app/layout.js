@@ -25,15 +25,11 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Annapurna+SIL:wght@400;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Martel:wght@200;300;400;600;700;800;900&family=Yatra+One&display=swap"
           rel="stylesheet"
         />
-        
-        {/* Link to manifest file */}
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       </head>
       
       <body className={inter.className}>
         <Navbar /> {/* Navbar component */}
         <main>{children}</main> {/* The main content of the page */}
-        
       </body>
     </html>
   );

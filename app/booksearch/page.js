@@ -182,7 +182,7 @@ function BookCard({ books }) {
                             loader={imageLoader}
                             src={book.src}
                             alt={book.name}
-                            width={200}
+                            width={200} priority={true}
                             height={300}
                             className="w-full lg:h-[350px]  object-cover rounded-t-md"
                             style={{ aspectRatio: '200 / 300', objectFit: 'cover' }}

@@ -43,7 +43,7 @@ function about() {
                 <Image
                   src={dsign}
                   width="550"
-                  height="550"
+                  height="550" priority={true}
                   alt="About Us"
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
                 />
@@ -111,7 +111,7 @@ function about() {
                   src={oim}
                   width="550"
                   height="310"
-                  alt="Our Mission"
+                  alt="Our Mission" priority={true}
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                 />
               </div>
