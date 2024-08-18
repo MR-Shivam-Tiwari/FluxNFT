@@ -19,7 +19,7 @@ function page() {
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <Image
-                            src="/epicimage/rama.jpg"
+                            src="/epicimage/ramahindi.jpg"
                             alt="Book Cover"
                             width="300"
                             height="400" priority={true}

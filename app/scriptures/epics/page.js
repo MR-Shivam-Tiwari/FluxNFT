@@ -7,12 +7,12 @@ const Epics = {
         {
             id: 1,
             name: "Ramayana Hindi",
-            src: "/epicimage/rama.jpg",
+            src: "/epicimage/ramahindi.jpg",
         },
         {
             id: 2,
             name: "Ramayana English",
-            src: "/epicimage/ramahindi.jpg",
+            src: "/epicimage/rama.jpg",
         },
         {
             id: 3,
@@ -84,7 +84,7 @@ export default async function Geeta() {
                         Ramayana
                     </h3>
                 </div>
-                <div className="flex flex-wrap gap-10 border lg:px-10  lg:py-10 mt-3  px-6 mb-3 rounded bg-orange-100">
+                <div className="flex flex-wrap gap-10 border lg:px-10  lg:py-10 mt-3 py-7  px-6 mb-3 rounded bg-orange-100">
                     {renderBooks('Ramayana')}
                 </div>
                 <div className="flex">

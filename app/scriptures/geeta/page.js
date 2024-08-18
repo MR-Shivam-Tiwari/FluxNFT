@@ -82,7 +82,7 @@ export default async function Geeta() {
                         Bhagavad Gita
                     </h3>
                 </div>
-                <div className="grid border lg:py-10 lg:px-10 py-3 px-3 mb-3 rounded bg-orange-100 lg:grid-cols-2 gap-4 grid-cols-1 lg:flex lg:flex-wrap ">
+                <div className="grid border lg:py-10 lg:px-10 py-7 px-3 mb-3 rounded bg-orange-100 lg:grid-cols-2 gap-4 grid-cols-1 lg:flex lg:flex-wrap ">
                     {renderBooks('BhagavadGita')}
                 </div>
                 <div className='flex'>
@@ -90,7 +90,7 @@ export default async function Geeta() {
                         Anu Gita
                     </h3>
                 </div>
-                <div className="grid border lg:py-10 lg:px-10 py-3 px-3 mb-3 rounded bg-orange-100 lg:grid-cols-2 gap-4 grid-cols-1 lg:flex lg:flex-wrap lg:gap-20">
+                <div className="grid border lg:py-10 lg:px-10 py-7 px-3 mb-3 rounded bg-orange-100 lg:grid-cols-2 gap-4 grid-cols-1 lg:flex lg:flex-wrap lg:gap-20">
                     {renderBooks('AnuGeeta')}
                 </div>
                 <div className='flex'>
@@ -98,7 +98,7 @@ export default async function Geeta() {
                         Astavakra Geeta
                     </h3>
                 </div>
-                <div className="border lg:px-10 lg:py-10 py-3 px-3 mb-3 rounded bg-orange-100  gap-4 flex flex-wrap lg:gap-20">
+                <div className="grid border lg:py-10 lg:px-10 py-7 px-3 mb-3 rounded bg-orange-100 lg:grid-cols-2 gap-4 grid-cols-1 lg:flex lg:flex-wrap lg:gap-20">
                     {renderBooks('AstavakraGeeta')}
                 </div>
             </div>

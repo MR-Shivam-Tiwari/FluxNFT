@@ -8,152 +8,152 @@ const booksData = [
     {
         id: 1,
         name: "Rigveda",
-        src: "https://m.media-amazon.com/images/I/51mDE-WDILL.jpg",
-        route: "/scriptures/Vedas/1",
+        src: "/vedaimage/rigved.jpg",
+        route: "/scriptures/vedas/1",
     },
     {
         id: 2,
         name: "Samaveda",
-        src: "https://nepalyogahome.com/wp-content/uploads/2021/05/samaveda.jpg",
-        route: "/scriptures/Vedas/2",
+        src: "/vedaimage/samved.jpg",
+        route: "/scriptures/vedas/2",
     },
     {
         id: 3,
         name: "Yajurveda",
-        src: "https://m.media-amazon.com/images/I/51fkgWsI+qL.jpg",
-        route: "/scriptures/Vedas/3",
+        src: "/vedaimage/yajur.jpg",
+        route: "/scriptures/vedas/3",
     },
     {
         id: 4,
         name: "Atharvaveda",
-        src: "https://nepalyogahome.com/wp-content/uploads/2021/05/Atharvaveda.jpg",
-        route: "/scriptures/Vedas/4",
+        src: "/vedaimage/atharv.jpg",
+        route: "/scriptures/vedas/4",
     },
     {
         id: 5,
         name: "Ramayana Hindi",
-        src: "https://admin.gitapress.org/assets/uploads/media-uploader/624e855656449.webp",
-        route: "/scriptures/Epics/1",
+        src: "/epicimage/rama.jpg",
+        route: "/scriptures/epics/1",
     },
     {
         id: 6,
         name: "Ramayana English",
-        src: "https://admin.gitapress.org/assets/uploads/media-uploader/624e84e4cbfce.webp",
-        route: "/scriptures/Epics/2",
+        src: "/epicimage/ramahindi.jpg",
+        route: "/scriptures/epics/2",
     },
     {
         id: 7,
         name: "Mahabharata Hindi",
-        src: "https://admin.gitapress.org/assets/uploads/media-uploader/624e855e7085d.webp",
-        route: "/scriptures/Epics/3",
+        src: "/epicimage/maha.jpg",
+        route: "/scriptures/epics/4",
     },
     {
         id: 8,
         name: "Mahabharata English",
-        src: "https://m.media-amazon.com/images/I/71s6IAl4QlL._AC_UF1000,1000_QL80_.jpg",
-        route: "/scriptures/Epics/4",
+        src: "/epicimage/mahae.jpg",
+        route: "/scriptures/epics/5",
     },
     {
         id: 9,
         name: "Mahabharata Bori-CE",
-        src: "https://m.media-amazon.com/images/I/71s6IAl4QlL._AC_UF1000,1000_QL80_.jpg",
-        route: "/scriptures/Epics/5",
+        src: "/epicimage/mahab.jpg",
+        route: "/scriptures/epics/6",
     },
     {
         id: 10,
         name: "Isha Upanishad",
-        src: "https://cdn.exoticindia.com/images/products/original/books-2019/uak245.jpg",
-        route: "/scriptures/Upanishad/1",
+        src: "/upnishadimage/isha.jpg",
+        route: "/scriptures/upnishad/1",
     },
     {
         id: 11,
         name: "Kena Upanishad",
-        src: "https://sanatan.in/cdn/shop/products/68_1.jpg?v=1656756815",
-        route: "/scriptures/Upanishad/2",
+        src: "/upnishadimage/kena.jpg",
+        route: "/scriptures/upnishad/2",
     },
     {
         id: 12,
         name: "Katha Upanishad",
-        src: "https://cdn.exoticindia.com/images/products/original/books/gpa057.jpg",
-        route: "/scriptures/Upanishad/3",
+        src: "/upnishadimage/katha.jpg",
+        route: "/scriptures/upnishad/3",
     },
     {
         id: 13,
         name: "Prashna Upanishad",
-        src: "https://cdn.exoticindia.com/images/products/original/books/gpa044.jpg",
-        route: "/scriptures/Upanishad/4",
+        src: "/upnishadimage/prashna.jpg",
+        route: "/scriptures/upnishad/4",
     },
     {
         id: 14,
         name: "Mundaka Upanishad",
-        src: "https://cdn.exoticindia.com/images/products/original/books/gpa051.jpg",
-        route: "/scriptures/Upanishad/5",
+        src: "/upnishadimage/mundaka.jpg",
+        route: "/scriptures/upnishad/5",
     },
     {
         id: 15,
         name: "Mandukya Upanishad",
-        src: "https://m.media-amazon.com/images/I/A1o5c0y+tlL._AC_UF894,1000_QL80_.jpg",
-        route: "/scriptures/Upanishad/6",
+        src: "/upnishadimage/mandukya.jpg",
+        route: "/scriptures/upnishad/6",
     },
     {
         id: 16,
         name: "Taittiriya Upanishad",
-        src: "https://cdn.exoticindia.com/images/products/original/books/gpa049.jpg",
-        route: "/scriptures/Upanishad/7",
+        src: "/upnishadimage/taittiriya.jpg",
+        route: "/scriptures/upnishad/7",
     },
     {
         id: 17,
         name: "Aitareya Upanishad",
-        src: "https://sanatan.in/cdn/shop/products/72-copy-2_1.jpg?v=1656336366",
-        route: "/scriptures/Upanishad/8",
+        src: "/upnishadimage/aitareya.jpg",
+        route: "/scriptures/upnishad/8",
     },
     {
         id: 18,
         name: "Chandogya Upanishad",
-        src: "https://m.media-amazon.com/images/I/51cz7ToCbZL._AC_UF1000,1000_QL80_.jpg",
-        route: "/scriptures/Upanishad/9",
+        src: "/upnishadimage/chandogya.jpg",
+        route: "/scriptures/upnishad/9",
     },
     {
         id: 19,
         name: "Brihadaranyaka Upanishad",
-        src: "https://m.media-amazon.com/images/I/41M3QpHxkCS._SY445_SX342_.jpg",
-        route: "/scriptures/Upanishad/10",
+        src: "/upnishadimage/brihad.jpg",
+        route: "/scriptures/upnishad/10",
     },
     {
         id: 20,
         name: "Shvetashvatara Upanishad",
-        src: "https://sanatan.in/cdn/shop/products/73-copy-3.jpg?v=1651300907",
-        route: "/scriptures/Upanishad/11",
+        src: "/upnishadimage/shveta.jpg",
+        route: "/scriptures/upnishad/11",
     },
     {
         id: 21,
         name: "Bhagavad Gita",
-        src: "https://admin.gitapress.org/assets/uploads/media-uploader/tatavavavacana-vashashhata-sasakaranae1644392839.webp",
+        src: "/geetaimage/bhagvad.jpg",
         route: "/scriptures/geeta/1",
     },
     {
         id: 22,
         name: "Anu Gita Hindi",
-        src: "https://cdn.exoticindia.com/images/products/original/books-2019/nas548.webp",
-        route: "/scriptures/geeta/3",
+        src: "/geetaimage/anuhin.png",
+        route: "/scriptures/geeta/2",
     },
     {
         id: 23,
         name: "Anu Gita English",
-        src: "https://cdn.exoticindia.com/images/products/original/books-2019/nas548.webp",
-        route: "/scriptures/geeta/4",
+        src: "/geetaimage/anu.png",
+        route: "/scriptures/geeta/3",
     },
     {
         id: 24,
         name: "Astavakra Geeta Hindi",
-        src: "https://m.media-amazon.com/images/I/71Ieu2PglwL._AC_UF1000,1000_QL80_.jpg",
-        route: "/scriptures/geeta/7",
+        src: "/geetaimage/asht.png",
+        route: "/scriptures/geeta/4",
     },
     {
         id: 25,
         name: "Astavakra Geeta English",
-        src: "https://m.media-amazon.com/images/I/71Ieu2PglwL._AC_UF1000,1000_QL80_.jpg",
-        route: "/scriptures/geeta/8",
+        src: "/geetaimage/ashteng.png",
+        route: "/scriptures/geeta/5",
     },
     // Add more book objects here
 ];
@@ -166,33 +166,35 @@ function BookCard({ books }) {
     };
 
     // Sort books alphabetically by name
-    const sortedBooks = books.sort((a, b) => a.name.localeCompare(b.name));
+    // const sortedBooks = books.sort((a, b) => a.name.localeCompare(b.name));
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {sortedBooks.map((book) => (
+            {books.map((book) => (
                 <div
                     key={book.id}
                     onClick={() => handleClick(book.route)}
                     style={{ cursor: 'pointer' }}
-                    className="relative group bg-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-300"
+                    className="relative rounded-lg overflow-hidden  shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
-                    <div className="relative">
+                    <div className=" relative group bg-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
+
                         <Image
-                            loader={imageLoader}
                             src={book.src}
                             alt={book.name}
-                            width={200} priority={true}
-                            height={300}
-                            className="w-full lg:h-[350px]  object-cover rounded-t-md"
-                            style={{ aspectRatio: '200 / 300', objectFit: 'cover' }}
+                            width={250}
+                            height={300} priority={true}
+                            className="w-full lg:h-[350px] object-cover rounded-t-md"
+                            style={{ aspectRatio: '250 / 300', objectFit: 'cover', objectPosition: 'top' }} // Added objectPosition: 'top'
+                        // loading="lazy"
                         />
+
                         <div className="absolute inset-0 rounded-t-md bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                             <span className="text-white font-medium text-lg">Read Book</span>
                         </div>
-                    </div>
-                    <div className="p-4">
-                        <h3 className="text-lg font-bold mb-2">{book.name}</h3>
+                        <div className="px-4 p-2">
+                            <h3 className="text-xl font-bold  flex flex-wrap ">{book.name}</h3>
+                        </div>
                     </div>
                 </div>
             ))}

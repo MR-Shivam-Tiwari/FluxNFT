@@ -23,13 +23,13 @@ function Donation() {
                 <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                   Support Our Mission to Provide Free Access to Hindu Scriptures
                 </h1>
-                <p className="text-lg md:text-xl">
+                <p className="text-lg  md:text-xl">
                   Your generosity helps us maintain and expand our library of
                   sacred texts.
                 </p>
                 <Link href='/donation/donate'>
                 <div
-                  className="inline-flex items-center justify-center cursor-pointer rounded-md bg-[#f39c12] px-6 py-3 text-base font-medium text-gray-900 transition-colors hover:bg-[#e08e0b] focus:outline-none focus:ring-2 focus:ring-[#f39c12] focus:ring-offset-2"
+                  className="inline-flex mt-5 shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 items-center justify-center cursor-pointer rounded-md bg-orange-500 px-6 py-3 text-base  text-gray-900 transition-colors font-bold hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-[#f39c12] focus:ring-offset-2"
                   rel="ugc"
                 >
                   Donate Now
@@ -91,7 +91,7 @@ function Donation() {
               continue this important work.
             </p>
             <Link href='/donation/donate'>
-            <div  className="inline-flex items-center cursor-pointer text-black font-bold justify-center rounded-md bg-white px-6 py-3 text-lg  shadow-sm transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
+            <div  className="inline-flex items-center shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer text-black font-bold justify-center rounded-md bg-white px-6 py-3 text-lg  transition-colors hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
               Donate Now
             </div>
             </Link>

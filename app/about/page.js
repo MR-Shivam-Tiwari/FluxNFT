@@ -24,16 +24,19 @@ function about() {
                       Hindu philosophy and spirituality.
                     </p>
                   </div>
-                  <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <div className="flex flex-col gap-4 min-[400px]:flex-row">
                     <Link href="/scriptures/geeta">
-                      <div  className="inline-flex cursor-pointer h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 ">
+                      <div
+                        // onClick={() => router.push("/scriptures/geeta")}
+                        className="inline-flex w-full lg:w-[250px] shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 justify-center items-center cursor-pointer px-2.5 text-lg font-bold py-2 border border-transparent rounded-md  text-white bg-orange-600 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
                         Explore Scriptures
                       </div>
                     </Link>
                     <Link href="/">
                       <div
 
-                        className="inline-flex h-10 items-center justify-center rounded-md border cursor-pointer border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 d"
+                        className="inline-flex items-center w-full shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500 lg:w-[250px] justify-center cursor-pointer px-2.5 py-2 border text-lg  border-gray-300  font-bold rounded-md text-gray-700 bg-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
                         Learn More
                       </div>
@@ -54,7 +57,7 @@ function about() {
             <div className="container px-4 md:px-6">
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  <h2 className="text-3xl font-bold mb-6 tracking-tighter sm:text-5xl">
                     Our Mission and Guiding Principles
                   </h2>
                   <p className=" text-gray-500 text-md   ">

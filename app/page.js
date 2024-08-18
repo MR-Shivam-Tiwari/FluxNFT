@@ -4,14 +4,11 @@ import Image from 'next/image';
 // import Footer from "../components/Footer/Footer"; // Adjust the path based on your directory structure
 
 // Images stored in the public directory
-import ExportEmage from "../public/Image/Explore_books.jpg";
-import BhagvadGeeta from "../public/Image/GeetaGyan.PNG";
-import virat from "../public/Image/ViratRoop.PNG";
-import upnishad from "../public/Image/Designer.jpeg";
-import vedas from "../public/Image/vedass.PNG";
-import epic from "../public/Image/epic.jpeg";
-import scripture from "../public/Image/ScriptureSearch.jpg";
-import discussion from "../public/Image/Discussion.jpg";
+import ExportEmage from "../public/image/Explore_books.jpg";
+import upnishad from "../public/image/Designer.jpeg";
+
+import scripture from "../public/image/ScriptureSearch.jpg";
+import discussion from "../public/image/Discussion.jpg";
 import Link from "next/link";
 import Footer from "./Footer";
 const Home = () => {
@@ -23,28 +20,28 @@ const Home = () => {
         <Image
           src={ExportEmage}
           alt="Hindu Scriptures"
-          fill 
+          fill
           priority={true}
           style={{ objectFit: 'cover' }}
           sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl animate-fadeInSlideUp">
             Explore the Wisdom of Hindu Scriptures
           </h1>
-          <p className="mt-4 text-lg sm:text-xl">
-            Discover the timeless teachings and profound insights of the Hindu
-            faith.
+          <p className="mt-4 text-lg sm:text-xl animate-fadeInSlideUp delay-500">
+            Discover the timeless teachings and profound insights of the Hindu faith.
           </p>
         </div>
+
       </header>
 
       <main>
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
+            <div className=" gap-8">
+              <div className="container text-center mx-auto mb-10 ">
                 <h2 className="text-3xl font-bold tracking-tight">
                   Discover the Wisdom of Hindu Scriptures
                 </h2>
@@ -53,167 +50,195 @@ const Home = () => {
                   Hindu faith through our extensive collection of sacred
                   scriptures.
                 </p>
-                <div className="mt-8 flex gap-2">
+                <div className="mt-8 grid grid-cols-1 lg:flex gap-7 justify-center ">
                   <Link href="/scriptures/geeta">
-                  <div
-                    // onClick={() => router.push("/scriptures/geeta")}
-                    className="inline-flex items-center cursor-pointer px-2.5 text-sm py-2 border border-transparent  font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    <div
+                      // onClick={() => router.push("/scriptures/geeta")}
+                      className="inline-flex w-full lg:w-[250px] shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 justify-center items-center cursor-pointer px-2.5 text-lg font-bold py-2 border border-transparent rounded-md  text-white bg-orange-600 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                    Explore Scriptures
-                  </div>
-                    </Link>
-                    <Link href="/donation">
-                  <div
-                    className="inline-flex items-center cursor-pointer px-2.5 py-2 border text-sm border-gray-300  font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      Explore Scriptures
+                    </div>
+                  </Link>
+                  <Link href="/donation">
+                    <div
+                      className="inline-flex items-center w-full shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500 lg:w-[250px] justify-center cursor-pointer px-2.5 py-2 border text-lg  border-gray-300  font-bold rounded-md text-gray-700 bg-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     // onClick={() => router.push("/donation")}
                     >
-                    Support The Developer
-                  </div>
-                    </Link>
+                      Support The Developer
+                    </div>
+                  </Link>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative h-64 rounded-lg overflow-hidden">
-                  <Image
-                    src={virat}
-                    alt="Bhagavad Gita"
-                    fill 
-                    style={{ objectFit: 'cover' }}
-                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={true}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg font-bold">Bhagavad Gita</h3>
-                    <p className="text-sm">Explore the timeless wisdom</p>
-                    <div
-                      className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
-                    // onClick={() => router.push("/scriptures/geeta")}
-                    >
-                      Read More
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="ml-1 h-4 w-4"
+              <div className="grid lg:grid-cols-4 grid-cols-1 gap-5">
+                <Link
+                  href="/scriptures/geeta"
+                  className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
+                >
+                  <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative w-full h-64">
+                      <Image
+                        src="/image/krishna.jpg"
+                        alt="Bhagavad Gita"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={true}
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h3 className="text-lg font-bold">All Geeta</h3>
+                      <span className="text-[11px]">(Bhagavad Geeta, Anu Geeta, Astavakra Geeta)</span>
+                      <p className="text-sm">Explore the timeless wisdom</p>
+                      <div
+                        className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
                       >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                      </svg>
+                        Read More
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="ml-1 h-4 w-4"
+                        >
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="relative h-64 rounded-lg overflow-hidden">
-                  <Image
-                    src={upnishad}
-                    alt="Upanishads"
-                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    fill 
-                    style={{ objectFit: 'cover' }} priority={true}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg font-bold">Upanishads</h3>
-                    <p className="text-sm">Uncover the secrets of the universe</p>
-                    <div
-                      className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
-                    // onClick={() => router.push("/scriptures/Upanishad")}
-                    >
-                      Read More
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="ml-1 h-4 w-4"
-                      >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                      </svg>
+                </Link>
+
+                <Link
+                  href="/scriptures/vedas"
+                  className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
+                >
+                  <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative w-full h-64">
+                      <Image
+                        src="/image/vadash.jpg"
+                        alt="Vedas"
+                        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        fill
+                        style={{ objectFit: 'cover', objectPosition: 'top' }} priority={true}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <h3 className="text-lg font-bold">Vedas
+                          <p className="text-[11px]">(Rigveda, Yajurveda, Samaveda, and Atharvaveda)</p></h3>
+                        <p className="text-sm">Explore the foundational texts</p>
+                        <div
+                          className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
+                        // onClick={() => router.push("/scriptures/Vedas")}
+                        >
+                          Read More
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-1 h-4 w-4"
+                          >
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div> </div> </Link>
+                <Link
+                  href="/scriptures/upnishad"
+                  className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
+                >
+                  <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative w-full h-64">
+                      <Image
+                        src={upnishad}
+                        alt="Upanishads"
+                        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        fill
+                        style={{ objectFit: 'cover' }} priority={true}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <h3 className="text-lg font-bold">Upanishads <span className="text-[11px]">(11 Prime Upanishad)</span></h3>
+                        <p className="text-sm">Uncover the secrets of the universe</p>
+                        <div
+                          className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
+                        // onClick={() => router.push("/scriptures/Upanishad")}
+                        >
+                          Read More
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-1 h-4 w-4"
+                          >
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="relative h-64 rounded-lg overflow-hidden">
-                  <Image
-                    src={vedas}
-                    alt="Vedas"
-                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    fill 
-                    style={{ objectFit: 'cover' }} priority={true}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg font-bold">Vedas</h3>
-                    <p className="text-sm">Explore the foundational texts</p>
-                    <div
-                      className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
-                    // onClick={() => router.push("/scriptures/Vedas")}
-                    >
-                      Read More
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="ml-1 h-4 w-4"
-                      >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                      </svg>
+                </Link>
+
+                <Link
+                  href="/scriptures/epics"
+                  className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
+                >
+                  <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative w-full h-64">
+                      <Image
+                        src="/image/asa.jpg"
+                        alt="Epics"
+                        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        fill
+                        style={{ objectFit: 'cover' }} priority={true}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <h3 className="text-lg font-bold">Epics <span className="text-[11px]">(Ramayan and Mahabharat)</span></h3>
+                        <p className="text-sm">Discover the ancient stories</p>
+                        <div
+                          className="inline-flex items-center mt-2 text-indigo-400 hover:text-indigo-500"
+                        // onClick={() => router.push("/scriptures/Epics")}
+                        >
+                          Read More
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="ml-1 h-4 w-4"
+                          >
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="relative h-64 rounded-lg overflow-hidden">
-                  <Image
-                    src={epic}
-                    alt="Epics"
-                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    fill 
-                    style={{ objectFit: 'cover' }} priority={true}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg font-bold">Epics</h3>
-                    <p className="text-sm">Discover the ancient stories</p>
-                    <div
-                      className="inline-flex items-center mt-2 text-indigo-400 hover:text-indigo-500"
-                    // onClick={() => router.push("/scriptures/Epics")}
-                    >
-                      Read More
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="ml-1 h-4 w-4"
-                      >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+                  </div> </Link>
               </div>
             </div>
           </div>
@@ -229,8 +254,8 @@ const Home = () => {
               resources.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-              <Image
+              <div className="bg-white rounded-lg  overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500">
+                <Image
                   src={scripture}
                   alt="Discussion Forums"
                   width="400"
@@ -244,30 +269,32 @@ const Home = () => {
                     Easily find and explore specific verses, passages, and
                     teachings from the Hindu scriptures.
                   </p>
-                  <div
-                    className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
+                  <Link href='/booksearch'>
+                    <div
+                      className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
 
-                  >
-                    Try it now
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="ml-1 h-4 w-4"
                     >
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                  </div>
+                      Try it now
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="ml-1 h-4 w-4"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </div>
+                  </Link>
                 </div>
               </div>
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div className="bg-white rounded-lg  overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500">
                 <Image
                   src={discussion}
                   alt="Discussion Forums"
@@ -306,9 +333,9 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div className="bg-white rounded-lg  overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500">
                 <Image
-                  src="Image/image.png" priority={true}
+                  src="/image/download.jpg" priority={true}
                   alt="Meditation Guides"
                   width="400"
                   height="300"
@@ -316,16 +343,18 @@ const Home = () => {
                   style={{ aspectRatio: "400/300", objectFit: "cover" }}
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-bold">Meditation Guides</h3>
+                  <h3 className="text-xl font-bold">Download Sacred Scriptures
+                  </h3>
                   <p className="mt-2 text-gray-500">
-                    Explore guided meditations and techniques to deepen your
-                    spiritual practice and find inner peace.
+                    Explore the divine knowledge and download the complete scripture in PDF format for your study and reflection.
+
+
                   </p>
                   <div
                     className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
 
                   >
-                    Start Meditating
+                    Start Downloading
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -343,7 +372,7 @@ const Home = () => {
                     </svg>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </section>

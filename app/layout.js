@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Navbar /> {/* Global Navbar */}
         <main>{children}</main> {/* Main content area */}
-        <Footer /> {/* Global Footer */}
+        {/* <Footer />  */}
       </body>
     </html>
   );

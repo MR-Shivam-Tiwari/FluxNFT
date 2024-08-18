@@ -62,7 +62,7 @@ function Navbar() {
               dir="ltr"
             >
               <div
-                className="group inline-flex h-9 w-max cursor-pointer items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#e0e0e0] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
+                className="group inline-flex h-9 w-max cursor-pointer items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#f5eee9]  hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
                 data-radix-collection-item=""
                 onClick={() => router.push("/")}
               >
@@ -70,28 +70,28 @@ function Navbar() {
               </div>
 
               <div
-                className="group inline-flex h-9 w-max items-center cursor-pointer bg-gray-300 justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#e0e0e0] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
+                className="group inline-flex h-9 w-max items-center cursor-pointer bg-gray-300 justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#fcede3] hover:text-[#8b4513] focus:bg-[#f0c8c8] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
                 data-radix-collection-item=""
                 onClick={() => router.push("/scriptures/geeta")}
               >
                 Scriptures
               </div>
               <div
-                className="group inline-flex h-9 w-max items-center cursor-pointer justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#e0e0e0] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
+                className="group inline-flex h-9 w-max items-center cursor-pointer justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#f5eee9] hover:text-[#8b4513] focus:bg-[#f0c8c8] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
                 data-radix-collection-item=""
                 onClick={() => router.push("/about")}
               >
                 About Us
               </div>
               <div
-                className="group inline-flex h-9 w-max items-center cursor-pointer justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#e0e0e0] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
+                className="group inline-flex h-9 w-max items-center cursor-pointer justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#f5eee9] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
                 data-radix-collection-item=""
                 // onClick={() => router.push("/contact")}
               >
                 Contact Us
               </div>
               <div
-                className="group inline-flex h-9 w-max items-center cursor-pointer justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#e0e0e0] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
+                className="group inline-flex h-9 w-max items-center cursor-pointer justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-[#f5eee9] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
                 data-radix-collection-item=""
                 onClick={() => router.push("/donation")}
               >
@@ -105,7 +105,7 @@ function Navbar() {
           <div className="hidden lg:block">
             <button
               onClick={() => router.push("/booksearch")}
-              className="inline-flex items-center   gap-2 bg-orange-500 border-orange-500 hover:bg-orange-600 shadow font-bold  pt-4  justify-center whitespace-nowrap rounded-[4px] md:rounded-md lg:rounded-md  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-6 lg:h-10 md:h-10  px-2 md:px-4 lg:px-4  py-3 text-md lg:text-lg md:text-lg "
+              className="inline-flex items-center shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500  gap-2 bg-orange-500 border-orange-500 hover:bg-orange-600  font-bold  pt-4  justify-center whitespace-nowrap rounded-[4px] md:rounded-md lg:rounded-md  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-6 lg:h-10 md:h-10  px-2 md:px-4 lg:px-4  py-3 text-md lg:text-lg md:text-lg "
             >
               Scripture
               <svg
@@ -123,7 +123,7 @@ function Navbar() {
 
           <button
             onClick={toggleModal}
-            className="inline-flex items-center bg-white  justify-center whitespace-nowrap rounded-[4px] md:rounded-md lg:rounded-md  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-6 lg:h-10 md:h-10  px-2 md:px-4 lg:px-4  py-3 text-md lg:text-lg md:text-lg font-semibold"
+            className="inline-flex items-center hover:bg-gray-100 hover:scale-105 hover:shadow-2xl transform duration-500 bg-white  justify-center whitespace-nowrap rounded-[4px] md:rounded-md lg:rounded-md  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50  bg-background hover:bg-accent hover:text-accent-foreground h-6 lg:h-10 md:h-10  px-2 md:px-4 lg:px-4  py-3 text-md lg:text-lg md:text-lg font-semibold"
           >
             Report Bug
           </button>
