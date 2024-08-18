@@ -1,10 +1,10 @@
 "use client";
 
+import { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import gita from './bhagvad.json';
 
-export default function BhagavadGitaHindi() {
+function BhagavadGitaContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -149,5 +149,13 @@ export default function BhagavadGitaHindi() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BhagavadGitaHindi() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BhagavadGitaContent />
+    </Suspense>
   );
 }
