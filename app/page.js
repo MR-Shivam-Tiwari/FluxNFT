@@ -3,12 +3,6 @@ import Image from 'next/image';
 // import { useRouter } from 'next/router';
 // import Footer from "../components/Footer/Footer"; // Adjust the path based on your directory structure
 
-// Images stored in the public directory
-import ExportEmage from "../public/image/Explore_books.jpg";
-import upnishad from "../public/image/Designer.jpeg";
-
-import scripture from "../public/image/ScriptureSearch.jpg";
-import discussion from "../public/image/Discussion.jpg";
 import Link from "next/link";
 import Footer from "./Footer";
 const Home = () => {
@@ -18,7 +12,7 @@ const Home = () => {
     <div className="josefin-sans-bold bg-white">
       <header className="relative h-[500px] w-full overflow-hidden">
         <Image
-          src={ExportEmage}
+          src="/image/Explore_books.jpg"
           alt="Hindu Scriptures"
           fill
           priority={true}
@@ -162,7 +156,7 @@ const Home = () => {
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
                     <div className="relative w-full h-64">
                       <Image
-                        src={upnishad}
+                        src="/image/Designer.jpeg"
                         alt="Upanishads"
                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         fill
@@ -256,7 +250,7 @@ const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
               <div className="bg-white rounded-lg  overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500">
                 <Image
-                  src={scripture}
+                  src="/image/ScriptureSearch.jpg"
                   alt="Discussion Forums"
                   width="400"
                   height="300" priority={true}
@@ -296,7 +290,7 @@ const Home = () => {
               </div>
               <div className="bg-white rounded-lg  overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500">
                 <Image
-                  src={discussion}
+                  src="/image/Discussion.jpg"
                   alt="Discussion Forums"
                   width="400"
                   height="300"
