@@ -128,7 +128,7 @@ const booksData = [
     {
         id: 21,
         name: "Bhagavad Gita",
-        src: "/geetaimage/bhagvad.jpg",
+        src: "/geetaimage/bhagvadgita.jpg",
         route: "/scriptures/geeta/1",
     },
     {

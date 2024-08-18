@@ -8,7 +8,7 @@ const GeetaData = {
         {
             id: 1,
             name: "Bhagavad Gita",
-            src: "/geetaimage/bhagvad.jpg",
+            src: "/geetaimage/bhagvadgita.jpg",
         },
     ],
     AnuGeeta: [
