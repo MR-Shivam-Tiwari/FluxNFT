@@ -193,7 +193,7 @@ function BookCard({ books }) {
                             <span className="text-white font-medium text-lg">Read Book</span>
                         </div>
                         <div className="px-4 p-2">
-                            <h3 className="text-xl font-bold  flex flex-wrap ">{book.name}</h3>
+                            <h3 className="text-[16px] font-bold  flex flex-wrap ">{book.name}</h3> 
                         </div>
                     </div>
                 </div>
