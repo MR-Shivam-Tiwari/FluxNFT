@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Vedas from "./katha.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -304,4 +304,12 @@ function KathaUpanishad() {
     );
 }
 
-export default KathaUpanishad;
+
+
+export default function Katha() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <KathaUpanishad />
+      </Suspense>
+    );
+  }

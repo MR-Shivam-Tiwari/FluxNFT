@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Vedas from "./kena.json";
 import { useSearchParams, useRouter } from "next/navigation";
 
@@ -314,4 +314,11 @@ function KenaUpnishad() {
   );
 }
 
-export default KenaUpnishad;
+
+export default function Kena() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <KenaUpnishad />
+    </Suspense>
+  );
+}

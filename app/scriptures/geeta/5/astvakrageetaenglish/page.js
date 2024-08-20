@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback, useEffect, Suspense } from "react";
 import { EpubView } from "react-reader";
 import mahabharataEpub from "./Astvakra-Gita.epub";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -309,4 +309,11 @@ function AstavakraGeetaEnglish() {
   );
 }
 
-export default AstavakraGeetaEnglish;
+
+export default function Astvakra() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AstavakraGeetaEnglish />
+    </Suspense>
+  );
+}

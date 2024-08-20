@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Data from "./anugeetaeng.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -137,4 +137,10 @@ function AnugitaHindi() {
     );
 }
 
-export default AnugitaHindi;
+export default function AnugitaEnglish() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AnugitaHindi />
+      </Suspense>
+    );
+  }

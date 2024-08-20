@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Vedas from "./aitareya.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -300,4 +300,10 @@ function AitareyaUpanishad() {
     );
 }
 
-export default AitareyaUpanishad;
+export default function Aitareya() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AitareyaUpanishad />
+      </Suspense>
+    );
+  }

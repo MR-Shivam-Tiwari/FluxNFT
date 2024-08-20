@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Vedas from "./isha.json";
 
@@ -269,4 +269,11 @@ function IshaUpanishad() {
     );
 }
 
-export default IshaUpanishad;
+
+export default function Isha() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <IshaUpanishad />
+      </Suspense>
+    );
+  }

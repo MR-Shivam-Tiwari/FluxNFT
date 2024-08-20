@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Data from "./astvakra.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -137,4 +137,11 @@ function Astvakrahindi() {
     );
 }
 
-export default Astvakrahindi;
+
+export default function Astvakra() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Astvakrahindi />
+      </Suspense>
+    );
+  }
