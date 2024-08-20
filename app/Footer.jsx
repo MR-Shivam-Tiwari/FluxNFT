@@ -6,7 +6,7 @@ function Footer() {
     <footer className="bg-gray-900 josefin-sans-regular text-white py-8 pt-12  ">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
         <div className="space-y-4">
-          <Link href="/">
+          <Link href="/" shallow>
             <div className="flex items-center space-x-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -30,19 +30,19 @@ function Footer() {
           <h4 className="text-lg font-semibold">Popular Scriptures</h4>
           <ul className="space-y-2">
             <li>
-              <Link href="/scriptures/Vedas">
+              <Link href="/scriptures/Vedas" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">Vedas</div>
               </Link>
             </li>
             <li>
-              <Link href="/scriptures/Upanishad">
+              <Link href="/scriptures/Upanishad" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
                   Upanishads
                 </div>
               </Link>
             </li>
             <li>
-              <Link href="/scriptures/geeta">
+              <Link href="/scriptures/geeta" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
                   Bhagavad Gita
                 </div>{" "}
@@ -50,7 +50,7 @@ function Footer() {
             </li>
 
             <li>
-              <Link href="/scriptures/Epics">
+              <Link href="/scriptures/Epics" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
                   Epics (Ramayana, Mahabharata)
                 </div>{" "}
@@ -62,17 +62,17 @@ function Footer() {
           <h4 className="text-lg font-semibold">Important Pages</h4>
           <ul className="space-y-2">
             <li>
-              <Link href="/about">
+              <Link href="/about" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">About</div>{" "}
               </Link>
             </li>
             <li>
-              <Link href="/contact">
+              <Link href="/contact" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">Contact</div>{" "}
               </Link>
             </li>
             <li>
-              <Link href="/privacypolicy">
+              <Link href="/privacypolicy" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
                   Privacy Policy
                 </div>{" "}
@@ -84,7 +84,7 @@ function Footer() {
               </div>
             </li>
             <li>
-              <Link href="/donation">
+              <Link href="/donation" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">Donation</div>{" "}
               </Link>
             </li>

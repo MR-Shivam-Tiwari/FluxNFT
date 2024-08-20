@@ -51,7 +51,7 @@ export default async function Geeta() {
         const books = categories[category] || [];
         return books.map((book) => (
             <div className="flex items-center justify-center gap-2" key={book.id}>
-                <Link href={`/scriptures/epics/${book.id}`} className="relative rounded-lg overflow-hidden  shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer">
+                <Link shallow href={`/scriptures/epics/${book.id}`} className="relative rounded-lg overflow-hidden  shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer">
                     <div className=" relative group bg-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
 
                         <Image

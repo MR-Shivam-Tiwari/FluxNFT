@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 
+.custom-scrollbar::-webkit-scrollbar {
+  height: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a0522d; /* Change this color to whatever suits your design */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f5f5f5; /* Change this color to whatever suits your design */
+  border-radius: 10px;
+}
 
 /* Customize scrollbar */
 ::-webkit-scrollbar {

@@ -45,7 +45,7 @@ const Home = () => {
                   scriptures.
                 </p>
                 <div className="mt-8 grid grid-cols-1 lg:flex gap-7 justify-center ">
-                  <Link href="/scriptures/geeta">
+                  <Link href="/scriptures/geeta" shallow>
                     <div
                       // onClick={() => router.push("/scriptures/geeta")}
                       className="inline-flex w-full lg:w-[250px] shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 justify-center items-center cursor-pointer px-2.5 text-lg font-bold py-2 border border-transparent rounded-md  text-white bg-orange-600 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -53,7 +53,7 @@ const Home = () => {
                       Explore Scriptures
                     </div>
                   </Link>
-                  <Link href="/donation">
+                  <Link href="/donation" shallow>
                     <div
                       className="inline-flex items-center w-full shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500 lg:w-[250px] justify-center cursor-pointer px-2.5 py-2 border text-lg  border-gray-300  font-bold rounded-md text-gray-700 bg-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     // onClick={() => router.push("/donation")}
@@ -65,7 +65,7 @@ const Home = () => {
               </div>
               <div className="grid lg:grid-cols-4 grid-cols-1 gap-5">
                 <Link
-                  href="/scriptures/geeta"
+                  href="/scriptures/geeta" shallow
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -109,7 +109,7 @@ const Home = () => {
                 </Link>
 
                 <Link
-                  href="/scriptures/vedas"
+                  href="/scriptures/vedas" shallow
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -150,7 +150,7 @@ const Home = () => {
                       </div>
                     </div> </div> </Link>
                 <Link
-                  href="/scriptures/upnishad"
+                  href="/scriptures/upnishad" shallow
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -193,7 +193,7 @@ const Home = () => {
                 </Link>
 
                 <Link
-                  href="/scriptures/epics"
+                  href="/scriptures/epics" shallow
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -263,7 +263,7 @@ const Home = () => {
                     Easily find and explore specific verses, passages, and
                     teachings from the Hindu scriptures.
                   </p>
-                  <Link href='/booksearch'>
+                  <Link href='/booksearch' shallow>
                     <div
                       className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
 

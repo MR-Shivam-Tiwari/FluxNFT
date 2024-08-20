@@ -65,7 +65,7 @@ export default function Upnishad() {
   const renderBooks = () => {
     return Upanishads.map((book) => (
       <div className="flex items-center justify-center gap-2" key={book.id}>
-        <Link href={`/scriptures/upnishad/${book.id}`} className="relative rounded-lg overflow-hidden  shadow-xl hover:scale-105 hover:shadow-3xl transform duration-500 cursor-pointer">
+        <Link shallow href={`/scriptures/upnishad/${book.id}`} className="relative rounded-lg overflow-hidden  shadow-xl hover:scale-105 hover:shadow-3xl transform duration-500 cursor-pointer">
           <div className=" relative group bg-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
 
             <Image

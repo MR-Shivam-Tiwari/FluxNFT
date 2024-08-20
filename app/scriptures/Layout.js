@@ -33,7 +33,7 @@ export default function Layout({ children }) {
         <header className="flex justify-center ">
           <div className="flex flex-wrap lg:gap-4 gap-3">
             {links.map(({ href, label }) => (
-              <Link key={href} href={href} passHref>
+              <Link key={href} href={href} passHref shallow>
                 <div
                   onClick={() => setSelected(href)}
                   className={`px-5 py-1 pt-2 mt-5 lg:text-lg text-sm font-semibold  rounded-[4px] cursor-pointer transition-colors ${

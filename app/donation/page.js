@@ -27,7 +27,7 @@ function Donation() {
                   Your generosity helps us maintain and expand our library of
                   sacred texts.
                 </p>
-                <Link href='/donation/donate'>
+                <Link href='/donation/donate' shallow>
                 <div
                   className="inline-flex mt-5 shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 items-center justify-center cursor-pointer rounded-md bg-orange-500 px-6 py-3 text-base  text-gray-900 transition-colors font-bold hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-[#f39c12] focus:ring-offset-2"
                   rel="ugc"
@@ -90,7 +90,7 @@ function Donation() {
               our mission to provide free access to Hindu scriptures. Help us
               continue this important work.
             </p>
-            <Link href='/donation/donate'>
+            <Link href='/donation/donate' shallow>
             <div  className="inline-flex items-center shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer text-black font-bold justify-center rounded-md bg-white px-6 py-3 text-lg  transition-colors hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
               Donate Now
             </div>
