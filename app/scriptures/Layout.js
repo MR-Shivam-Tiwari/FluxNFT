@@ -29,14 +29,14 @@ export default function Layout({ children }) {
     ];
   
     return (
-      <div className="min-h-screen flex flex-col annapurna-sil-bold">
+      <div className="min-h-screen flex flex-col annapurna-sil-bold mt-[60px] ">
         <header className="flex justify-center ">
-          <div className="flex flex-wrap lg:gap-4 gap-3">
+          <div className="flex flex-wrap lg:gap-4 gap-3 justify-center fixed top-[55px]    w-full bg-white shadow-lg z-50">
             {links.map(({ href, label }) => (
               <Link key={href} href={href} passHref shallow>
                 <div
                   onClick={() => setSelected(href)}
-                  className={`px-5 py-1 pt-2 mt-5 lg:text-lg text-sm font-semibold  rounded-[4px] cursor-pointer transition-colors ${
+                  className={`px-5 py-1 lg:pt-1 pt-1.5 h-8 my-2 lg:text-lg text-sm font-semibold  rounded-[4px] cursor-pointer transition-colors ${
                     pathname === href 
                       ? 'bg-orange-600 text-white '
                       : 'bg-gray-200 text-black hover:bg-gray-300'
@@ -48,7 +48,7 @@ export default function Layout({ children }) {
             ))}
           </div>
         </header>
-        <main className="flex-1 lg:px-8 px-2">
+        <main className="flex-1 lg:px-8 px-2 mt-10">
           {children}
         </main>
       </div>

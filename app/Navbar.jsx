@@ -23,8 +23,8 @@ function Navbar() {
   };
 
   return (
-    <div>
-      <header className="flex josefin-sans-bold h-14 lg:h-15 w-full shrink-0 items-center px-4 md:px-6 bg-gray-300">
+    <div className="fixed top-0 left-0 w-full z-50">
+      <header className="flex  josefin-sans-bold h-14 lg:h-15 w-full shrink-0 items-center px-4 md:px-6 bg-gray-300">
         <div className="lg:hidden mb-1 " onClick={togglesidebar}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

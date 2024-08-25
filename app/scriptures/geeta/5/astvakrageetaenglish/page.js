@@ -3,12 +3,13 @@
 import React, { useState, useRef, useCallback, useEffect, Suspense } from "react";
 import { EpubView } from "react-reader";
 import mahabharataEpub from "./Astvakra-Gita.epub";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+// import { useLocation, useNavigate } from "react-router-dom";
 
 function AstavakraGeetaEnglish() {
   const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const location = usePathname();
+  const searchParams = new URLSearchParams(location.search);
 
   const [epubFile, setEpubFile] = useState(mahabharataEpub);
   const [locationState, setLocationState] = useState(null);
@@ -25,18 +26,20 @@ function AstavakraGeetaEnglish() {
 
   useEffect(() => {
     if (!searchParams.get("selectedBookIndex")) {
-      const params = new URLSearchParams(searchParams);
-      params.set("selectedBookIndex", selectedBookIndex);
-      router.push(`${pathname}?${params.toString()}`);
+      searchParams.set("selectedBookIndex", selectedBookIndex);
+      // router.push({
+      //   pathname: location.pathname,
+      //   search: searchParams.toString(),
+      // });
     }
-  }, [selectedBookIndex, router, pathname, searchParams]);
+  }, [selectedBookIndex]);
 
   useEffect(() => {
     const chapterFromUrl = searchParams.get("selectedBookIndex");
     if (chapterFromUrl && parseInt(chapterFromUrl) !== selectedBookIndex) {
       setSelectedBookIndex(parseInt(chapterFromUrl));
     }
-  }, [searchParams, selectedBookIndex]);
+  }, [location.search]);
 
   useEffect(() => {
     if (books[selectedBookIndex]) {
@@ -81,7 +84,7 @@ function AstavakraGeetaEnglish() {
     const reader = new FileReader();
     reader.onload = (event) => {
       setEpubFile(event.target.result);
-      setLoading(true);
+      setLoading(true); // Set loading state to true when file reading starts
     };
     reader.onerror = (error) => {
       console.error("Error reading file", error);
@@ -112,7 +115,7 @@ function AstavakraGeetaEnglish() {
       console.error("Display Error:", error);
     });
     renditionRef.current.on("rendered", () => {
-      setLoading(false);
+      setLoading(false); // Set loading state to false when EPUB is rendered
     });
   }, []);
 
@@ -135,16 +138,17 @@ function AstavakraGeetaEnglish() {
     if (book) {
       setLocationState(book.href);
       setSelectedBookIndex(index);
-
-      const params = new URLSearchParams(searchParams);
-      params.set("selectedBookIndex", index);
-      router.push(`${pathname}?${params.toString()}`);
+      searchParams.set("selectedBookIndex", index);
+      // router.push({
+      //   pathname: location.pathname,
+      //   search: searchParams.toString(),
+      // });
     }
   };
 
   const formatDescription = (Text) => {
-    let formattedDescription = Text?.replace(/\n/g, "<br /><br />");
-    formattedDescription = formattedDescription?.replace(/'([^']*)'/g, "<b>$1</b>");
+    let formattedDescription = Text?.replace(/\n/g, '<br /><br />');
+    formattedDescription = formattedDescription?.replace(/'([^']*)'/g, '<b>$1</b>');
     formattedDescription = formattedDescription?.replace(/`([^`]*)`/g, '<i style="color: #6b7280;">$1</i>');
     return formattedDescription;
   };
@@ -170,37 +174,44 @@ function AstavakraGeetaEnglish() {
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress < 100) {
-          return Math.min(prevProgress + 0.5, 100);
+          return Math.min(prevProgress + 0.5, 100); // Increment by 0.5
         } else {
           clearInterval(interval);
-          setLoading(false);
+          setLoading(false); // Optionally, set loading to false when done
           return prevProgress;
         }
       });
-    }, 100);
+    }, 100); // 100ms interval for slower progress
 
     return () => clearInterval(interval);
   }, []);
 
   const styles = {
-    h2: {
-      fontSize: "24px",
-      color: "black",
-      lineHeight: "1.4",
-      marginBottom: "0px",
-      marginTop: "10px",
+    scrollbar: {
+      scrollbarWidth: 'thin', /* For Firefox */
+      scrollbarColor: '#c0c0c0 #f0f0f0', /* For Firefox */
+      overflowX: 'auto',
     },
-    p: {
-      color: "black",
-      lineHeight: "1.8",
-      textAlign: "justify",
-      textAlignLast: "left",
-    },
+    customScrollbar: `
+      .flex::-webkit-scrollbar {
+        height: 8px;
+      }
+  
+      .flex::-webkit-scrollbar-track {
+        background: #f0f0f0;
+      }
+  
+      .flex::-webkit-scrollbar-thumb {
+        background-color: #c0c0c0;
+        border-radius: 10px;
+        border: 2px solid #f0f0f0;
+      }
+    `,
   };
 
   return (
     <div
-      className="bg-gray-200 h-full"
+      className="bg-gray-200 h-full mt-6"
       style={{
         textAlign: "center",
         display: "flex",
@@ -210,7 +221,7 @@ function AstavakraGeetaEnglish() {
     >
       <div className="flex justify-center items-center gap-2 lg:hidden">
         <button
-          className="flex w-[170px] text-center bg-orange-200 h-8 shadow border-1.5 border-orange-300 my-2 items-center justify-center font-bold"
+          className="flex w-[170px] text-center h-8 bg-orange-200  shadow border-1.5 border-orange-300 my-2 items-center justify-center font-bold"
           onClick={toggleDrawer}
           style={menuButtonStyle}
         >
@@ -222,7 +233,7 @@ function AstavakraGeetaEnglish() {
 
       <div
         ref={drawerRef}
-        className="z-20 lg:flex lg:static lg:hidden lg:z-auto bg-gray-200"
+        className="z-20 lg:flex mt-12 lg:static lg:hidden lg:z-auto bg-gray-200"
         style={drawerStyle}
       >
         <div className="flex pt-2 px-2 justify-end">
@@ -243,74 +254,143 @@ function AstavakraGeetaEnglish() {
           </button>
         </div>
         <div
-          className="flex-shrink-0 px-5 lg:px-0"
-          style={{ overflowY: "scroll", height: "100%" }}
+          className="flex-shrink-0 px-5 lg:px-0 lg:block"
+          style={{
+            flex: "0 0 250px",
+            textAlign: "left",
+            maxHeight: "calc(100vh - 100px)",
+            overflowY: "auto",
+          }}
         >
-          <ul className="flex flex-col">
+          <ul className="mb-3">
             {books.map((book, index) => (
-              <li
-                key={book.href}
-                onClick={() => goToBook(index)}
-                className={`lg:my-1 p-1 cursor-pointer text-sm font-medium rounded ${
-                  index === selectedBookIndex
-                    ? "bg-orange-400 text-white"
-                    : "text-gray-700 hover:bg-orange-200"
-                }`}
+              <button
+                key={index}
+                onClick={() => {
+                  setSelectedBookIndex(index);
+                  goToBook(index);
+                  toggleDrawer();
+                }}
+                style={{
+                  cursor: "pointer",
+                  fontWeight: index === selectedBookIndex ? "bold" : "normal",
+                  background: index === selectedBookIndex ? "#8b4513" : "",
+                  color: index === selectedBookIndex ? "white" : "black",
+                }}
+                className="inline-flex items-center whitespace-nowrap rounded-md bg-orange-100 mb-2 ml-2 shadow border text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 justify-start gap-2 text-black"
               >
-                <p className="lg:text-md mb-0 text-left">
-                  {index + 1}. {book.label}
-                </p>
-              </li>
+                {book.label.replace(/General | Alphabetical /g, '')}
+              </button>
             ))}
           </ul>
         </div>
       </div>
 
-      {loading ? (
-        <div className="flex justify-center items-center mt-2">
-          <div className="h-1 w-[80%] bg-gray-300 rounded-lg">
+      {epubFile ? (
+        <>
+          {loading && (
+            <div className="w-full h-10 bg-gray-200 px-10">
+              <div className="h-full" style={{ width: "100%", transition: "width 2s" }}>
+
+                <div className="flex justify-between">
+                  <span className="text-base text-lg font-medium text-blue-700">Loading...</span>
+                  <span className="text-sm font-medium text-orange-700">{progress}%</span>
+                </div>
+
+                <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div className="bg-orange-900 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
+                </div>
+
+              </div>
+            </div>
+          )}
+
+          <div style={{ width: "100%" }}>
             <div
-              className="h-full bg-orange-400 rounded-lg"
-              style={{ width: `${progress}%` }}
-            ></div>
+              className="hidden lg:block"
+              style={{
+                flex: "0 0 250px",
+                textAlign: "left",
+                overflowY: "auto",
+              }}
+            >
+              <div className="flex items-center   lg:px-10 " >
+                <div className="flex items-center  py-2 " style={styles.scrollbar}>
+                <h3 className="inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground h-8 bg-orange-600 border px-3 py-1 text-white "> Select Chapter</h3>
+                  <ul className=" flex justify-center">
+                    {books.map((book, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          setSelectedBookIndex(index);
+                          goToBook(index);
+                        }}
+                        style={{
+                          cursor: "pointer",
+                          fontWeight:
+                            index === selectedBookIndex ? "bold" : "normal",
+                          background:
+                            index === selectedBookIndex ? "#8b4513" : "",
+                          color: index === selectedBookIndex ? "white" : "black",
+                        }}
+                        className="inline-flex items-center  rounded text-sm  h-8 px-3 font-bold border gap-4  bg-orange-100 py-1 mx-1.5 shadow  text-black"
+                      >
+                        {book.label.replace(/Chapter|- | – | General | Alphabetical /g, '')}
+                      </button>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="w-[100%]  lg:rounded-md bg-orange-300"
+              style={{
+                flex: "1",
+                overflowY: "auto",
+                overflowX: "hidden",
+                display: "flex",
+              }}
+            >
+              <EpubView
+                url={epubFile}
+                location={locationState}
+                locationChanged={onLocationChanged}
+                tocChanged={onTocLoaded}
+                epubOptions={{ flow: "scrolled" }}
+                ref={renditionRef}
+                getRendition={handleRendition}
+                style={{ flex: "1", overflowX: "hidden" }}
+              />
+            </div>
+          <div className=" bg-orange-100 w-full p-3 lg:px-20 flex justify-between fixed bottom-0 left-0  ">
+            <button
+              className="bg-gray-700 p-2 font-bold text-white px-4 w-[130px]   rounded"
+              onClick={prevChapter}
+            >
+              Previous
+            </button>
+            <button
+              className="bg-[#8b4513] font-bold text-white w-[130px]   px-4 p-2 rounded"
+              onClick={nextChapter}
+            >
+              Next
+            </button>
           </div>
-        </div>
+          </div>
+        </>
       ) : (
-        <div className="flex-grow flex flex-col items-center justify-center overflow-hidden">
-          <div className="flex-grow w-full relative bg-white">
-            <EpubView
-              url={epubFile}
-              location={locationState}
-              tocChanged={onTocLoaded}
-              locationChanged={onLocationChanged}
-              epubOptions={{ flow: "scrolled", spread: "auto" }}
-              renditionChanged={handleRendition}
-              styles={styles}
-            />
-          </div>
+        <div>
+          <h3>Upload an EPUB file to read</h3>
+          <input type="file" accept=".epub" onChange={handleFileUpload} />
         </div>
       )}
-
-      <div className="flex justify-center mt-2 mb-4 gap-2">
-        <button
-          className="bg-orange-200 px-4 py-2 font-semibold text-sm text-black rounded shadow-md"
-          onClick={prevChapter}
-        >
-          Previous Chapter
-        </button>
-        <button
-          className="bg-orange-200 px-4 py-2 font-semibold text-sm text-black rounded shadow-md"
-          onClick={nextChapter}
-        >
-          Next Chapter
-        </button>
-      </div>
     </div>
   );
 }
 
 
-export default function Astvakra() {
+export default function AstavakraGeeta() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <AstavakraGeetaEnglish />

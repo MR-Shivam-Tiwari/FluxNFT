@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
       
       <body className={inter.className}>
         <Navbar /> {/* Global Navbar */}
-        <main>{children}</main> {/* Main content area */}
+        <main  className='pt-8'>{children}</main> {/* Main content area */}
         {/* <Footer />  */}
       </body>
     </html>
