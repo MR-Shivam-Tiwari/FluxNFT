@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Data from "./mandukya.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -136,4 +136,10 @@ function MandukyaUpanishad() {
   );
 }
 
-export default MandukyaUpanishad;
+export default function Mandukya() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MandukyaUpanishad />
+    </Suspense>
+  );
+}
