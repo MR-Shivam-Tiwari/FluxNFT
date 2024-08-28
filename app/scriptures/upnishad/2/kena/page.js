@@ -6,11 +6,12 @@ import { useSearchParams, useRouter } from "next/navigation";
 function KenaUpnishad() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [selectedKhanda, setSelectedKhanda] = useState('');
+  const [selectedMantra, setSelectedMantra] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [commentryopen, setcommentryopen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
-  const [selectedLanguageCommentry, setselectedLanguageCommentry] =
-    useState(null);
+  const [selectedLanguageCommentry, setselectedLanguageCommentry] = useState(null);
   const [currentMantraIndex, setCurrentMantraIndex] = useState(0);
 
   useEffect(() => {
@@ -21,6 +22,18 @@ function KenaUpnishad() {
       setCurrentMantraIndex(0);
     }
   }, [searchParams]);
+
+  const handleKhandaChange = (event) => {
+    setSelectedKhanda(event.target.value);
+    setSelectedMantra(''); // Reset mantra when khanda changes
+  };
+
+  const handleMantraChange = (event) => {
+    const mantraIndex = parseInt(event.target.value, 10);
+    setCurrentMantraIndex(mantraIndex);
+    updateURL(mantraIndex + 1);
+    resetStates();
+  };
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -56,13 +69,6 @@ function KenaUpnishad() {
     }
   };
 
-  const handleSelectMantra = (event) => {
-    const index = parseInt(event.target.value, 10);
-    setCurrentMantraIndex(index);
-    updateURL(index + 1);
-    resetStates();
-  };
-
   const updateURL = (mantraNumber) => {
     router.push(`?mantra=${mantraNumber}`);
   };
@@ -75,9 +81,7 @@ function KenaUpnishad() {
   };
 
   const formatText = (text) => {
-    // Ensure text is a string; if not, return an empty string or a fallback value
     const safeText = typeof text === 'string' ? text : '';
-
     return safeText.split('\n').map((line, index) => {
       const parts = line.split(/(`[^`]+`)/g);
       return (
@@ -95,22 +99,16 @@ function KenaUpnishad() {
     });
   };
 
-  useEffect(() => {
-    if (!searchParams) {
-      console.error('searchParams is undefined');
-      return;
-    }
+  // Filter data based on selected Khanda
+  const filteredVedas = Vedas.filter(
+    (mantra) =>
+      selectedKhanda === '' || mantra.Part === selectedKhanda
+  );
 
-    const mantraNumber = parseInt(searchParams.get("mantra") || "1", 10);
-    if (mantraNumber > 0 && mantraNumber <= Vedas.length) {
-      setCurrentMantraIndex(mantraNumber - 1);
-    } else {
-      setCurrentMantraIndex(0); // Default to first mantra if out of range
-    }
-  }, [searchParams, Vedas.length]);
+  const uniqueKhandas = [...new Set(Vedas.map((mantra) => mantra.Part))];
+  const uniqueMantras = filteredVedas.map((mantra, index) => ({ mantraNumber: mantra.mantraNumber, index }));
 
-
-  const currentMantra = Vedas[currentMantraIndex];
+  const currentMantra = filteredVedas[currentMantraIndex];
 
   return (
     <div className="container mx-auto lg:px-20">
@@ -124,22 +122,26 @@ function KenaUpnishad() {
                 </h2>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-gray-600 font-bold">
-                    <div className="lg:block hidden">Select Mantra</div>
-                    <select
-                      value={currentMantraIndex}
-                      onChange={handleSelectMantra}
-                      className="flex h-10 items-center gap-1 justify-between bg-gray-800 text-white font-bold rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[240px]"
-                    >
-                      {Vedas.map((mantra, index) => (
-                        <option key={index} value={index}>
-                          {mantra.Part} - Mantra {mantra.mantraNumber}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+                <select
+                  value={selectedKhanda}
+                  onChange={handleKhandaChange}
+                  className="flex font-bold josefin-sans-bold h-10 items-center justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
+                >
+                  <option value="">Select Khanda</option>
+                  {uniqueKhandas.map((khanda, index) => (
+                    <option key={index} value={khanda}>{khanda}</option>
+                  ))}
+                </select>
+                <select
+                  value={selectedMantra}
+                  onChange={handleMantraChange}
+                  className="flex h-10 items-center p-5 josefin-sans-bold justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
+                >
+                  {/* <option value="">Select Mantra</option> */}
+                  {uniqueMantras.map(({ mantraNumber, index }) => (
+                    <option key={index} value={index}>Mantra {mantraNumber}</option>
+                  ))}
+                </select>
               </div>
             </div>
             <div className="space-y-6 overflow-y-auto pb-20">
@@ -258,8 +260,8 @@ function KenaUpnishad() {
                             {selectedLanguageCommentry === "hindi" ? (
                               <>
                                 <div className="mt-4">
-                                  <h4 className="text-md  font-semibold mb-2  ">पद भाष्य</h4>
-                                  <p className="martel-bold ">
+                                  <h4 className="text-md  font-semibold mb-2">पद भाष्य</h4>
+                                  <p className="martel-bold">
                                     {formatText(currentMantra.commentaryHindi.pad)}
                                   </p>
                                 </div>
@@ -281,10 +283,7 @@ function KenaUpnishad() {
                         )}
                       </div>
                     )}
-
                   </div>
-
-
 
                   <div className="bg-gray-300 w-full p-2 px-10 lg:px-20 flex justify-between fixed bottom-0 left-0">
                     <button
@@ -313,7 +312,6 @@ function KenaUpnishad() {
     </div>
   );
 }
-
 
 export default function Kena() {
   return (
