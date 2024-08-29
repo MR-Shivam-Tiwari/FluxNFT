@@ -47,9 +47,9 @@ function Anugita() {
     const formatDescription = (Text) => {
         if (!Text) return '';
 
-        let formattedDescription = Text.replace(/\n/g, '<br /><br />');
-        formattedDescription = formattedDescription.replace(/'([^']*)'/g, '<p style="color: #ea580c; font-size:25px;">$1</p> ');
-        formattedDescription = formattedDescription.replace(/`([^`]*)`/g, '<div style="text-align: center; font-weight: bold;  font-size:30px; line-height: 1.5;">$1</div>');
+        let formattedDescription = Text.replace(/\n/g, '<br />');
+        formattedDescription = formattedDescription.replace(/'([^']*)'/g, '<p style="color: #ea580c; font-size:20px; margin-bottom:10px;margin-top:30px;"><br />$1</p> <span style="color: #ea580c;font-weight: bold;">Translation</span> ');
+        formattedDescription = formattedDescription.replace(/`([^`]*)`/g, '<div style="text-align: center; font-weight: bold; margin-top:30px; font-size:30px; line-height: 1.5;">$1</div>');
         return formattedDescription;
     };
 
@@ -77,7 +77,7 @@ function Anugita() {
       };
     
     return (
-        <div style={{ backgroundImage: 'url("/bgg.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="mt-6" style={{ backgroundImage: 'url("/bgg.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="min-h-screen flex flex-col items-center">
                 <div className="bg-orange-100 w-full p-2 lg:px-7 gap-3 flex items-center justify-center">
                     <div></div>
@@ -106,7 +106,7 @@ function Anugita() {
                                     Chapter {item.Chapter}
                                 </div>
                                 <div
-                                    className="text-lg whitespace-pre-wrap yatra-one-regular text-start"
+                                    className="text-lg whitespace-wrap text-gray-500 yatra-one-regular text-start"
                                     dangerouslySetInnerHTML={{
                                         __html: formatDescription(item.Text),
                                     }}
@@ -115,7 +115,7 @@ function Anugita() {
                         ))}
                     </div>
                 </div>
-                <div className="bg-orange-100 w-full p-4 lg:px-20 flex justify-between fixed bottom-0 left-0">
+                <div className="bg-orange-100 w-full p-2 lg:px-20 flex justify-between fixed bottom-0 left-0">
                     <button
                         onClick={() => handleChapterSelect(Math.max(selectedChapter - 1, 1))}
                         className="inline-flex items-center justify-center w-[120px] whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 bg-[#374151] text-white"

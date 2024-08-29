@@ -47,8 +47,8 @@ function AnugitaHindi() {
     const formatDescription = (Text) => {
         if (!Text) return '';
 
-        let formattedDescription = Text.replace(/\n/g, '<br /><br />');
-        formattedDescription = formattedDescription.replace(/'([^']*)'/g, '<p style="color: #ea580c; font-size:25px;">$1</p> ');
+        let formattedDescription = Text.replace(/\n/g, '');
+        formattedDescription = formattedDescription.replace(/'([^']*)'/g, '<p style="color: #ea580c; margin-top:40px; margin-bottom:5px; font-size:25px;">$1</p> ');
         formattedDescription = formattedDescription.replace(/`([^`]*)`/g, '<div style="text-align: center; font-weight: bold;  font-size:30px; line-height: 1.5;">$1</div>');
         return formattedDescription;
     };
@@ -77,7 +77,7 @@ function AnugitaHindi() {
       };
     
     return (
-        <div style={{ backgroundImage: 'url("/bgg.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="mt-6" style={{ backgroundImage: 'url("/bgg.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="min-h-screen flex flex-col items-center">
                 <div className="bg-orange-100 w-full p-2 lg:px-7 gap-3 flex items-center justify-center">
                     <div></div>
@@ -106,7 +106,7 @@ function AnugitaHindi() {
                                     Chapter {item.Chapter}
                                 </div>
                                 <div
-                                    className="text-lg whitespace-pre-wrap josefin-sans-regular text-start"
+                                    className="text-lg whitespace-wrap josefin-sans-regular text-start"
                                     dangerouslySetInnerHTML={{
                                         __html: formatDescription(item.Text),
                                     }}
@@ -115,16 +115,16 @@ function AnugitaHindi() {
                         ))}
                     </div>
                 </div>
-                <div className="bg-orange-100 w-full p-4 lg:px-20 flex justify-between fixed bottom-0 left-0">
+                <div className="bg-orange-100 w-full p-2 lg:px-20 flex justify-between fixed bottom-0 left-0">
                     <button
                         onClick={() => handleChapterSelect(Math.max(selectedChapter - 1, 1))}
-                        className="inline-flex items-center justify-center w-[120px] whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 bg-[#374151] text-white"
+                        className="inline-flex items-center justify-center w-[150px] whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4  bg-[#374151] text-white"
                     >
                         Previous
                     </button>
                     <button
                         onClick={() => handleChapterSelect(Math.min(selectedChapter + 1, chapters.length))}
-                        className={`inline-flex items-center justify-center w-[120px] whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 ${selectedChapter !== chapters.length
+                        className={`inline-flex items-center justify-center w-[150px] whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4  ${selectedChapter !== chapters.length
                             ? "bg-[#a0522d] text-white"
                             : "bg-[#a0522d] text-white pointer-events-none opacity-50"
                             }`}

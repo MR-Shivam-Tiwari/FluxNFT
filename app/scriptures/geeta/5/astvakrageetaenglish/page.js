@@ -363,7 +363,7 @@ function AstavakraGeetaEnglish() {
                 style={{ flex: "1", overflowX: "hidden" }}
               />
             </div>
-          <div className=" bg-orange-100 w-full p-3 lg:px-20 flex justify-between fixed bottom-0 left-0  ">
+          <div className=" bg-orange-100 w-full p-2 px-4 lg:px-20 flex justify-between fixed bottom-0 left-0  ">
             <button
               className="bg-gray-700 p-2 font-bold text-white px-4 w-[130px]   rounded"
               onClick={prevChapter}

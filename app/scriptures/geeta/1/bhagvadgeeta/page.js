@@ -61,9 +61,9 @@ function BhagavadGitaContent() {
   const uniqueChapters = [...new Set(gita.map(shloka => shloka.Chapter))];
 
   return (
-    <div className='bg-orange-300 min-h-screen'>
-      <div className="w-full max-w-7xl mx-auto py-4 pb-14 lg:py-12 px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8">
+    <div className='bg-orange-300 min-h-screen mt-6 lg:mt-0'>
+      <div className="w-full max-w-7xl mx-auto py-4 pb-14 lg:py-10 px-4 md:px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4 ">
           <div className="flex items-center space-x-4">
             <select
               value={selectedChapter}
@@ -84,9 +84,9 @@ function BhagavadGitaContent() {
               ))}
             </select>
           </div>
-          <div className="mt-4 md:mt-0">
+          {/* <div className="mt-4 md:mt-0">
             <input className="flex h-10 w-full shadow-sm rounded-md border border-input bg-white-900 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Search" />
-          </div>
+          </div> */}
         </div>
         {shlokaData && (
           <div className="bg-gray-100 lg:shadow-lg rounded-lg lg:p-8">

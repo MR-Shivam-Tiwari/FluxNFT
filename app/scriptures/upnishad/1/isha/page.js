@@ -97,7 +97,7 @@ function IshaUpanishad() {
     const currentMantra = Vedas[currentMantraIndex];
 
     return (
-        <div className="container mx-auto lg:px-20">
+        <div className="container mx-auto lg:px-20 mt-5">
             <div>
                 <div className="flex flex-col sm:flex-row ">
                     <div className="flex-1 lg:p-6 p-3">
@@ -114,7 +114,7 @@ function IshaUpanishad() {
                                         <select
                                             value={currentMantraIndex}
                                             onChange={handleSelectMantra}
-                                            className="flex h-10 items-center gap-1 justify-between bg-gray-800 text-white font-bold rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[200px]"
+                                            className="flex h-10 items-center gap-1 justify-between bg-white text-black font-bold rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[200px]"
                                         >
                                             {Vedas.map((mantra, index) => (
                                                 <option key={index} value={index}>
@@ -137,18 +137,18 @@ function IshaUpanishad() {
                                                         Mantra {currentMantra.mantraNumber}
                                                     </div>
                                                 </div>
-                                                <h2 className="text-3xl font-bold mb-4 py-3 text-center">Sanskrit Shloka</h2>
-                                                <div className="font-bold text-center text-blue-600 mb-3 text-2xl leading-10 martel-black">
+                                                <h2 className="lg:text-3xl text-2xl font-bold lg:mb-4 py-3 text-center">Sanskrit Shloka</h2>
+                                                <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl leading-10 martel-black">
+
+                                                </div>
+                                                <div className="font-bold text-center  text-blue-600 mb-3 lg:text-2xl   leading-snug martel-black">
                                                     {currentMantra.shlok.line1
                                                         .split("\n")
                                                         .map((line, index) => (
                                                             <React.Fragment key={index}>
                                                                 {line}
-                                                                <br />
                                                             </React.Fragment>
                                                         ))}
-                                                </div>
-                                                <div className="font-bold text-center text-blue-600 mb-3 text-2xl leading-10 martel-black">
                                                     {currentMantra.shlok.line2
                                                         .split("\n")
                                                         .map((line, index) => (
@@ -158,17 +158,17 @@ function IshaUpanishad() {
                                                             </React.Fragment>
                                                         ))}
                                                 </div>
-                                                <h2 className="text-3xl font-bold mb-4 text-center">
+                                                <h2 className="lg:text-3xl text-[22px] mt-6 font-bold mb-4 text-center">
                                                     Translation (Hindi - English)
                                                 </h2>
-                                                <div className="space-y-2 lg:border lg:p-5 p-3 shadow rounded">
+                                                <div className="space-y-2 lg:border lg:p-4  lg:shadow rounded">
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
+                                                        <p className="lg:text-lg text-[13px] border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
                                                             {formatText(currentMantra.translationHindi)}
                                                         </p>
                                                     </div>
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
+                                                        <p className="lg:text-lg text-[14px] border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
                                                             {formatText(currentMantra.translationEnglish)}
                                                         </p>
                                                     </div>
@@ -239,18 +239,18 @@ function IshaUpanishad() {
                                     </div>
 
 
-                                    <div className="bg-gray-300 w-full p-2 px-10 lg:px-20 flex justify-between fixed bottom-0 left-0">
+                                    <div className="bg-gray-300 w-full p-2 px-4 lg:px-20 flex justify-between fixed bottom-0 left-0">
                                         <button
                                             onClick={handlePrevious}
                                             disabled={currentMantraIndex === 0}
-                                            className="inline-flex items-center justify-center whitespace-nowrap w-[100px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow  text-black "
+                                            className="inline-flex items-center justify-center whitespace-nowrap w-[150px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow  text-black "
                                         >
                                             Previous
                                         </button>
                                         <button
                                             onClick={handleNext}
                                             disabled={currentMantraIndex === Vedas.length - 1}
-                                            className={`inline-flex items-center justify-center bg-gray-800 w-[100px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2 `}
+                                            className={`inline-flex items-center justify-center bg-gray-800 w-[150px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2 `}
                                         >
                                             Next
                                         </button>
@@ -272,8 +272,8 @@ function IshaUpanishad() {
 
 export default function Isha() {
     return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <IshaUpanishad />
-      </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+            <IshaUpanishad />
+        </Suspense>
     );
-  }
+}
