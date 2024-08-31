@@ -271,8 +271,8 @@ function Shvetashvatara() {
                                                     <div className="mt-4">
                                                         <h3 className="text-lg annapurna-sil-regular font-semibold mb-2">
                                                             {selectedLanguageCommentry === "hindi"
-                                                                ? "Hindi Commentary"
-                                                                : "English Commentary"}
+                                                                ? "Adi Shankaracharya Hindi Commentary"
+                                                                : "T.N.Sethumadhavan English Commentary"}
                                                         </h3>
                                                         <p className="martel-bold">
                                                             {selectedLanguageCommentry === "hindi"
