@@ -166,7 +166,7 @@ function IshaUpanishad() {
                                                         <p className="lg:text-lg text-[13px] border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
                                                             {formatText(currentMantra.translationHindi)}
                                                         </p>   
-                                                    </div>
+                                                    </div> 
                                                     <div className="flex flex-col items-center">
                                                         <p className="lg:text-lg text-[14px] border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
                                                             {formatText(currentMantra.translationEnglish)}

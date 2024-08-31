@@ -98,7 +98,7 @@ function KathaUpanishad() {
     const currentMantra = Vedas[currentMantraIndex];
 
     return (
-        <div className="container mx-auto lg:px-20">
+        <div className="container mx-auto lg:px-20 mt-5">
             <div>
                 <div className="flex flex-col sm:flex-row">
                     <div className="flex-1 lg:p-6 p-3">
@@ -115,8 +115,8 @@ function KathaUpanishad() {
                                         <select
                                             value={currentMantraIndex}
                                             onChange={handleSelectMantra}
-                                            className="flex h-10 items-center gap-1 justify-between bg-gray-800 text-white font-bold rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[230px]"
-                                        >
+                                            className="flex h-10 items-center gap-1 justify-between bg-white text-black  font-bold rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[230px]"
+                                        > 
                                             {Vedas.map((mantra, index) => (
                                                 <option key={index} value={index}>
                                                     Part {mantra.Part} - Valli {mantra.Valli} - Mantra{" "}

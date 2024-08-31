@@ -110,7 +110,7 @@ function KathaUpanishad() {
 
     const uniqueChapters = [...new Set(Vedas.map((shlok) => shlok.chapter.trim()))];
 
-    return (
+    return ( 
         <div className="container mx-auto lg:px-20 mt-5">
             <div>
                 <div className="flex flex-col sm:flex-row">
