@@ -92,7 +92,7 @@ export default function PDFViewer() {
                     Next
                 </button>
             </div>
-
+               
             {/* Custom Styles */}
             <style jsx>{`
                 .rpv-core__search-overlay {
