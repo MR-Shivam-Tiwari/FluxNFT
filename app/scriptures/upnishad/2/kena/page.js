@@ -6,7 +6,9 @@ import { useSearchParams, useRouter } from "next/navigation";
 function KenaUpnishad() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [selectedKhanda, setSelectedKhanda] = useState('');
+  const defaultKhanda = Vedas[0].Part;
+  
+  const [selectedKhanda, setSelectedKhanda] = useState(defaultKhanda);
   const [selectedMantra, setSelectedMantra] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [commentryopen, setcommentryopen] = useState(false);
@@ -14,31 +16,30 @@ function KenaUpnishad() {
   const [selectedLanguageCommentry, setselectedLanguageCommentry] = useState(null);
   const [currentMantraIndex, setCurrentMantraIndex] = useState(0);
 
+
   useEffect(() => {
-    const mantraNumber = parseInt(searchParams.get("mantra") || "1", 10);
-    if (mantraNumber > 0 && mantraNumber <= Vedas.length) {
-      setCurrentMantraIndex(mantraNumber - 1);
-    } else {
-      setCurrentMantraIndex(0);
-    }
+    const khanda = searchParams.get("khanda") || defaultKhanda;
+    const mantraNumber = parseInt(searchParams.get("mantra") || "1", 10) - 1;
+    setSelectedKhanda(khanda);
+    setCurrentMantraIndex(mantraNumber);
   }, [searchParams]);
 
+  useEffect(() => {
+    // When currentMantraIndex changes, update selectedMantra and selectedKhanda
+    const currentMantra = filteredVedas[currentMantraIndex];
+    if (currentMantra) {
+      // setSelectedKhanda(currentMantra.Part); // Update khanda
+      setSelectedMantra(currentMantraIndex); // Update mantra
+    }
+  }, [currentMantraIndex, selectedKhanda]); // Add selectedKhanda as dependency
+
   const handleKhandaChange = (event) => {
-    setSelectedKhanda(event.target.value);
+    const newKhanda = event.target.value;
+    setSelectedKhanda(newKhanda);
     setSelectedMantra(''); // Reset mantra when khanda changes
+    updateURL(newKhanda, 1); // Reset to first mantra for the new Khanda
+    setCurrentMantraIndex(0); // Reset mantra index to 0
   };
-
-  const handleMantraChange = (event) => {
-    const mantraIndex = parseInt(event.target.value, 10);
-    setCurrentMantraIndex(mantraIndex);
-    updateURL(mantraIndex + 1);
-    resetStates();
-  };
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
   const handlecommentry = () => {
     setcommentryopen(!commentryopen);
   };
@@ -51,33 +52,10 @@ function KenaUpnishad() {
     setselectedLanguageCommentry(language);
   };
 
-  const handleNext = () => {
-    if (currentMantraIndex < Vedas.length - 1) {
-      const nextIndex = currentMantraIndex + 1;
-      setCurrentMantraIndex(nextIndex);
-      updateURL(nextIndex + 1);
-      resetStates();
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentMantraIndex > 0) {
-      const prevIndex = currentMantraIndex - 1;
-      setCurrentMantraIndex(prevIndex);
-      updateURL(prevIndex + 1);
-      resetStates();
-    }
-  };
-
-  const updateURL = (mantraNumber) => {
-    router.push(`?mantra=${mantraNumber}`);
-  };
-
-  const resetStates = () => {
-    setIsOpen(false);
-    setcommentryopen(false);
-    setSelectedLanguage(null);
-    setselectedLanguageCommentry(null);
+  const handleMantraChange = (event) => {
+    const mantraIndex = parseInt(event.target.value, 10);
+    setCurrentMantraIndex(mantraIndex);
+    updateURL(selectedKhanda, mantraIndex + 1); // Update with the selected mantra index
   };
 
   const formatText = (text) => {
@@ -99,35 +77,53 @@ function KenaUpnishad() {
     });
   };
 
-  // Filter data based on selected Khanda
+  const handleNext = () => {
+    if (currentMantraIndex < filteredVedas.length - 1) {
+      const nextIndex = currentMantraIndex + 1;
+      setCurrentMantraIndex(nextIndex);
+      updateURL(selectedKhanda, nextIndex + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentMantraIndex > 0) {
+      const prevIndex = currentMantraIndex - 1;
+      setCurrentMantraIndex(prevIndex);
+      updateURL(selectedKhanda, prevIndex + 1);
+    }
+  };
+
+  const updateURL = (khanda, mantraNumber) => {
+    router.push(`?khanda=${khanda}&mantra=${mantraNumber}`);
+  };
+
+  // Filter Mantras based on selected Khanda
   const filteredVedas = Vedas.filter(
-    (mantra) =>
-      selectedKhanda === '' || mantra.Part === selectedKhanda
+    (mantra) => mantra.Part === selectedKhanda
   );
 
   const uniqueKhandas = [...new Set(Vedas.map((mantra) => mantra.Part))];
   const uniqueMantras = filteredVedas.map((mantra, index) => ({ mantraNumber: mantra.mantraNumber, index }));
 
-  const currentMantra = filteredVedas[currentMantraIndex];
+  const currentMantra = filteredVedas[currentMantraIndex] || filteredVedas[0]; // Ensure valid mantra for current khanda
 
   return (
-    <div className="container mx-auto lg:px-20">
+    <div className="container mx-auto mt-4 lg:px-20">
       <div>
         <div className="flex flex-col sm:flex-row">
           <div className="flex-1 lg:p-6 p-3">
-            <div className="mb-6 flex items-center px-2 justify-between">
+            <div className="mb-6 flex items-center px-2 flex-wrap justify-between">
               <div className="space-y-1">
-                <h2 className="lg:text-2xl font-bold yatra-one-regular">
+                <h2 className="text-2xl lg:mb-0 mb-3 font-bold yatra-one-regular">
                   Kena Upanishad
                 </h2>
               </div>
               <div className="flex items-center space-x-4">
-                <select
+              <select
                   value={selectedKhanda}
                   onChange={handleKhandaChange}
                   className="flex font-bold josefin-sans-bold h-10 items-center justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
                 >
-                  {/* <option value="">Select Khanda</option> */}
                   {uniqueKhandas.map((khanda, index) => (
                     <option key={index} value={khanda}>{khanda}</option>
                   ))}
@@ -137,7 +133,6 @@ function KenaUpnishad() {
                   onChange={handleMantraChange}
                   className="flex h-10 items-center p-5 josefin-sans-bold justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
                 >
-                  {/* <option value="">Select Mantra</option> */}
                   {uniqueMantras.map(({ mantraNumber, index }) => (
                     <option key={index} value={index}>Mantra {mantraNumber}</option>
                   ))}
@@ -176,13 +171,13 @@ function KenaUpnishad() {
                         <h2 className="text-3xl font-bold mb-4 py-3 text-center">
                           Sanskrit Shloka
                         </h2>
-                        <div className="font-bold text-center text-blue-600 mb-3 text-2xl leading-10 martel-black">
+                        <div className="font-bold text-center text-blue-600 mb-6 lg:text-xl leading-10 martel-black">
                           {currentMantra.shlok.line1
                             .split("\n")
                             .map((line, index) => (
                               <React.Fragment key={index}>
                                 {line}
-                                <br />
+                                {/* <br /> */}
                               </React.Fragment>
                             ))}
                         </div>
@@ -285,18 +280,18 @@ function KenaUpnishad() {
                     )}
                   </div>
 
-                  <div className="bg-gray-300 w-full p-2 px-10 lg:px-20 flex justify-between fixed bottom-0 left-0">
+                  <div className="bg-gray-300 w-full p-2 px-3 lg:px-20 flex justify-between fixed bottom-0 left-0">
                     <button
                       onClick={handlePrevious}
                       disabled={currentMantraIndex === 0}
-                      className="inline-flex items-center justify-center whitespace-nowrap w-[100px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow text-black"
+                      className="inline-flex items-center justify-center whitespace-nowrap w-[140px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow text-black"
                     >
                       Previous
                     </button>
                     <button
                       onClick={handleNext}
                       disabled={currentMantraIndex === Vedas.length - 1}
-                      className={`inline-flex items-center justify-center bg-gray-800 w-[100px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2`}
+                      className={`inline-flex items-center justify-center bg-gray-800 w-[140px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2`}
                     >
                       Next
                     </button>

@@ -31,7 +31,7 @@ export default function Layout({ children }) {
     return (
       <div className="min-h-screen flex flex-col annapurna-sil-bold mt-[60px] ">
         <header className="flex justify-center ">
-          <div className="flex flex-wrap lg:gap-4 gap-3 justify-center fixed top-[55px]    w-full bg-white shadow-lg z-50">
+          <div className="flex flex-wrap lg:gap-4 gap-3 justify-center fixed top-[55px]    w-full bg-white shadow-lg z-20">
             {links.map(({ href, label }) => (
               <Link key={href} href={href} passHref shallow>
                 <div

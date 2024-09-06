@@ -76,7 +76,7 @@ export default async function Geeta() {
 
     return (
         <Layout>
-            <div className='mt-3'>
+            <div className=''>
                 <div className='flex'>
                     <h3 className="text-xl mb-3 bg-orange-300 px-2 rounded font-bold">
                         Bhagavad Gita

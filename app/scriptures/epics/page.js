@@ -78,7 +78,7 @@ export default async function Geeta() {
 
     return (
         <Layout>
-            <div className="mt-3">
+            <div className="">
                 <div className="flex">
                     <h3 className="text-xl  bg-orange-300 px-2 rounded font-bold">
                         Ramayana

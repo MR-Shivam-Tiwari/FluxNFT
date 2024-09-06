@@ -102,20 +102,20 @@ function KathaUpanishad() {
             <div>
                 <div className="flex flex-col sm:flex-row">
                     <div className="flex-1 lg:p-6 p-3">
-                        <div className="mb-6 px-2 flex items-center justify-between">
+                        <div className="mb-6 px-2 flex flex-wrap items-center justify-between">
                             <div className="space-y-1">
-                                <h2 className="lg:text-2xl font-bold yatra-one-regular">
+                                <h2 className="text-2xl mb-2 lg:mb-0 font-bold yatra-one-regular">
                                     Katha Upanishad
                                 </h2>
                             </div>
-                            <div className="flex items-center space-x-4">
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-gray-600 font-bold">
+                            <div className="flex  space-x-4">
+                                <div className="">
+                                    <div className="flex items-center justify-center gap-3 w-full text-gray-600 font-bold">
                                         <div className="lg:block hidden">Select Mantra</div>
                                         <select
                                             value={currentMantraIndex}
                                             onChange={handleSelectMantra}
-                                            className="flex h-10 items-center gap-1 justify-between bg-white text-black  font-bold rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[230px]"
+                                            className="flex h-10 w-[330px] items-center yatra-one-regular  gap-1 justify-between bg-white text-black  font-bold rounded-md border border-input bg-background px-3 py-2 text-xl lg:text-xm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[310px]"
                                         > 
                                             {Vedas.map((mantra, index) => (
                                                 <option key={index} value={index}>
@@ -178,13 +178,13 @@ function KathaUpanishad() {
                                                 <h2 className="text-3xl font-bold mb-4 py-3 text-center">
                                                     Sanskrit Shloka
                                                 </h2>
-                                                <div className="font-bold text-center text-blue-600 mb-3 text-2xl  leading-10 martel-black">
+                                                <div className="font-bold text-center text-blue-600 mb-3 text-md lg:text-2xl  leading-14 martel-black">
                                                     {currentMantra.shlok.line1
                                                         .split("\n")
                                                         .map((line, index) => (
                                                             <React.Fragment key={index}>
                                                                 {line}
-                                                                <br />
+                                                                {/* <br /> */}
                                                             </React.Fragment>
                                                         ))}
                                                 </div>
@@ -280,18 +280,18 @@ function KathaUpanishad() {
                                 <div>Mantra not found.</div>
                             )}
 
-                            <div className="bg-gray-300 w-full p-2 px-10 lg:px-20 flex justify-between fixed bottom-0 left-0">
+                            <div className="bg-gray-300 w-full p-2 px-3 lg:px-20 flex justify-between fixed bottom-0 left-0">
                                 <button
                                     onClick={handlePrevious}
                                     disabled={currentMantraIndex === 0}
-                                    className="inline-flex items-center justify-center whitespace-nowrap w-[100px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow text-black"
+                                    className="inline-flex items-center justify-center whitespace-nowrap w-[140px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow text-black"
                                 >
                                     Previous
                                 </button>
                                 <button
                                     onClick={handleNext}
                                     disabled={currentMantraIndex === Vedas.length - 1}
-                                    className={`inline-flex items-center justify-center bg-gray-800 w-[100px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2`}
+                                    className={`inline-flex items-center justify-center bg-gray-800 w-[140px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2`}
                                 >
                                     Next
                                 </button>

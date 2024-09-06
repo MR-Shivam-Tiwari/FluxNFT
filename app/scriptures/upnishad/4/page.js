@@ -14,7 +14,7 @@ function page() {
 
     const formattedDescription = formatDescription(description);
     return (
-        <div className='bg-gray-200 h-full'>
+        <div className='bg-gray-200 h-full mt-5 lg:mt-0'>
             <div className=" ">
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">

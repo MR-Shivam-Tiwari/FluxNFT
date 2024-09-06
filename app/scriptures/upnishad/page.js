@@ -93,7 +93,7 @@ export default function Upnishad() {
   return (
     <Layout>
       <div>
-        <div className="flex flex-wrap gap-10 border lg:px-10 justify-center lg:py-10 mt-10 py-7 px-6 mb-3 rounded bg-orange-100">
+        <div className="flex flex-wrap gap-10 border lg:px-10 justify-center lg:py-10  py-7 px-6 mb-3 rounded bg-orange-100">
           {renderBooks()}
         </div>
       </div>

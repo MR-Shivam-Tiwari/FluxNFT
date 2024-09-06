@@ -130,24 +130,24 @@ function Navbar() {
         </div>
       </header>
       {showModal && (
-        <div id="default-modal" tabIndex="-1" aria-hidden="true" className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-50">
-        <div className="relative p-4 w-full max-w-2xl">
+        <div id="default-modal" tabIndex="-1" aria-hidden="true" className="fixed inset-0 z-50  flex items-center justify-center w-full bg-black bg-opacity-50">
+        <div className="relative p-4  w-full max-w-2xl">
           <div className="relative bg-white rounded-lg shadow">
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+            <div className="flex items-center justify-between p-4 md:p-5 pb-3 rounded-t">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Report a Bug</h1>
                 <p className="mt-2 text-gray-500">Help us improve by reporting any issues you encounter.</p>
               </div>
-              <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center" onClick={toggleModal}>
-                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-10 h-10 inline-flex justify-center items-center" onClick={toggleModal}>
+                <svg className="w-5  h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"/>
                 </svg>
                 <span className="sr-only">Close modal</span>
               </button>
             </div>
-            <div className="w-full max-w-2xl mx-auto py-5 px-4 sm:px-6 lg:px-8 overflow-y-auto sm:max-h-screen">
-              <div className="space-y-6">
-                <form className="space-y-6">
+            <div className="w-full max-w-2xl mx-auto  px-3 sm:px-6 lg:px-5 overflow-y-auto sm:max-h-screen">
+              <div className="space-y-3">
+                <form className="space-y-3">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -181,8 +181,8 @@ function Navbar() {
                       <textarea className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]" id="description" placeholder="Describe the bug you encountered" required></textarea>
                     </div>
                   </div>
-                  <div className="flex justify-end">
-                    <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit Bug Report</button>
+                  <div className="flex lg:justify-end  ">
+                    <button type="submit" className="inline-flex w-full justify-center py-2 px-4 my-3 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">Submit Bug Report</button>
                   </div>
                 </form>
               </div>

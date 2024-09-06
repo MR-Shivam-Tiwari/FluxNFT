@@ -141,7 +141,7 @@ function IshaUpanishad() {
                                                 <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl leading-10 martel-black">
 
                                                 </div>
-                                                <div className="font-bold text-center  text-blue-600 mb-3 lg:text-2xl   leading-snug martel-black">
+                                                <div className="font-bold text-center  text-blue-600 mb-3 lg:text-xl   leading-snug martel-black">
                                                     {currentMantra.shlok.line1
                                                         .split("\n")
                                                         .map((line, index) => (
