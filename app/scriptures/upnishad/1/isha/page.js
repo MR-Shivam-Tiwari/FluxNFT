@@ -14,7 +14,7 @@ function IshaUpanishad() {
     const [selectedLanguageCommentry, setselectedLanguageCommentry] =
         useState(null);
     const [currentMantraIndex, setCurrentMantraIndex] = useState(0);
-
+    
     useEffect(() => {
         const mantraNumber = parseInt(searchParams.get("mantra") || "1", 10);
         if (mantraNumber > 0 && mantraNumber <= Vedas.length) {
