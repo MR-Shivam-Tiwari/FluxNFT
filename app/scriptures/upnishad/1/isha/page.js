@@ -22,7 +22,7 @@ function IshaUpanishad() {
         } else {
             setCurrentMantraIndex(0);
         }
-    }, [searchParams]);
+    }, [searchParams]);  
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
