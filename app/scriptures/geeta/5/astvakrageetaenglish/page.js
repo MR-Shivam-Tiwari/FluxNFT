@@ -71,7 +71,7 @@ function AstavakraGeetaEnglish() {
   const menuButtonStyle = {
     color: "black",
     padding: "10px",
-    borderRadius: "5px",
+    borderRadius: "2px",
     cursor: "pointer",
   };
 
@@ -225,7 +225,7 @@ function AstavakraGeetaEnglish() {
           onClick={toggleDrawer}
           style={menuButtonStyle}
         >
-          <span className="mb-1" style={{ marginLeft: "5px" }}>
+          <span className="" style={{ marginLeft: "5px" }}>
             Select Chapter
           </span>
         </button>
@@ -238,7 +238,7 @@ function AstavakraGeetaEnglish() {
       >
         <div className="flex pt-2 px-2 justify-end">
           <button
-            className="lg:hidden font-bold p-2 text-white text-lg bg-gray-400 rounded"
+            className="lg:hidden font-bold mt-2 p-2 text-white text-lg bg-gray-400 rounded"
             onClick={toggleDrawer}
           >
             <svg

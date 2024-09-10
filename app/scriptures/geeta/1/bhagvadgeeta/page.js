@@ -15,13 +15,18 @@ function BhagavadGitaContent() {
   const [selectedShloka, setSelectedShloka] = useState(initialShloka);
   const [selectedCommentary, setSelectedCommentary] = useState('Shankaracharya');
 
+  // Synchronize state with URL params
+  useEffect(() => {
+    setSelectedChapter(initialChapter);
+    setSelectedShloka(initialShloka);
+  }, [initialChapter, initialShloka]);
+
+  // Update URL when chapter or shloka changes
   useEffect(() => {
     const params = new URLSearchParams();
-
     params.set('chapter', selectedChapter);
     params.set('shloka', selectedShloka);
-
-    router.push(`?${params.toString()}`, undefined, { shallow: true });
+    router.replace(`?${params.toString()}`, undefined, { shallow: true });
   }, [selectedChapter, selectedShloka]);
 
   const handleCommentaryClick = (commentary) => {
@@ -84,9 +89,6 @@ function BhagavadGitaContent() {
               ))}
             </select>
           </div>
-          {/* <div className="mt-4 md:mt-0">
-            <input className="flex h-10 w-full shadow-sm rounded-md border border-input bg-white-900 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Search" />
-          </div> */}
         </div>
         {shlokaData && (
           <div className="bg-gray-100 lg:shadow-lg rounded-lg lg:p-8">

@@ -7,6 +7,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 function MundakoUpnishad() {
     const searchParams = useSearchParams();
     const router = useRouter();
+    
+    // Initialize state based on URL search params
     const initialChapter = searchParams.get('Mundaka') ? parseInt(searchParams.get('Mundaka')) : 1;
     const initialKhanda = searchParams.get('Khanda') ? parseInt(searchParams.get('Khanda')) : 1;
     const initialShloka = searchParams.get('ShlokaNo') ? parseInt(searchParams.get('ShlokaNo')) : 1;
@@ -17,7 +19,7 @@ function MundakoUpnishad() {
     const [isOpen, setIsOpen] = useState(false);
     const [commentryopen, setcommentryopen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState(null);
-    const [selectedLanguageCommentry, setselectedLanguageCommentry] = useState(null);
+    const [selectedLanguageCommentry, setSelectedLanguageCommentry] = useState(null);
     const [currentMantraIndex, setCurrentMantraIndex] = useState(0);
 
     useEffect(() => {
@@ -30,35 +32,84 @@ function MundakoUpnishad() {
     }, [searchParams]);
 
     const handleChapterChange = (event) => {
-        setSelectedChapter(parseInt(event.target.value, 10));
-        setSelectedKhanda(1); // Reset to first Khanda on chapter change
-        setSelectedShloka(1); // Reset to first Shloka on chapter change
+        const newChapter = parseInt(event.target.value, 10);
+        setSelectedChapter(newChapter);
+        setSelectedKhanda(1);
+        setSelectedShloka(1);
+        updateURL(newChapter, 1, 1); // Update the URL when chapter changes
     };
 
     const handleKhandaChange = (event) => {
-        setSelectedKhanda(parseInt(event.target.value, 10));
-        setSelectedShloka(1); // Reset to first Shloka on Khanda change
+        const newKhanda = parseInt(event.target.value, 10);
+        setSelectedKhanda(newKhanda);
+        setSelectedShloka(1);
+        updateURL(selectedChapter, newKhanda, 1); // Update the URL when khanda changes
     };
 
     const handleShlokaChange = (event) => {
-        setSelectedShloka(parseInt(event.target.value, 10));
+        const newShloka = parseInt(event.target.value, 10);
+        setSelectedShloka(newShloka);
+        updateURL(selectedChapter, selectedKhanda, newShloka); // Update the URL when shloka changes
     };
 
     const handleNext = () => {
-        if (currentMantraIndex < Vedas.length - 1) {
+        const totalShlokasInKhanda = Vedas.filter(shlok => parseInt(shlok.Mundaka) === selectedChapter && parseInt(shlok.Khanda) === selectedKhanda).length;
+    
+        if (currentMantraIndex < Vedas.length - 1 && selectedShloka < totalShlokasInKhanda) {
             const nextIndex = currentMantraIndex + 1;
+            const nextShloka = selectedShloka + 1;
+    
+            if (nextShloka > totalShlokasInKhanda) {
+                let nextKhanda = selectedKhanda + 1;
+                let nextChapter = selectedChapter;
+    
+                const totalKhandasInChapter = [...new Set(Vedas.filter(shlok => parseInt(shlok.Mundaka) === selectedChapter).map(shlok => parseInt(shlok.Khanda)))].length;
+    
+                if (nextKhanda > totalKhandasInChapter) {
+                    nextKhanda = 1;
+                    nextChapter = selectedChapter + 1;
+                }
+    
+                setSelectedChapter(nextChapter);
+                setSelectedKhanda(nextKhanda);
+                setSelectedShloka(1);
+                updateURL(nextChapter, nextKhanda, 1);
+            } else {
+                setSelectedShloka(nextShloka);
+                updateURL(selectedChapter, selectedKhanda, nextShloka);
+            }
+    
             setCurrentMantraIndex(nextIndex);
-            updateURL(nextIndex + 1);
-            resetStates();
         }
     };
 
     const handlePrevious = () => {
         if (currentMantraIndex > 0) {
             const prevIndex = currentMantraIndex - 1;
+            const prevShloka = selectedShloka - 1;
+
+            if (prevShloka <= 0) {
+                let prevKhanda = selectedKhanda - 1;
+                let prevChapter = selectedChapter;
+
+                if (prevKhanda <= 0) {
+                    prevChapter = selectedChapter - 1;
+                    const totalKhandasInPrevChapter = [...new Set(Vedas.filter(shlok => parseInt(shlok.Mundaka) === prevChapter).map(shlok => parseInt(shlok.Khanda)))].length;
+                    prevKhanda = totalKhandasInPrevChapter;
+                }
+
+                const totalShlokasInPrevKhanda = Vedas.filter(shlok => parseInt(shlok.Mundaka) === prevChapter && parseInt(shlok.Khanda) === prevKhanda).length;
+
+                setSelectedChapter(prevChapter);
+                setSelectedKhanda(prevKhanda);
+                setSelectedShloka(totalShlokasInPrevKhanda);
+                updateURL(prevChapter, prevKhanda, totalShlokasInPrevKhanda);
+            } else {
+                setSelectedShloka(prevShloka);
+                updateURL(selectedChapter, selectedKhanda, prevShloka);
+            }
+
             setCurrentMantraIndex(prevIndex);
-            updateURL(prevIndex + 1);
-            resetStates();
         }
     };
 
@@ -71,18 +122,18 @@ function MundakoUpnishad() {
     };
 
     const handleLanguageCommentry = (language) => {
-        setselectedLanguageCommentry(language);
+        setSelectedLanguageCommentry(language);
     };
 
-    const updateURL = (mantraNumber) => {
-        router.push(`?Mundaka=${selectedChapter}&Khanda=${selectedKhanda}&ShlokaNo=${mantraNumber}`);
+    const updateURL = (chapter, khanda, shloka) => {
+        router.push(`?Mundaka=${chapter}&Khanda=${khanda}&ShlokaNo=${shloka}`);
     };
 
     const resetStates = () => {
         setIsOpen(false);
         setcommentryopen(false);
         setSelectedLanguage(null);
-        setselectedLanguageCommentry(null);
+        setSelectedLanguageCommentry(null);
     };
 
     const formatText = (text) => {
@@ -305,7 +356,7 @@ function MundakoUpnishad() {
                                 </button>
                                 <button
                                     onClick={handleNext}
-                                    disabled={currentMantraIndex === Vedas.length - 1}
+                                    disabled={!currentMantra || currentMantraIndex >= Vedas.length - 1 || selectedShloka >= khandaData.length}
                                     className={`inline-flex items-center justify-center bg-gray-800 w-[140px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-9 lg:px-4 py-2`}
                                 >
                                     Next

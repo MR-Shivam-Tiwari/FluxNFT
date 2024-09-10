@@ -115,7 +115,7 @@ function KathaUpanishad() {
                                         <select
                                             value={currentMantraIndex}
                                             onChange={handleSelectMantra}
-                                            className="flex h-10 w-[330px] items-center yatra-one-regular  gap-1 justify-between bg-white text-black  font-bold rounded-md border border-input bg-background px-3 py-2 text-xl lg:text-xm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[310px]"
+                                            className="flex h-10 w-[330px] items-center josefin-sans-bold pt-2.5  gap-1 justify-between bg-white text-black  font-bold rounded-md border border-input bg-background px-3 py-2 text-xl lg:text-xm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[310px]"
                                         > 
                                             {Vedas.map((mantra, index) => (
                                                 <option key={index} value={index}>
@@ -194,12 +194,12 @@ function KathaUpanishad() {
                                                 </h2>
                                                 <div className="space-y-2 lg:border lg:p-5 lg:shadow rounded">
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
+                                                        <p className="lg:text-lg border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
                                                             {formatText(currentMantra.translationHindi)}
                                                         </p>
                                                     </div>
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
+                                                        <p className="lg:text-lg border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
                                                             {formatText(currentMantra.translationEnglish)}
                                                         </p>
                                                     </div>

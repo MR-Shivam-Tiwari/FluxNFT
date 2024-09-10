@@ -165,7 +165,7 @@ function PrashnaUpanishad() {
                                                         Mantra {currentMantra.ShlokaNo}
                                                     </div>
                                                 </div>
-                                                <h2 className="text-3xl font-bold mb-4 py-3 text-center">
+                                                <h2 className="lg:text-3xl text-xl font-bold mb-4 py-3 text-center">
                                                     Sanskrit Shloka
                                                 </h2>
                                                 <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl  leading-10 martel-black">
@@ -179,17 +179,17 @@ function PrashnaUpanishad() {
                                                         ))}
                                                 </div>
 
-                                                <h2 className="text-3xl font-bold mb-4 text-center">
+                                                <h2 className="lg:text-3xl text-xl font-bold mb-4 text-center">
                                                     Translation (Hindi - English)
                                                 </h2>
                                                 <div className="space-y-2 lg:border lg:p-5 lg:shadow rounded">
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
+                                                        <p className="lg:text-lg border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
                                                             {formatText(currentMantra.translationHindi)}
                                                         </p>
                                                     </div>
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
+                                                        <p className="lg:text-lg border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
                                                             {formatText(currentMantra.translationEnglish)}
                                                         </p>
                                                     </div>

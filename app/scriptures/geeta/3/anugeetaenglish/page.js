@@ -118,13 +118,13 @@ function AnugitaHindi() {
                 <div className="bg-orange-100 w-full p-2 lg:px-20 flex justify-between fixed bottom-0 left-0">
                     <button
                         onClick={() => handleChapterSelect(Math.max(selectedChapter - 1, 1))}
-                        className="inline-flex items-center justify-center w-[150px] whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4  bg-[#374151] text-white"
+                        className="inline-flex items-center justify-center w-[140px] whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4  bg-[#374151] text-white"
                     >
                         Previous
                     </button>
                     <button
                         onClick={() => handleChapterSelect(Math.min(selectedChapter + 1, chapters.length))}
-                        className={`inline-flex items-center justify-center w-[150px] whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4  ${selectedChapter !== chapters.length
+                        className={`inline-flex items-center justify-center w-[140px] whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4  ${selectedChapter !== chapters.length
                             ? "bg-[#a0522d] text-white"
                             : "bg-[#a0522d] text-white pointer-events-none opacity-50"
                             }`}

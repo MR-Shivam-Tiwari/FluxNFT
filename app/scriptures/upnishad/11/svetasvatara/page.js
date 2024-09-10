@@ -4,162 +4,136 @@ import React, { useState, useEffect, Suspense } from "react";
 import Vedas from "./svetasvatara.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
-function Shvetashvatara() {
+function PrashnaUpanishad() {
     const searchParams = useSearchParams();
     const router = useRouter();
-    const initialChapter = searchParams.get('chapter') ? parseInt(searchParams.get('chapter')) : 1;
-    const initialShloka = searchParams.get('shlok') ? parseInt(searchParams.get('shlok')) : 1;
-    const [selectedShloka, setSelectedShloka] = useState(initialShloka);
-    const [selectedChapter, setSelectedChapter] = useState(initialChapter);
+    const defaultKhanda = Vedas[0].chapter;
+
+    const [selectedKhanda, setSelectedKhanda] = useState(defaultKhanda);
+    const [selectedMantra, setSelectedMantra] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [commentryopen, setcommentryopen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState(null);
-    const [selectedLanguageCommentry, setselectedLanguageCommentry] =
-        useState(null);
+    const [selectedLanguageCommentry, setselectedLanguageCommentry] = useState(null);
     const [currentMantraIndex, setCurrentMantraIndex] = useState(0);
-    const handleChapterChange = (event) => {
-        setSelectedChapter(parseInt(event.target.value, 10));
-        setSelectedShloka(1); // Reset to first shloka on chapter change
-    };
     useEffect(() => {
-        const mantraNumber = parseInt(searchParams.get("mantra") || "1", 10);
-        if (mantraNumber > 0 && mantraNumber <= Vedas.length) {
-            setCurrentMantraIndex(mantraNumber - 1);
-        } else {
-            setCurrentMantraIndex(0);
-        }
+        const chapter = searchParams.get("chapter") || defaultKhanda;
+        const ShlokaNo = parseInt(searchParams.get("mantra") || "1", 10) - 1; // Adjust for 0-based index
+
+        // Ensure that both chapter and mantra are set properly on page load
+        setSelectedKhanda(chapter);
+        setCurrentMantraIndex(ShlokaNo);
     }, [searchParams]);
 
-    const handleToggle = () => {
-        setIsOpen(!isOpen);
+    useEffect(() => {
+        // When currentMantraIndex or selectedKhanda changes, update the mantra and chapter
+        const currentMantra = filteredVedas[currentMantraIndex];
+        if (currentMantra) {
+            setSelectedMantra(currentMantraIndex);
+        }
+    }, [currentMantraIndex, selectedKhanda]);
+
+    const handleKhandaChange = (event) => {
+        const newKhanda = event.target.value;
+        setSelectedKhanda(newKhanda);
+        setCurrentMantraIndex(0); // Reset mantra index to 0
+        updateURL(newKhanda, 1); // Update the URL with the new Khanda and reset mantra to 1
     };
 
-    const handlecommentry = () => {
-        setcommentryopen(!commentryopen);
-    };
-
-    const handleLanguageSelect = (language) => {
-        setSelectedLanguage(language);
-    };
-
-    const handleLanguageCommentry = (language) => {
-        setselectedLanguageCommentry(language);
+    const handleMantraChange = (event) => {
+        const mantraIndex = parseInt(event.target.value, 10);
+        setCurrentMantraIndex(mantraIndex);
+        updateURL(selectedKhanda, mantraIndex + 1); // Update with the selected mantra index
     };
 
     const handleNext = () => {
-        if (currentMantraIndex < Vedas.length - 1) {
+        if (currentMantraIndex < filteredVedas.length - 1) {
             const nextIndex = currentMantraIndex + 1;
             setCurrentMantraIndex(nextIndex);
-            updateURL(nextIndex + 1);
-            resetStates();
+            updateURL(selectedKhanda, nextIndex + 1);
         }
     };
-    const handleShlokaChange = (event) => {
-        setSelectedShloka(parseInt(event.target.value, 10));
-    };
+
     const handlePrevious = () => {
         if (currentMantraIndex > 0) {
             const prevIndex = currentMantraIndex - 1;
             setCurrentMantraIndex(prevIndex);
-            updateURL(prevIndex + 1);
-            resetStates();
+            updateURL(selectedKhanda, prevIndex + 1);
         }
     };
 
-    const handleSelectMantra = (event) => {
-        const index = parseInt(event.target.value, 10);
-        setCurrentMantraIndex(index);
-        updateURL(index + 1);
-        resetStates();
+    const updateURL = (chapter, ShlokaNo) => {
+        router.push(`?chapter=${chapter}&mantra=${ShlokaNo}`);
     };
-
-    const updateURL = (mantraNumber) => {
-        router.push(`?mantra=${mantraNumber}`);
-    };
-
-    const resetStates = () => {
-        setIsOpen(false);
-        setcommentryopen(false);
-        setSelectedLanguage(null);
-        setselectedLanguageCommentry(null);
-    };
-
+    const handlecommentry = () => {
+        setcommentryopen(!commentryopen);
+      };
+    
+      const handleLanguageSelect = (language) => {
+        setSelectedLanguage(language);
+      };
+    
+      const handleLanguageCommentry = (language) => {
+        setselectedLanguageCommentry(language);
+      };
+    // Filter Mantras based on selected Khanda
+    const filteredVedas = Vedas.filter(
+        (mantra) => mantra.chapter === selectedKhanda
+    );
     const formatText = (text) => {
-        return text.split("\n").map((line, index) => {
-            const parts = line.split(/(`[^`]+`)/g);
-            return (
-                <React.Fragment key={index}>
-                    {parts.map((part, i) =>
-                        part.startsWith("`") && part.endsWith("`") ? (
-                            <span key={i} className="text-gray-500 text-[15px]">
-                                {part.slice(1, -1)}
-                            </span>
-                        ) : (
-                            part
-                        )
-                    )}
-                    <br />
-                </React.Fragment>
-            );
+        const safeText = typeof text === 'string' ? text : '';
+        return safeText.split('\n').map((line, index) => {
+          const parts = line.split(/(`[^`]+`)/g);
+          return (
+            <React.Fragment key={index}>
+              {parts.map((part, i) =>
+                part.startsWith('`') && part.endsWith('`') ? (
+                  <span key={i} className='text-gray-500 text-[15px]'>{part.slice(1, -1)}</span>
+                ) : (
+                  part
+                )
+              )}
+              <br />
+            </React.Fragment>
+          );
         });
-    };
+      };
+    const uniqueKhandas = [...new Set(Vedas.map((mantra) => mantra.chapter))];
+    const uniqueMantras = filteredVedas.map((mantra, index) => ({ ShlokaNo: mantra.ShlokaNo, index }));
 
-    const chapterData = Vedas.filter((shlok) => shlok.chapter.trim() === selectedChapter.toString());
-
-    const currentMantra = chapterData.find((shlok) => shlok.ShlokaNo === selectedShloka.toString());
-
-    const uniqueChapters = [...new Set(Vedas.map((shlok) => shlok.chapter.trim()))];
-
+    const currentMantra = filteredVedas[currentMantraIndex] || filteredVedas[0];
     return (
         <div className="container mx-auto lg:px-20 mt-5">
             <div>
                 <div className="flex flex-col sm:flex-row">
                     <div className="flex-1 lg:p-6 p-3">
-                        <div className="mb-6 px-2 flex items-center justify-between">
+                        <div className="mb-6 px-2 flex flex-wrap items-center justify-between">
                             <div className="space-y-1">
-                                <h2 className="lg:text-2xl font-bold yatra-one-regular">
-                                    Prashna Upanishad
+                                <h2 className="text-2xl font-bold yatra-one-regular">
+                                Svetasvatara Upanishad
                                 </h2>
                             </div>
                             <div className="flex items-center space-x-4">
                                 <select
-                                    value={selectedChapter}
-                                    onChange={handleChapterChange}
+                                    value={selectedKhanda}
+                                    onChange={handleKhandaChange}
                                     className="flex font-bold josefin-sans-bold h-10 items-center justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
                                 >
-                                    {uniqueChapters.map((chapter, index) => (
-                                        <option className='font-bold' key={index} value={chapter}>Prashna {chapter}</option>
+                                    {uniqueKhandas.map((chapter, index) => (
+                                        <option key={index} value={chapter}>Chapter {chapter}</option>
                                     ))}
                                 </select>
                                 <select
-                                    value={selectedShloka}
-                                    onChange={handleShlokaChange}
+                                    value={selectedMantra}
+                                    onChange={handleMantraChange}
                                     className="flex h-10 items-center p-5 josefin-sans-bold justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
                                 >
-                                    {chapterData.map((shloka, index) => (
-                                        <option className='font-bold ' key={index} value={shloka.ShlokaNo}>Mantra {shloka.ShlokaNo}</option>
+                                    {uniqueMantras.map(({ ShlokaNo, index }) => (
+                                        <option key={index} value={index}>Mantra {ShlokaNo}</option>
                                     ))}
                                 </select>
                             </div>
-                            {/* <div className="flex items-center space-x-4">
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-gray-600 font-bold">
-                                        <div className="lg:block hidden">Select Mantra</div>
-                                        <select
-                                            value={currentMantraIndex}
-                                            onChange={handleSelectMantra}
-                                            className="flex h-10 items-center gap-1 justify-between bg-gray-800 text-white font-bold rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[230px]"
-                                        >
-                                            {Vedas.map((mantra, index) => (
-                                                <option key={index} value={index}>
-                                                    Part {mantra.Part} - Valli {mantra.Valli} - Mantra{" "}
-                                                    {mantra.mantraNumber}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div> */}
+
                         </div>
                         <div className="space-y-6 overflow-y-auto pb-20">
                             {currentMantra ? (
@@ -169,7 +143,7 @@ function Shvetashvatara() {
                                             <div>
                                                 <div className="flex items-center">
                                                     <div className="mb-1 p-1 bg-blue-200 flex items-center shadow gap-1 px-3 h-5 text-xs border rounded-[3px] font-bold">
-                                                        Prashna {currentMantra.chapter}{" "}
+                                                        Chapter {currentMantra.chapter}{" "}
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             width="10"
@@ -191,10 +165,10 @@ function Shvetashvatara() {
                                                         Mantra {currentMantra.ShlokaNo}
                                                     </div>
                                                 </div>
-                                                <h2 className="text-3xl font-bold mb-4 py-3 text-center">
+                                                <h2 className="lg:text-3xl text-xl font-bold mb-4 py-3 text-center">
                                                     Sanskrit Shloka
                                                 </h2>
-                                                <div className="font-bold text-center text-blue-600 mb-3 text-2xl  leading-10 martel-black">
+                                                <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl  leading-10 martel-black">
                                                     {currentMantra.shlok
                                                         .split("\n")
                                                         .map((line, index) => (
@@ -205,17 +179,17 @@ function Shvetashvatara() {
                                                         ))}
                                                 </div>
 
-                                                <h2 className="text-3xl font-bold mb-4 text-center">
+                                                <h2 className="lg:text-3xl text-xl font-bold mb-4 text-center">
                                                     Translation (Hindi - English)
                                                 </h2>
                                                 <div className="space-y-2 lg:border lg:p-5 lg:shadow rounded">
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
+                                                        <p className="lg:text-lg border p-2 py-3 mb-2 bg-blue-200 rounded josefin-sans-bold text-center">
                                                             {formatText(currentMantra.translationHindi)}
                                                         </p>
                                                     </div>
                                                     <div className="flex flex-col items-center">
-                                                        <p className="text-lg border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
+                                                        <p className="lg:text-lg border p-2 py-3 bg-orange-400 josefin-sans-bold text-black rounded text-center">
                                                             {formatText(currentMantra.translationEnglish)}
                                                         </p>
                                                     </div>
@@ -233,7 +207,7 @@ function Shvetashvatara() {
                                             onClick={handlecommentry}
                                             className="flex w-full text-white items-center justify-between rounded-lg px-4 py-3 font-medium transition-colors bg-gray-800 hover:bg-gray-700"
                                         >
-                                             Commentary
+                                            Adi Shankaracharya Commentary
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="24"
@@ -271,8 +245,8 @@ function Shvetashvatara() {
                                                     <div className="mt-4">
                                                         <h3 className="text-lg annapurna-sil-regular font-semibold mb-2">
                                                             {selectedLanguageCommentry === "hindi"
-                                                                ? "Adi Shankaracharya Hindi Commentary"
-                                                                : "T.N.Sethumadhavan English Commentary"}
+                                                                ? "Hindi Commentary"
+                                                                : "English Commentary"}
                                                         </h3>
                                                         <p className="martel-bold">
                                                             {selectedLanguageCommentry === "hindi"
@@ -296,18 +270,18 @@ function Shvetashvatara() {
                                 <div>Mantra not found.</div>
                             )}
 
-                            <div className="bg-gray-300 w-full p-2 px-10 lg:px-20 flex justify-between fixed bottom-0 left-0">
+                            <div className="bg-gray-300 w-full p-2 px-3 lg:px-20 flex justify-between fixed bottom-0 left-0">
                                 <button
                                     onClick={handlePrevious}
                                     disabled={currentMantraIndex === 0}
-                                    className="inline-flex items-center justify-center whitespace-nowrap w-[100px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow text-black"
+                                    className="inline-flex items-center justify-center whitespace-nowrap w-[140px] rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-200 h-10 px-4 py-2 bg-gray-100 border shadow text-black"
                                 >
                                     Previous
                                 </button>
                                 <button
                                     onClick={handleNext}
                                     disabled={currentMantraIndex === Vedas.length - 1}
-                                    className={`inline-flex items-center justify-center bg-gray-800 w-[100px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2`}
+                                    className={`inline-flex items-center justify-center bg-gray-800 w-[140px] text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-600 h-10 px-4 py-2`}
                                 >
                                     Next
                                 </button>
@@ -322,10 +296,10 @@ function Shvetashvatara() {
 
 
 
-export default function Svetas() {
+export default function Katha() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <Shvetashvatara />
+            <PrashnaUpanishad />
         </Suspense>
     );
 }
