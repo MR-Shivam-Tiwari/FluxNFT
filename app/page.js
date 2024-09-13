@@ -35,7 +35,7 @@ const Home = () => {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className=" gap-8">
-              <div className="container text-center mx-auto mb-10 ">
+              <div className="container text-center mx-auto mb-20 ">
                 <h2 className="text-3xl font-bold tracking-tight">
                   Discover the Wisdom of Hindu Scriptures
                 </h2>
@@ -63,13 +63,14 @@ const Home = () => {
                   </Link>
                 </div>
               </div>
-              <div className="grid lg:grid-cols-4 grid-cols-1 gap-5">
+
+              <div className="grid lg:grid-cols-4 grid-cols-1 gap-5 ">
                 <Link
                   href="/scriptures/geeta" shallow
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <div className="relative w-full h-64">
+                    <div className="relative w-full h-40"> {/* Reduced height */}
                       <Image
                         src="/homeimage/krishna.jpg"
                         alt="Bhagavad Gita"
@@ -81,12 +82,10 @@ const Home = () => {
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-lg font-bold">All Geeta</h3>
+                      <h3 className="text-lg  font-bold">All Geeta</h3>
                       <span className="text-[11px]">(Bhagavad Geeta, Anu Geeta, Astavakra Geeta)</span>
                       <p className="text-sm">Explore the timeless wisdom</p>
-                      <div
-                        className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
-                      >
+                      <div className="inline-flex items-center mt-2 cursor-pointer text-sm text-indigo-400 hover:text-indigo-500">
                         Read More
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -108,12 +107,13 @@ const Home = () => {
                   </div>
                 </Link>
 
+
                 <Link
                   href="/scriptures/vedas" shallow
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <div className="relative w-full h-64">
+                    <div className="relative w-full h-40">
                       <Image
                         src="/homeimage/vadash.jpg"
                         alt="Vedas"
@@ -127,7 +127,7 @@ const Home = () => {
                           <p className="text-[11px]">(Rigveda, Yajurveda, Samaveda, and Atharvaveda)</p></h3>
                         <p className="text-sm">Explore the foundational texts</p>
                         <div
-                          className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
+                          className="inline-flex items-center mt-2 cursor-pointer text-sm text-indigo-400 hover:text-indigo-500"
                         // onClick={() => router.push("/scriptures/Vedas")}
                         >
                           Read More
@@ -154,7 +154,7 @@ const Home = () => {
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <div className="relative w-full h-64">
+                    <div className="relative w-full h-40">
                       <Image
                         src="/homeimage/upnishad.jpeg"
                         alt="Upanishads"
@@ -167,7 +167,7 @@ const Home = () => {
                         <h3 className="text-lg font-bold">Upanishads <span className="text-[11px]">(11 Prime Upanishad)</span></h3>
                         <p className="text-sm">Uncover the secrets of the universe</p>
                         <div
-                          className="inline-flex items-center mt-2 cursor-pointer text-indigo-400 hover:text-indigo-500"
+                          className="inline-flex items-center mt-2 cursor-pointer text-sm text-indigo-400 hover:text-indigo-500"
                         // onClick={() => router.push("/scriptures/Upanishad")}
                         >
                           Read More
@@ -197,7 +197,7 @@ const Home = () => {
                   className="relative rounded-lg overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
                 >
                   <div className="relative group rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <div className="relative w-full h-64">
+                    <div className="relative w-full h-40">
                       <Image
                         src="/homeimage/asa.jpg"
                         alt="Epics"
@@ -210,7 +210,7 @@ const Home = () => {
                         <h3 className="text-lg font-bold">Epics <span className="text-[11px]">(Ramayan and Mahabharat)</span></h3>
                         <p className="text-sm">Discover the ancient stories</p>
                         <div
-                          className="inline-flex items-center mt-2 text-indigo-400 hover:text-indigo-500"
+                          className="inline-flex items-center mt-2 text-sm text-indigo-400 hover:text-indigo-500"
                         // onClick={() => router.push("/scriptures/Epics")}
                         >
                           Read More
@@ -304,27 +304,29 @@ const Home = () => {
                     Connect with like-minded individuals, share insights, and
                     engage in thought-provoking discussions.
                   </p>
-                  <div
-                    className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
+                  <Link href='/discussion' shallow>
+                    <div
+                      className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
 
-                  >
-                    Join the Conversation
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="ml-1 h-4 w-4"
                     >
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                  </div>
+                      Join the Conversation
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="ml-1 h-4 w-4"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </div>
+                  </Link>
                 </div>
               </div>
               <div className="bg-white rounded-lg  overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500">
@@ -344,27 +346,30 @@ const Home = () => {
 
 
                   </p>
-                  <div
-                    className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
+                  <Link href='/shastradownload' shallow>
+                    <div
+                      className="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-700"
 
-                  >
-                    Start Downloading
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="ml-1 h-4 w-4"
                     >
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                  </div>
+                      Start Downloading
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="ml-1 h-4 w-4"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </div>
+                  </Link>
+
                 </div>
               </div>
             </div>
