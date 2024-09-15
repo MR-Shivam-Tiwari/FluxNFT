@@ -34,7 +34,7 @@ export default function Layout({ children }) {
       <header className="flex justify-center ">
         <div className="flex  lg:gap-4 gap-3 justify-center fixed top-[55px] overflow-y-auto lg:w-full bg-white shadow-lg z-20">
           {links.map(({ href, label }) => (
-            <Link key={href} href={href} passHref shallow>
+            <Link key={href} href={href} passHref shallow>   
               <div
                 onClick={() => setSelected(href)}
                 className={`px-5 py-1 lg:pt-1 pt-1.5 h-8 my-2 lg:text-lg text-sm font-semibold rounded-[4px] cursor-pointer transition-colors ${pathname === href
