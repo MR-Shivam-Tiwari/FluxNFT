@@ -33,7 +33,7 @@ export default function Layout({ children }) {
     <div className="min-h-screen flex flex-col annapurna-sil-bold mt-[60px] ">
       <header className="flex justify-center ">
         <div className="flex  lg:gap-4 gap-3 justify-center fixed top-[55px] overflow-y-auto lg:w-full bg-white shadow-lg z-20">
-          {links.map(({ href, label }) => (
+          {links.map(({ href, label }) => ( 
             <Link key={href} href={href} passHref shallow>   
               <div
                 onClick={() => setSelected(href)}

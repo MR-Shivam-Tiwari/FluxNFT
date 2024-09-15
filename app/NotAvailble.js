@@ -21,7 +21,7 @@ function NotAvailble() {
                     </svg>
                     <h1 class="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Book Not Available</h1>
                     <p class="mt-4 text-muted-foreground">
-                    This book is currently unavailable. But don't worry, it's<span class="font-semibold"> coming soon!</span>
+                    This book is currently unavailable. But don&apos;t worry, it&apos;s<span class="font-semibold"> coming soon!</span>
                     </p>
                 </div>
                 <div class="mt-6 animate-slide-in"></div>

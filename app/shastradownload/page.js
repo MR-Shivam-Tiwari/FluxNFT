@@ -21,7 +21,7 @@ function page() {
                         <div className='flex justify-center'>
 
                         <p class="mt-8 text-muted-foreground">
-                            This Tool is currently unavailable. But don't worry, it's<span class="font-semibold"> coming soon!</span>
+                            This Tool is currently unavailable. But don&apos;t worry, it&apos;s<span class="font-semibold"> coming soon!</span>
                         </p>
                         </div>
                     </div>
