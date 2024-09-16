@@ -21,34 +21,35 @@ export default function ContactForm() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
     
-    const form = e.target
-    const formData = new FormData(form)
-
+    const formData = new FormData(e.target);  // Ensure the form is passed correctly
+    
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbxPToSlGhUomyDvvC3a1_sibeAm8qzRPIjiloXWdj0i4KGFE5eZoy0gBDYQklBU2Pk-YA/exec',
+        'https://script.google.com/macros/s/AKfycbycpl_UyIDg3FdSRTi0JjBK9wl7nwDNAd7u2IsVTsV3EWfuAdTDL5ANgEVJiX8pXzqH_A/exec',
         {
           method: 'POST',
           body: formData,
         }
-      )
-
+      );
+  
       if (response.ok) {
-        alert('Form submitted successfully!')
-        setFormData({ name: '', email: '', phone: '', reason: '', message: '' })
+        alert('Form submitted successfully!');
+        // Reset the form fields after submission
+        setFormData({ name: '', email: '', phone: '', reason: '', message: '' });
       } else {
-        alert('Error submitting form. Please try again.')
+        alert('Error submitting form. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error)
-      alert('An error occurred. Please try again.')
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
+  
 
   return (
     <div className="w-full">
