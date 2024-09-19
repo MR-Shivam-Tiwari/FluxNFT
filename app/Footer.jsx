@@ -30,12 +30,21 @@ function Footer() {
           <h4 className="text-lg font-semibold">Popular Scriptures</h4>
           <ul className="space-y-2">
             <li>
-              <Link href="/scriptures/Vedas" shallow>
-                <div className="hover:text-indigo-500 cursor-pointer">Vedas</div>
+              <Link href="/scriptures/vedas" shallow>
+                <div className="hover:text-indigo-500 cursor-pointer">
+                  Vedas
+                </div>
               </Link>
             </li>
             <li>
-              <Link href="/scriptures/Upanishad" shallow>
+              <Link href="/scriptures/smriti" shallow>
+                <div className="hover:text-indigo-500 cursor-pointer">
+                  Smriti
+                </div>{" "}
+              </Link>
+            </li>
+            <li>
+              <Link href="/scriptures/upnishad" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
                   Upanishads
                 </div>
@@ -50,7 +59,7 @@ function Footer() {
             </li>
 
             <li>
-              <Link href="/scriptures/Epics" shallow>
+              <Link href="/scriptures/epics" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
                   Epics (Ramayana, Mahabharata)
                 </div>{" "}
@@ -63,12 +72,16 @@ function Footer() {
           <ul className="space-y-2">
             <li>
               <Link href="/about" shallow>
-                <div className="hover:text-indigo-500 cursor-pointer">About</div>{" "}
+                <div className="hover:text-indigo-500 cursor-pointer">
+                  About
+                </div>{" "}
               </Link>
             </li>
             <li>
               <Link href="/contact" shallow>
-                <div className="hover:text-indigo-500 cursor-pointer">Contact</div>{" "}
+                <div className="hover:text-indigo-500 cursor-pointer">
+                  Contact
+                </div>{" "}
               </Link>
             </li>
             <li>
@@ -85,7 +98,9 @@ function Footer() {
             </li>
             <li>
               <Link href="/donation" shallow>
-                <div className="hover:text-indigo-500 cursor-pointer">Donation</div>{" "}
+                <div className="hover:text-indigo-500 cursor-pointer">
+                  Donation
+                </div>{" "}
               </Link>
             </li>
           </ul>

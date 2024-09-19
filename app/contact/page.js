@@ -28,7 +28,7 @@ export default function ContactForm() {
     
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbycpl_UyIDg3FdSRTi0JjBK9wl7nwDNAd7u2IsVTsV3EWfuAdTDL5ANgEVJiX8pXzqH_A/exec',
+        'https://script.google.com/macros/s/AKfycbxwLKUmNKjTwUMuUoauAWrPk_bFKH6HumGtuTjDb7fj43ohGpaikP6yZnTlITS_QwI8Xw/exec',
         {
           method: 'POST',
           body: formData,
@@ -52,7 +52,7 @@ export default function ContactForm() {
   
 
   return (
-    <div className="w-full">
+    <div className="w-full container mx-auto">
       {/* Section 1: Hero section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-black text-white">
         <div className="container px-4 md:px-6">
@@ -66,7 +66,7 @@ export default function ContactForm() {
       </section>
 
       {/* Section 2: Contact form */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      <section className="w-full  mx-20 py-12  lg:py-22">
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 px-4 md:px-6">
           <div>
             <h2 className="mb-6 text-3xl font-bold">Contact Us</h2>
