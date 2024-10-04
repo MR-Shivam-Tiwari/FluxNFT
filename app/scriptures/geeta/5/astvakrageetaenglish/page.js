@@ -3,43 +3,39 @@
 import React, { useState, useRef, useCallback, useEffect, Suspense } from "react";
 import { EpubView } from "react-reader";
 import mahabharataEpub from "./Astvakra-Gita.epub";
-import { usePathname, useRouter } from "next/navigation";
-// import { useLocation, useNavigate } from "react-router-dom";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function AstavakraGeetaEnglish() {
   const router = useRouter();
-  const location = usePathname();
-  const searchParams = new URLSearchParams(location.search);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const [epubFile, setEpubFile] = useState(mahabharataEpub);
   const [locationState, setLocationState] = useState(null);
   const [books, setBooks] = useState([]);
   const [selectedBookIndex, setSelectedBookIndex] = useState(
-    parseInt(searchParams.get("selectedBookIndex")) || 0
+    parseInt(searchParams.get("selectedBookIndex") || "0")
   );
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const renditionRef = useRef(null);
   const drawerRef = useRef(null);
-  const [pageNumberFilter, setPageNumberFilter] = useState(null);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (!searchParams.get("selectedBookIndex")) {
-      searchParams.set("selectedBookIndex", selectedBookIndex);
-      // router.push({
-      //   pathname: location.pathname,
-      //   search: searchParams.toString(),
-      // });
-    }
-  }, [selectedBookIndex]);
+    const params = new URLSearchParams(searchParams);
+    params.set("selectedBookIndex", selectedBookIndex.toString());
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  }, [selectedBookIndex, pathname, router]);
 
   useEffect(() => {
     const chapterFromUrl = searchParams.get("selectedBookIndex");
     if (chapterFromUrl && parseInt(chapterFromUrl) !== selectedBookIndex) {
       setSelectedBookIndex(parseInt(chapterFromUrl));
     }
-  }, [location.search]);
+  }, [searchParams]);
+
+
 
   useEffect(() => {
     if (books[selectedBookIndex]) {
@@ -50,7 +46,22 @@ function AstavakraGeetaEnglish() {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+  const handleRendition = useCallback((rendition) => {
+    renditionRef.current = rendition;
+    renditionRef.current.on("relocated", (location) => {
+      console.log("Relocated to:", location);
+    });
+    renditionRef.current.on("displayError", (error) => {
+      console.error("Display Error:", error);
+    });
+    renditionRef.current.on("rendered", () => {
+      setLoading(false);
+    });
+  }, []);
 
+  const onLocationChanged = (loc) => {
+    setLocationState(loc);
+  };
   const goToPage = (pageNumber) => {
     if (renditionRef.current && pageNumber) {
       renditionRef.current.display(pageNumber);
@@ -92,9 +103,9 @@ function AstavakraGeetaEnglish() {
     reader.readAsArrayBuffer(file);
   };
 
-  const onLocationChanged = (loc) => {
-    setLocationState(loc);
-  };
+
+
+
 
   const onTocLoaded = (toc) => {
     const books = toc.map((item, index) => ({
@@ -103,21 +114,16 @@ function AstavakraGeetaEnglish() {
       index: index,
     }));
     setBooks(books);
-    setSelectedBookIndex(parseInt(searchParams.get("selectedBookIndex")) || 0);
+    setSelectedBookIndex(parseInt(searchParams.get("selectedBookIndex") || "0"));
   };
 
-  const handleRendition = useCallback((rendition) => {
-    renditionRef.current = rendition;
-    renditionRef.current.on("relocated", (location) => {
-      console.log("Relocated to:", location);
-    });
-    renditionRef.current.on("displayError", (error) => {
-      console.error("Display Error:", error);
-    });
-    renditionRef.current.on("rendered", () => {
-      setLoading(false); // Set loading state to false when EPUB is rendered
-    });
-  }, []);
+  const goToBook = (index) => {
+    const book = books[index];
+    if (book) {
+      setLocationState(book.href);
+      setSelectedBookIndex(index);
+    }
+  };
 
   const nextChapter = () => {
     const nextIndex = selectedBookIndex + 1;
@@ -130,19 +136,6 @@ function AstavakraGeetaEnglish() {
     const prevIndex = selectedBookIndex - 1;
     if (prevIndex >= 0) {
       goToBook(prevIndex);
-    }
-  };
-
-  const goToBook = (index) => {
-    const book = books[index];
-    if (book) {
-      setLocationState(book.href);
-      setSelectedBookIndex(index);
-      searchParams.set("selectedBookIndex", index);
-      // router.push({
-      //   pathname: location.pathname,
-      //   search: searchParams.toString(),
-      // });
     }
   };
 
@@ -316,7 +309,7 @@ function AstavakraGeetaEnglish() {
             >
               <div className="flex items-center   lg:px-10 " >
                 <div className="flex items-center  py-2 " style={styles.scrollbar}>
-                <h3 className="inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground h-8 bg-orange-600 border px-3 py-1 text-white "> Select Chapter</h3>
+                  <h3 className="inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground h-8 bg-orange-600 border px-3 py-1 text-white "> Select Chapter</h3>
                   <ul className=" flex justify-center">
                     {books.map((book, index) => (
                       <button
@@ -363,20 +356,20 @@ function AstavakraGeetaEnglish() {
                 style={{ flex: "1", overflowX: "hidden" }}
               />
             </div>
-          <div className=" bg-orange-100 w-full p-2 px-4 lg:px-20 flex justify-between fixed bottom-0 left-0  ">
-            <button
-              className="bg-gray-700 p-2 font-bold text-white px-4 w-[130px]   rounded"
-              onClick={prevChapter}
-            >
-              Previous
-            </button>
-            <button
-              className="bg-[#8b4513] font-bold text-white w-[130px]   px-4 p-2 rounded"
-              onClick={nextChapter}
-            >
-              Next
-            </button>
-          </div>
+            <div className="bg-orange-100 w-full p-2 px-4 lg:px-20 flex justify-between fixed bottom-0 left-0">
+              <button
+                className="bg-gray-700 p-2 font-bold text-white px-4 w-[130px] rounded"
+                onClick={prevChapter}
+              >
+                Previous
+              </button>
+              <button
+                className="bg-[#8b4513] font-bold text-white w-[130px] px-4 p-2 rounded"
+                onClick={nextChapter}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </>
       ) : (

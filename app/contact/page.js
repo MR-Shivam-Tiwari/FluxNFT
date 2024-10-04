@@ -66,8 +66,8 @@ export default function ContactForm() {
       </section>
 
       {/* Section 2: Contact form */}
-      <section className="w-full  mx-20 py-12  lg:py-22">
-        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 px-4 md:px-6">
+      <section className="  mx-20 py-12  lg:py-22">
+        <div className="container mx-auto px-4 md:px-6">
           <div>
             <h2 className="mb-6 text-3xl font-bold">Contact Us</h2>
             <p className="text-gray-600 mb-4">
@@ -158,7 +158,7 @@ export default function ContactForm() {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <div>
               <h3 className="mb-2 text-2xl font-bold">Contact Information</h3>
               <div className="space-y-2 text-gray-600">
@@ -167,7 +167,6 @@ export default function ContactForm() {
               </div>
             </div>
 
-            {/* Social Media */}
             <div>
               <h3 className="mb-2 text-2xl font-bold">Social Media</h3>
               <div className="flex gap-4">
@@ -188,10 +187,9 @@ export default function ContactForm() {
                   </svg>
                   <span className="sr-only">Twitter</span>
                 </a>
-                {/* Add more social media icons as needed */}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
