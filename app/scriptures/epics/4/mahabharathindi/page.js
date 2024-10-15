@@ -649,4 +649,11 @@ function Ramcharitmanas() {
   );
 }
 
-export default Ramcharitmanas;
+// export default ;
+export default function MahabharatHindi() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Ramcharitmanas />
+    </Suspense>
+  );
+}
