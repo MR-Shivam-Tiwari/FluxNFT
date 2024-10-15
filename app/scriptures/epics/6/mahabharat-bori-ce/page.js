@@ -1,6 +1,6 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { EpubView } from "react-reader";
 // import { userouter.push, useLocation } from "react-router-dom";
@@ -22,15 +22,152 @@ function MahabharatBoriCe() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const router = useRouter();
-  const locationState = usePathname();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const drawerRef = useRef(null);
 
   const query = new URLSearchParams(locationState.search);
-  const initialLocation = query.get("loc");
-  const initialBookIndex = query.get("bookIndex");
-  const initialParvHref = query.get("parvHref");
-  const initialUparvHref = query.get("uparvHref");
-  const initialChapterHref = query.get("chapterHref");
+  useEffect(() => {
+    const loc = searchParams.get("loc");
+    const bookIndex = searchParams.get("bookIndex");
+    const parvHref = searchParams.get("parvHref");
+    const uparvHref = searchParams.get("uparvHref");
+    const chapterHref = searchParams.get("chapterHref");
 
+    if (loc) setLocation(loc);
+    if (bookIndex && books[parseInt(bookIndex)]) {
+      const book = books[parseInt(bookIndex)];
+      setSelectedBook(book);
+      setParvs(book.parvs);
+    }
+    if (parvHref && parvs.length > 0) {
+      const parv = parvs.find(p => p.href === parvHref);
+      if (parv) {
+        setSelectedParv(parv);
+        setUparvs(parv.subitems || []);
+      }
+    }
+    if (uparvHref && uparvs.length > 0) {
+      const uparv = uparvs.find(u => u.href === uparvHref);
+      if (uparv) {
+        setSelectedUparv(uparv);
+        setChapters(uparv.subitems || []);
+      }
+    }
+    if (chapterHref && chapters.length > 0) {
+      const chapter = chapters.find(c => c.href === chapterHref);
+      if (chapter) setSelectedChapter(chapter);
+    }
+  }, [searchParams, books, parvs, uparvs, chapters]);
+
+
+  const updateRoute = (newParams) => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    Object.entries(newParams).forEach(([key, value]) => {
+      if (value === null) {
+        current.delete(key);
+      } else {
+        current.set(key, value);
+      }
+    });
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+    router.push(`${pathname}${query}`);
+  };
+
+  const onTocLoaded = (toc) => {
+    const booksData = toc.map((item, index) => ({
+      label: item.label,
+      href: item.href,
+      parvs: item.subitems || [],
+      index: index,
+    }));
+    setBooks(booksData);
+  };
+
+  const handleRendition = useCallback((rendition) => {
+    renditionRef.current = rendition;
+    renditionRef.current.on("relocated", (location) => {
+      setLocation(location.start.cfi);
+      updateRoute({ loc: location.start.cfi });
+    });
+    renditionRef.current.on("displayError", (error) => {
+      console.error("Display Error:", error);
+    });
+    renditionRef.current.on("rendered", () => {
+      setLoading(false);
+    });
+  }, []);
+  const handleBookChange = (book) => {
+    setSelectedBook(book);
+    setParvs(book.parvs);
+    setSelectedParv(null);
+    setUparvs([]);
+    setSelectedUparv(null);
+    setChapters([]);
+    setLocation(book.href);
+    updateRoute({ bookIndex: book.index, loc: book.href, parvHref: null, uparvHref: null, chapterHref: null });
+  };
+
+  const selectParv = (event) => {
+    const href = event.target.value;
+    const parv = parvs.find((p) => p.href === href);
+    setSelectedParv(parv);
+    if (parv && parv.subitems && parv.subitems.length > 0) {
+      setUparvs(parv.subitems);
+      setSelectedUparv(null);
+      setChapters([]);
+    } else {
+      setUparvs([]);
+      setSelectedUparv(null);
+      setChapters(parv ? parv.subitems || [] : []);
+    }
+    setLocation(href);
+    updateRoute({ parvHref: href, uparvHref: null, chapterHref: null, loc: href });
+  };
+
+  const selectUparv = (event) => {
+    const href = event.target.value;
+    const uparv = uparvs.find((up) => up.href === href);
+    setSelectedUparv(uparv);
+    setChapters(uparv ? uparv.subitems || [] : []);
+    setLocation(href);
+    updateRoute({ uparvHref: href, chapterHref: null, loc: href });
+  };
+
+  const selectChapter = (event) => {
+    const href = event.target.value;
+    const chapter = chapters.find((c) => c.href === href);
+    setSelectedChapter(chapter);
+    setLocation(href);
+    updateRoute({ chapterHref: href, loc: href });
+  };
+
+
+  const goToPage = (pageNumber) => {
+    if (renditionRef.current && pageNumber) {
+      renditionRef.current.display(pageNumber);
+    }
+  };
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    readFile(file);
+  };
+  const readFile = (file) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setEpubFile(event.target.result);
+    };
+    reader.onerror = (error) => {
+      console.error("Error reading file", error);
+    };
+    reader.readAsArrayBuffer(file);
+  };
   useEffect(() => {
     if (initialLocation) {
       setLocation(initialLocation);
@@ -76,9 +213,6 @@ function MahabharatBoriCe() {
     }
   }, [initialChapterHref, chapters]);
 
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
 
   const drawerStyle = {
     position: "fixed",
@@ -108,39 +242,15 @@ function MahabharatBoriCe() {
     cursor: "pointer",
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    readFile(file);
-  };
 
-  const readFile = (file) => {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      setEpubFile(event.target.result);
-    };
-    reader.onerror = (error) => {
-      console.error("Error reading file", error);
-    };
-    reader.readAsArrayBuffer(file);
-  };
+
 
   const onLocationChanged = (loc) => {
     setLocation(loc);
     router.push(`?loc=${loc}&bookIndex=${selectedBook?.index || ""}&parvHref=${selectedParv?.href || ""}&uparvHref=${selectedUparv?.href || ""}&chapterHref=${selectedChapter?.href || ""}`);
   };
 
-  const handleRendition = useCallback((rendition) => {
-    renditionRef.current = rendition;
-    renditionRef.current.on("relocated", (location) => {
-      console.log("Relocated to:", location);
-    });
-    renditionRef.current.on("displayError", (error) => {
-      console.error("Display Error:", error);
-    });
-    renditionRef.current.on("rendered", () => {
-      setLoading(false); // EPUB file is rendered, stop loading
-    });
-  }, []);
+
 
   const nextPage = () => {
     if (renditionRef.current) {
@@ -154,33 +264,8 @@ function MahabharatBoriCe() {
     }
   };
 
-  const onTocLoaded = (toc) => {
-    const books = toc.map((item, index) => ({
-      label: item.label,
-      href: item.href,
-      parvs: item.subitems || [],
-      index: index,
-    }));
-    setBooks(books);
-    setSelectedBook(null);
-    setParvs([]);
-    setSelectedParv(null);
-    setUparvs([]);
-    setSelectedUparv(null);
-    setChapters([]);
-  };
 
-  const handleBookChange = (book) => {
-    if (book) {
-      setSelectedBook(book);
-      setParvs(book.parvs);
-      setSelectedParv(null);
-      setUparvs([]);
-      setSelectedUparv(null);
-      setChapters([]);
-      goToChapter(book.href);
-    }
-  };
+
 
   const selectBook = (event) => {
     const selectedBookLabel = event.target.value;
@@ -188,45 +273,54 @@ function MahabharatBoriCe() {
     handleBookChange(book);
   };
 
-  const selectParv = (event) => {
-    const href = event.target.value;
-    const parv = parvs.find((p) => p.href === href);
-    setSelectedParv(parv);
-    if (parv && parv.subitems && parv.subitems.length > 0) {
-      setUparvs(parv.subitems);
-      setSelectedUparv(null);
-      setChapters([]);
-    } else {
-      setUparvs([]);
-      setSelectedUparv(null);
-      setChapters(parv ? parv.subitems || [] : []);
-    }
-    router.push(`?loc=${href}&bookIndex=${selectedBook?.index || ""}&parvHref=${href}`);
-  };
 
-  const selectUparv = (event) => {
-    const href = event.target.value;
-    const uparv = uparvs.find((up) => up.href === href);
-    setSelectedUparv(uparv);
-    setChapters(uparv ? uparv.subitems || [] : []);
-    router.push(`?loc=${href}&bookIndex=${selectedBook?.index || ""}&parvHref=${selectedParv?.href || ""}&uparvHref=${href}`);
-  };
 
-  const selectChapter = (event) => {
-    const href = event.target.value;
-    setSelectedChapter(href);
-    router.push(`?loc=${href}&bookIndex=${selectedBook?.index || ""}&parvHref=${selectedParv?.href || ""}&uparvHref=${selectedUparv?.href || ""}&chapterHref=${href}`);
-  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (drawerRef.current && !drawerRef.current.contains(event.target) && isDrawerOpen) {
+        setIsDrawerOpen(false);
+      }
+    };
 
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDrawerOpen]);
   const goToChapter = (href) => {
     setLocation(href);
   };
 
-  const goToPage = (pageNumber) => {
-    if (renditionRef.current && pageNumber) {
-      renditionRef.current.display(pageNumber);
+
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress < 90) {
+          return Math.min(prevProgress + 1, 90); // Increment up to 90%
+        } else {
+          return prevProgress;
+        }
+      });
+    }, 100); // 100ms interval for slower progress
+
+    const timeout = setTimeout(() => {
+      setSlowInternetMessage(true); // Show slow internet message after 45 seconds
+    }, 25000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      setProgress(100); // Set progress to 100% when the book is fully loaded
+      setSlowInternetMessage(false); // Hide slow internet message once loaded
     }
-  };
+  }, [loading]);
 
   const ChapterList = ({ chapters }) => {
     if (chapters.length === 0) {
@@ -254,45 +348,27 @@ function MahabharatBoriCe() {
     );
   };
 
-  const drawerRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (drawerRef.current && !drawerRef.current.contains(event.target) && isDrawerOpen) {
-        setIsDrawerOpen(false);
-      }
-    };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isDrawerOpen]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        if (prevProgress < 100) {
-          return Math.min(prevProgress + 1, 100); // Increment by 1
-        } else {
-          clearInterval(interval);
-          setLoading(false); // Optionally, set loading to false when done
-          return prevProgress;
-        }
-      });
-    }, 100); // 100ms interval for slower progress
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
       {loading && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white z-50">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-orange-500"></div>
-            <div className="mt-4 text-lg font-medium text-blue-700">Loading...</div>
-            <div className="text-sm font-medium text-orange-700">{progress}%</div>
+            <div className="w-20 h-20 border-4 border-dashed rounded-full animate-spin border-orange-500"></div>
+            <div className="mt-4 text-lg font-medium text-blue-700">
+              Loading...
+            </div>
+            <div className="text-sm font-medium text-orange-700">
+              {progress}%
+            </div>
+            {slowInternetMessage && (
+              <div className="mt-2 text-sm font-medium text-red-600">
+                Your internet is slow. Please wait...
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -580,15 +656,14 @@ function MahabharatBoriCe() {
                 }}
               >
                 <EpubView
-                  url={epubFile}
-                  location={location}
-                  locationChanged={onLocationChanged}
-                  tocChanged={onTocLoaded}
-                  epubOptions={{ flow: "scrolled" }} // Ensure content is scrollable
-                  ref={renditionRef}
-                  getRendition={handleRendition}
-                  style={{ flex: "1", overflowX: "hidden" }}
-                />
+                url={epubFile}
+                location={location}
+                tocChanged={onTocLoaded}
+                epubOptions={{ flow: "scrolled" }}
+                ref={renditionRef}
+                getRendition={handleRendition}
+                style={{ flex: "1", overflowX: "hidden" }}
+              />
               </div>
             </div>
             <div className="bg-orange-100 w-full p-3 lg:px-20 flex justify-between fixed bottom-0 left-0">

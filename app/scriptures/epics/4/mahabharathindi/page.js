@@ -16,6 +16,7 @@ function Ramcharitmanas() {
   const [selectedUparv, setSelectedUparv] = useState(null);
   const [selectedChapter, setSelectedChapter] = useState(null);
   const renditionRef = useRef(null);
+  const [slowInternetMessage, setSlowInternetMessage] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [pageNumberFilter, setPageNumberFilter] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -141,7 +142,7 @@ function Ramcharitmanas() {
     setLocation(book.href);
     updateRoute({ bookIndex: book.index, loc: book.href, parvHref: null, uparvHref: null, chapterHref: null });
   };
-  
+
   const selectParv = (event) => {
     const href = event.target.value;
     const parv = parvs.find((p) => p.href === href);
@@ -158,7 +159,7 @@ function Ramcharitmanas() {
     setLocation(href);
     updateRoute({ parvHref: href, uparvHref: null, chapterHref: null, loc: href });
   };
-  
+
   const selectUparv = (event) => {
     const href = event.target.value;
     const uparv = uparvs.find((up) => up.href === href);
@@ -167,7 +168,7 @@ function Ramcharitmanas() {
     setLocation(href);
     updateRoute({ uparvHref: href, chapterHref: null, loc: href });
   };
-  
+
   const selectChapter = (event) => {
     const href = event.target.value;
     const chapter = chapters.find((c) => c.href === href);
@@ -175,7 +176,7 @@ function Ramcharitmanas() {
     setLocation(href);
     updateRoute({ chapterHref: href, loc: href });
   };
-  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (drawerRef.current && !drawerRef.current.contains(event.target) && isDrawerOpen) {
@@ -196,19 +197,30 @@ function Ramcharitmanas() {
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
-        if (prevProgress < 100) {
-          return Math.min(prevProgress + 1, 100);
+        if (prevProgress < 90) {
+          return Math.min(prevProgress + 1, 90); // Increment up to 90%
         } else {
-          clearInterval(interval);
-          setLoading(false);
           return prevProgress;
         }
       });
-    }, 100);  
+    }, 100); // 100ms interval for slower progress
 
-    return () => clearInterval(interval);
+    const timeout = setTimeout(() => {
+      setSlowInternetMessage(true); // Show slow internet message after 45 seconds
+    }, 25000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, []);
 
+  useEffect(() => {
+    if (!loading) {
+      setProgress(100); // Set progress to 100% when the book is fully loaded
+      setSlowInternetMessage(false); // Hide slow internet message once loaded
+    }
+  }, [loading]);
 
 
   const drawerStyle = {
@@ -252,6 +264,11 @@ function Ramcharitmanas() {
               <div className="text-sm font-medium text-orange-700">
                 {progress}%
               </div>
+              {slowInternetMessage && (
+                <div className="mt-2 text-sm font-medium text-red-600">
+                  Your internet is slow. Please wait...
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -449,7 +466,7 @@ function Ramcharitmanas() {
                 <div
                   className="hidden lg:block"
                   style={{
-                    padding: "10px",
+                    padding: "4px",
                     textAlign: "left",
                     overflowY: "auto",
                   }}
@@ -471,7 +488,7 @@ function Ramcharitmanas() {
                           }}
                         >
                           <option value="" disabled>
-                          Select Mahabharata Book 
+                            Select Mahabharata Book
 
                           </option>
                           {books.map((book, index) => (
@@ -582,11 +599,11 @@ function Ramcharitmanas() {
                     epubOptions={{ flow: "scrolled" }} // Ensure content is scrollable
                     ref={renditionRef}
                     getRendition={handleRendition}
-                    style={{ flex: "1", overflowX: "hidden"   }}
+                    style={{ flex: "1", overflowX: "hidden" }}
                   />
                 </div>
               </div>
-              <div className="bg-orange-100 w-full p-3 lg:px-20 flex justify-between fixed bottom-0 left-0">
+              <div className="bg-orange-100 w-full p-1.5 lg:px-20 flex justify-between fixed bottom-0 left-0">
                 <button
                   className="bg-gray-700 w-40 p-2 font-bold text-white px-4 rounded"
                   onClick={prevPage}

@@ -3,38 +3,25 @@
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { EpubView } from "react-reader";
-// import { userouter.push, useLocation } from "react-router-dom";
 
 function MahabharataEnglish() {
   const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1722853578550-KMGMB+18++VOL.epub");
   const [books, setBooks] = useState([]);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loc, setLocation] = useState(null);
-  const [selectedBookIndex, setSelectedBookIndex] = useState(null);
-  const [pageNumberFilter, setPageNumberFilter] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [slowInternetMessage, setSlowInternetMessage] = useState(false);
   const renditionRef = useRef(null);
-  const drawerRef = useRef(null);
   const router = useRouter();
   const location = usePathname();
 
-  const query = new URLSearchParams(location.search);
-  const initialLocation = query.get("loc");
-  const initialBookIndex = query.get("bookIndex");
-
   useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const initialLocation = query.get("loc");
     if (initialLocation) {
       setLocation(initialLocation);
     }
-    if (initialBookIndex) {
-      setSelectedBookIndex(parseInt(initialBookIndex));
-    }
-  }, [initialLocation, initialBookIndex]);
-
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
+  }, []);
 
   const goToPage = (pageNumber) => {
     if (renditionRef.current && pageNumber) {
@@ -60,7 +47,7 @@ function MahabharataEnglish() {
 
   const onLocationChanged = (loc) => {
     setLocation(loc);
-    router.push(`?loc=${loc}&bookIndex=${selectedBookIndex}`, { replace: true }); // Update the URL with the new location and selected book index without adding a new entry to the history stack
+    router.push(`?loc=${loc}`, { replace: true }); // Update the URL with the new location without adding a new entry to the history stack
   };
 
   const onTocLoaded = (toc) => {
@@ -70,17 +57,13 @@ function MahabharataEnglish() {
       index: index,
     }));
     setBooks(books);
-    if (initialBookIndex !== null) {
-      setSelectedBookIndex(parseInt(initialBookIndex));
-    } else {
-      setSelectedBookIndex(0);
-    }
   };
 
   const handleRendition = useCallback((rendition) => {
     renditionRef.current = rendition;
     renditionRef.current.on("relocated", (location) => {
-      console.log("Relocated to:", location);
+      setLocation(location.start.cfi);
+      router.push(`?loc=${location.start.cfi}`, { replace: true });
     });
     renditionRef.current.on("displayError", (error) => {
       console.error("Display Error:", error);
@@ -88,7 +71,7 @@ function MahabharataEnglish() {
     renditionRef.current.on("rendered", () => {
       setLoading(false); // EPUB file is rendered, stop loading
     });
-  }, []);
+  }, [router]);
 
   const nextPage = () => {
     if (renditionRef.current) {
@@ -106,39 +89,71 @@ function MahabharataEnglish() {
     const book = books[index];
     if (book) {
       setLocation(book.href);
-      setSelectedBookIndex(index);
-      router.push(`?loc=${book.href}&bookIndex=${index}`); // Update the URL with the book's href and index
+      router.push(`?loc=${book.href}`, { replace: true }); // Update the URL with the book's href
     }
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (drawerRef.current && !drawerRef.current.contains(event.target) && isDrawerOpen) {
-        setIsDrawerOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isDrawerOpen]);
-
-  useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
-        if (prevProgress < 100) {
-          return Math.min(prevProgress + 0.5, 100); // Increment by 0.5
+        if (prevProgress < 90) {
+          return Math.min(prevProgress + 1, 90); // Increment up to 90%
         } else {
-          clearInterval(interval);
-          setLoading(false); // Optionally, set loading to false when done
           return prevProgress;
         }
       });
     }, 100); // 100ms interval for slower progress
 
-    return () => clearInterval(interval);
+    const timeout = setTimeout(() => {
+      setSlowInternetMessage(true); // Show slow internet message after 45 seconds
+    }, 25000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      setProgress(100); // Set progress to 100% when the book is fully loaded
+      setSlowInternetMessage(false); // Hide slow internet message once loaded
+    }
+  }, [loading]);
+
+  const styles = {
+    scrollbar: {
+      scrollbarWidth: 'thin', /* For Firefox */
+      scrollbarColor: '#c0c0c0 #f0f0f0', /* For Firefox */
+      overflowX: 'auto',
+    },
+    customScrollbar: `
+      .flex::-webkit-scrollbar {
+        height: 8px;
+      }
+  
+      .flex::-webkit-scrollbar-track {
+        background: #f0f0f0;
+      }
+  
+      .flex::-webkit-scrollbar-thumb {
+        background-color: #c0c0c0;
+        border-radius: 10px;
+        border: 2px solid #f0f0f0;
+      }
+    `,
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      router.back(); // Navigate back to the previous route when the browser back button is clicked, without leaving the website
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [router]);
 
   return (
     <>
@@ -152,6 +167,11 @@ function MahabharataEnglish() {
             <div className="text-sm font-medium text-orange-700">
               {progress}%
             </div>
+            {slowInternetMessage && (
+              <div className="mt-2 text-sm font-medium text-red-600">
+                Your internet is slow. Please wait...
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -163,201 +183,36 @@ function MahabharataEnglish() {
           flexDirection: "column",
         }}
       >
-        <div className="flex px-2 items-center justify-between lg:hidden">
-          <div>
-            <button
-              className="flex bg-gray-400 h-9 my-2 items-center font-bold"
-              onClick={toggleDrawer}
-              style={{
-                color: "black",
-                padding: "10px",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              <span className="mb-1" style={{ marginLeft: "5px" }}>
-                Select Parva
-              </span>
-            </button>
-          </div>
-          <div className="flex gap-2 items-center">
-            <input
-              type="number"
-              placeholder="Search By page number"
-              value={pageNumberFilter || ""}
-              onChange={(e) => setPageNumberFilter(e.target.value)}
-              id="first_name"
-              className="bg-gray-50 w-[175px] h-10 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block px-2 py-2.5"
-            />
-            <button
-              onClick={() => goToPage(pageNumberFilter)}
-              style={{ cursor: "pointer" }}
-              className="bg-[#8b4513] font-bold text-white p-2 rounded"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-search"
-                viewBox="0 0 16 16"
+        <div className="flex items-center pt-1 pb-0.5 " style={styles.scrollbar}>
+          <ul className="flex gap-2 lg:px-5 px-1 justify-center">
+            {books.map((book, index) => (
+              <button
+                key={index}
+                onClick={() => goToBook(index)}
+                style={{
+                  cursor: "pointer",
+                  fontWeight: loc === book.href ? "bold" : "normal",
+                  color: loc === book.href ? "white" : "black",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  whiteSpace: "nowrap",
+                }}
+                className="hover:bg-gray-400 josefin-sans-bold bg-orange-500 transition-colors rounded-md text-md font-bold ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-8 flex items-center px-4 py-2"
               >
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-              </svg>
-            </button>
-          </div>
+                {book.label}
+              </button>
+            ))}
+          </ul>
         </div>
-
-        <div
-          ref={drawerRef}
-          className="z-20 lg:hidden lg:static lg:z-auto bg-gray-200"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: isDrawerOpen ? 0 : "-250px",
-            width: "250px",
-            height: "100%",
-            backgroundColor: "#fff",
-            boxShadow: "2px 0 5px rgba(0, 0, 0, 0.2)",
-            transition: "left 0.3s ease",
-          }}
-        >
-          <div className="flex pt-2 px-2 justify-end">
-            <button
-              className="lg:hidden font-bold p-2 text-white text-lg bg-gray-400 rounded"
-              onClick={toggleDrawer}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-x-lg"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L7.293 8z" />
-              </svg>
-            </button>
-          </div>
-          <h3 className="font-bold mb-1">Select Parva</h3>
-          <div
-            className="flex-shrink-0 px-5 lg:px-0 lg:block"
-            style={{
-              flex: "0 0 250px",
-              textAlign: "left",
-              maxHeight: "calc(100vh - 100px)",
-              overflowY: "auto",
-            }}
-          >
-            <ul className="mb-3">
-              {books.map((book, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    goToBook(index);
-                    toggleDrawer();
-                  }}
-                  style={{
-                    cursor: "pointer",
-                    fontWeight: index === selectedBookIndex ? "bold" : "normal",
-                    background: index === selectedBookIndex ? "black" : "",
-                    color: index === selectedBookIndex ? "white" : "black",
-                  }}
-                  className="inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 justify-start gap-2 text-black"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-5 h-5"
-                  >
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-                  </svg>
-                  {book.label}
-                </button>
-              ))}
-            </ul>
-          </div>
-        </div>
-
         {epubFile ? (
           <>
             <div style={{ width: "100%" }}>
-              <div
-                className="hidden lg:block"
-                style={{
-                  padding: "5px",
-                  textAlign: "left",
-                  overflowY: "auto",
-                }}
-              >
-                <div className="flex items-center justify-between lg:px-10">
-                  <div>
-                    <select
-                      className="border-2 px-[20px] py-2 rounded-[7px] bg-orange-100 border-gray-400"
-                      value={books[selectedBookIndex]?.label || ""}
-                      onChange={(e) => {
-                        const selectedLabel = e.target.value;
-                        const selectedIndex = books.findIndex(
-                          (book) => book.label === selectedLabel
-                        );
-                        setSelectedBookIndex(selectedIndex);
-                        goToBook(selectedIndex);
-                      }}
-                      style={{
-                        fontSize: "14px",
-                        width: "220px",
-                      }}
-                    >
-                      <option value="" disabled>
-                        Select Parva
-                      </option>
-                      {books &&
-                        books.map((book, index) => (
-                          <option key={index} value={book.label}>
-                            {index + 1}. {book.label}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                  <div className="hidden bg-gray-200 lg:block">
-                    <div className="flex gap-5 p-2 px- justify-end items-center">
-                      <div className="flex items-center"></div>
-
-                      <div className="flex gap-4 items-center">
-                        <input
-                          type="number"
-                          placeholder="Search By page number"
-                          value={pageNumberFilter || ""}
-                          onChange={(e) => setPageNumberFilter(e.target.value)}
-                          id="first_name"
-                          className="bg-gray-50 w-[205px] h-10 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block  px-2 py-2.5"
-                        />
-                        <button
-                          onClick={() => goToPage(pageNumberFilter)}
-                          style={{ cursor: "pointer" }}
-                          className="bg-[#8b4513] font-bold text-white  px-4  p-2 rounded"
-                        >
-                          Search
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <div
                 className="w-[100%] min-h-screen pb-20 bg-orange-200"
                 style={{
                   flex: "1",
                   overflowY: "auto",
-                  overflowX: "hidden",
+                  overflowX: "auto",
                   display: "flex",
                 }}
               >
@@ -373,7 +228,7 @@ function MahabharataEnglish() {
                 />
               </div>
             </div>
-            <div className="bg-orange-100 w-full p-3 lg:px-20 flex justify-between fixed bottom-0 left-0">
+            <div className="bg-orange-100 w-full p-1.5 lg:px-20 flex justify-between fixed bottom-0 left-0">
               <button
                 className="bg-gray-700 w-40 p-2 font-bold text-white px-4 rounded"
                 onClick={prevPage}

@@ -155,6 +155,18 @@ const booksData = [
         src: "/geetaimage/ashteng.png",
         route: "/scriptures/geeta/5",
     },
+    {
+        id: 26,
+        name: "Ramcharitmanas",
+        src: "/epicimage/ramcharit.jpg",
+        route: "/scriptures/epics/3",
+    },
+    {
+        id: 27,
+        name: "Manusmriti",
+        src: "/smritiimage/manusmriti.jpg",
+        route: "/scriptures/smriti/1",
+    },
     // Add more book objects here
 ];
 
