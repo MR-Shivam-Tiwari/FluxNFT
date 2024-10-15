@@ -255,7 +255,7 @@ function MahabharataEnglish() {
 }
 
 
-export default function MahabharataEnglish() {
+export default function MahabharataEng() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <MahabharataEnglish />

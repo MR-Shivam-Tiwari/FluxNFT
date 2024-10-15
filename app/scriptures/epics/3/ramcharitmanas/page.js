@@ -653,7 +653,7 @@ function Ramcharitmanas() {
   );
 }
 
-export default function Ramcharitmanas() {
+export default function Ramcharitmanashindi() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Ramcharitmanas />

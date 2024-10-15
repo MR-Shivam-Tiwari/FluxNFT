@@ -711,7 +711,7 @@ function MahabharatBoriCe() {
   );
 }
 
-export default function MahabharatBoriCe() {
+export default function MahabharatBori() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <MahabharatBoriCe />
