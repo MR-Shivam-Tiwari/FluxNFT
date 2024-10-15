@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback, useEffect , Suspense } from "react";
 import { EpubView } from "react-reader";
 
 function Ramcharitmanas() {
@@ -653,4 +653,10 @@ function Ramcharitmanas() {
   );
 }
 
-export default Ramcharitmanas;
+export default function Ramcharitmanas() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Ramcharitmanas />
+    </Suspense>
+  );
+}

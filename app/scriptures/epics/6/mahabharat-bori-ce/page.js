@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback, useEffect , Suspense } from "react";
 import { EpubView } from "react-reader";
 // import { userouter.push, useLocation } from "react-router-dom";
 
@@ -711,4 +711,10 @@ function MahabharatBoriCe() {
   );
 }
 
-export default MahabharatBoriCe;
+export default function MahabharatBoriCe() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MahabharatBoriCe />
+    </Suspense>
+  );
+}

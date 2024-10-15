@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback, useEffect ,Suspense } from "react";
 import { EpubView } from "react-reader";
 
 function MahabharataEnglish() {
@@ -254,4 +254,11 @@ function MahabharataEnglish() {
   );
 }
 
-export default MahabharataEnglish;
+
+export default function MahabharataEnglish() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MahabharataEnglish />
+    </Suspense>
+  );
+}
