@@ -10,33 +10,33 @@ function page() {
         );
         return formattedDescription;
     };
-    const description = `'The Isha Upanishad', a concise yet profound text within Hindu scriptures, explores fundamental questions about existence and spirituality in just 18 verses. It delves into the nature of the self (atman) and the universe (brahman), emphasizing their interconnectedness. \n 'The Upanishad' stresses the importance of detachment from material desires and urges individuals to seek spiritual enlightenment. It advocates for a life of ethical conduct and inner fulfillment rather than pursuit of transient pleasures. \n Through its teachings, the Isha Upanishad encourages seekers to realize the divine essence within themselves and to transcend the cycle of birth and death (samsara) by attaining liberation (moksha). It serves as a guide for spiritual seekers, offering timeless wisdom for navigating life's deeper truths. `;
+    const description = `'Manusmriti,' also known as the Laws of Manu, is an ancient Hindu scripture that holds a central place in the legal and ethical traditions of India. As one of the oldest texts of 'Dharmaśāstra,' it offers a comprehensive code of conduct for individuals, communities, and rulers, guiding them on righteous living in accordance with dharma (moral and legal duty). Its influence on the social, cultural, and religious life of ancient India is profound, and it has shaped Hindu law for centuries. \n 'Central Themes and Teachings of Manusmriti:' \n  'Dharma and Social Order:' Manusmriti is fundamentally concerned with the establishment and maintenance of social order and justice. It provides detailed guidelines for behavior and responsibilities based on ones varna (social class) and ashrama (stage of life), defining duties for Brahmins, Kshatriyas, Vaishyas, and Shudras. The text emphasizes that adherence to dharma sustains both personal virtue and societal harmony. \n 'Moral and Ethical Codes:' At its core, Manusmriti lays down moral codes to govern personal, familial, and social conduct. These include principles of truthfulness, compassion, non-violence, generosity, and respect for elders and teachers. The text teaches that following these ethical guidelines leads to righteousness and spiritual upliftment. \n 'Law and Justice:' Manusmriti also serves as a legal treatise, addressing civil and criminal laws, inheritance rights, marriage customs, and punishments for various offenses. The text reflects the belief in karma (the law of cause and effect) and promotes justice based on a balance of retribution and reform.`;
 
     const formattedDescription = formatDescription(description);
     return (
-        <div className='bg-gray-200 h-full mt-5'>
+        <div className='bg-gray-200 h-full mt-6'>
             <div className=" ">
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <Image
-                            src="/smritiimage/manusmriti.jpg"
+                            src="/smritiimage/manuhindi.jpg"
                             alt="Book Cover"
                             width="300"
                             height="400" priority={true}
                             className=" w-full rounded-lg shadow-lg"
-                            style={{ aspectRatio: "400/600", objectFit: "cover" ,objectPosition: 'top' }}
+                            style={{ aspectRatio: "400/600", objectFit: "cover" }}
                         />
                     </div>
                     <div className="flex-1 space-y-4 text-start md:text-left">
                         <div className="flex items-center mb-10 justify-between ">
-                            <h1 className="text-3xl  font-bold">Isha Upanishad</h1>
+                            <h1 className="text-3xl  font-bold">Manusmriti Hindi</h1>
 
                             <div className="hidden lg:block">
                                 <div className="bg-gray-200 w-full p-2 px-5 flex justify-between   ">
                                     {/* <a className="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
               Purchase
             </a> */}
-                                    <Link shallow href='/scriptures/upnishad/1/isha'>
+                                    <Link href='/scriptures/smriti/1/manusmriti' shallow>
                                         <button
                                             className="inline-flex gap-3  items-center w-[300px] bg-orange-500 hover:bg-orange-400 border-orange-300 shadow justify-center whitespace-nowrap text-xl  font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8"
                                         >
@@ -67,8 +67,8 @@ function page() {
                                 {/* <a className="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
               Purchase
             </a> */}
-                                 <div className="w-full">
-                                    <Link className="w-full" href='/scriptures/upnishad/1/isha' shallow>
+                                <div className="w-full">
+                                    <Link className="w-full" href='/scriptures/smriti/1/manusmriti' shallow>
                                         <button
                                             className="inline-flex gap-3 items-center w-full bg-orange-500 hover:bg-orange-400 border-orange-500 shadow justify-center whitespace-nowrap text-xl font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8"
                                         >

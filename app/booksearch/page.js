@@ -164,7 +164,7 @@ const booksData = [
     {
         id: 27,
         name: "Manusmriti",
-        src: "/smritiimage/manusmriti.jpg",
+        src: "/smritiimage/manuhindi.jpg",
         route: "/scriptures/smriti/1",
     },
     // Add more book objects here

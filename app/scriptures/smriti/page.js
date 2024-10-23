@@ -7,7 +7,7 @@ const Epics = {
         {
             id: 1,
             name: "ManuSmriti",
-            src: "/smritiimage/manusmriti.jpg",
+            src: "/smritiimage/manuhindi.jpg",
         }
     ],
 
