@@ -108,7 +108,7 @@ function KenaUpnishad() {
   const currentMantra = filteredVedas[currentMantraIndex] || filteredVedas[0]; // Ensure valid Shlokafor current Chapter
 
   return (
-    <div className="container mx-auto mt-4 lg:px-20">
+    <div className="container bg-yellow-100 mx-auto mt-4 lg:px-20">
       <div>
         <div className="flex flex-col sm:flex-row">
           <div className="flex-1 lg:p-6 p-3">
@@ -148,7 +148,7 @@ function KenaUpnishad() {
                       <div>
                         <div className="flex items-center">
                           <div className="mb-2 p-1 bg-gray-300 flex items-center px-3 h-5 gap-1 text-xs border rounded-[3px] font-bold">
-                            Chapter{currentMantra.Part}{" "}
+                            Chapter {currentMantra.Part}{" "}
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="10"
@@ -166,13 +166,13 @@ function KenaUpnishad() {
                                 d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
                               />
                             </svg>{" "}
-                            Shloka{currentMantra.mantraNumber}
+                            Shloka {currentMantra.mantraNumber}
                           </div>
                         </div>
                         <h2 className="text-3xl font-bold mb-4 py-3 text-center">
                           Sanskrit Shloka
                         </h2>
-                        <div className="font-bold text-center text-blue-600 mb-6 lg:text-xl leading-10 martel-black">
+                        <div className="font-bold text-center text-orange-600 mb-6 lg:text-xl leading-10 martel-black">
                           {currentMantra.shlok.line1
                             .split("\n")
                             .map((line, index) => (
@@ -188,7 +188,7 @@ function KenaUpnishad() {
                         </h2>
                         <div className="space-y-2 lg:border lg:p-5  lg:shadow rounded">
                           <div className="flex flex-col items-center">
-                            <p className="text-lg border p-2 py-3 mb-2 bg-orange-400 rounded josefin-sans-bold text-center">
+                            <p className="text-lg border p-2 py-3 mb-2 bg-yellow-300 rounded josefin-sans-bold text-center">
                               {formatText(currentMantra.translationHindi)}
                             </p>
                           </div>

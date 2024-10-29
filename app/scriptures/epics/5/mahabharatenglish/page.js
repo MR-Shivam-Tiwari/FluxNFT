@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState, useRef, useCallback, useEffect ,Suspense } from "react";
+import React, { useState, useRef, useCallback, useEffect, Suspense } from "react";
 import { EpubView } from "react-reader";
 
 function MahabharataEnglish() {
@@ -148,7 +148,7 @@ function MahabharataEnglish() {
     const handlePopState = () => {
       router.back(); // Navigate back to the previous route when the browser back button is clicked, without leaving the website
     };
-    
+
     window.addEventListener('popstate', handlePopState);
     return () => {
       window.removeEventListener('popstate', handlePopState);
@@ -176,33 +176,36 @@ function MahabharataEnglish() {
         </div>
       )}
       <div
-        className={`bg-gray-200 min-h-screen mt-6 ${loading ? "hidden" : ""}`}
+        className={`bg-gray-200 min-h-screen mt-6  ${loading ? "hidden" : ""}`}
         style={{
           textAlign: "center",
           display: "flex",
           flexDirection: "column",
         }}
       >
-        <div className="flex items-center pt-1 pb-0.5 " style={styles.scrollbar}>
-          <ul className="flex gap-2 lg:px-5 px-1 justify-center">
-            {books.map((book, index) => (
-              <button
-                key={index}
-                onClick={() => goToBook(index)}
-                style={{
-                  cursor: "pointer",
-                  fontWeight: loc === book.href ? "bold" : "normal",
-                  color: loc === book.href ? "white" : "black",
-                  padding: "10px",
-                  borderRadius: "5px",
-                  whiteSpace: "nowrap",
-                }}
-                className="hover:bg-gray-400 josefin-sans-bold bg-orange-500 transition-colors rounded-md text-md font-bold ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-8 flex items-center px-4 py-2"
-              >
-                {book.label}
-              </button>
-            ))}
-          </ul>
+        <div className="px-4">
+
+          <div className="flex items-center pt-1 pb-0.5 " style={styles.scrollbar}>
+            <ul className="flex gap-2 lg:px-5 px-1 justify-center">
+              {books.map((book, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToBook(index)}
+                  style={{
+                    cursor: "pointer",
+                    fontWeight: loc === book.href ? "bold" : "normal",
+                    color: loc === book.href ? "white" : "black",
+                    padding: "10px",
+                    borderRadius: "3px",
+                    whiteSpace: "nowrap",
+                  }}
+                  className="hover:bg-gray-400 josefin-sans-bold bg-orange-500 transition-colors  text-md font-bold ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-8 flex items-center px-4 py-2"
+                >
+                  {book.label}
+                </button>
+              ))}
+            </ul>
+          </div>
         </div>
         {epubFile ? (
           <>
