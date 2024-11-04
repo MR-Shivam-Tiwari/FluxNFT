@@ -108,7 +108,7 @@ function KenaUpnishad() {
   const currentMantra = filteredVedas[currentMantraIndex] || filteredVedas[0]; // Ensure valid Shlokafor current Chapter
 
   return (
-    <div className="container bg-yellow-100 mx-auto mt-4 lg:px-20">
+    <div className="container bg-yellow-100 h-screen  mx-auto mt-4 lg:px-20">
       <div>
         <div className="flex flex-col sm:flex-row">
           <div className="flex-1 lg:p-6 p-3">
