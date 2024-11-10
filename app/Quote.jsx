@@ -81,7 +81,7 @@ function Quote() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white">
               <blockquote className="text-lg font-medium">
-                "{currentQuote.quote}"
+                &quot;{currentQuote.quote}&quot;
               </blockquote>
               <cite className="block text-sm font-normal text-end me-7 mt-2">
                 - {currentQuote.name}
