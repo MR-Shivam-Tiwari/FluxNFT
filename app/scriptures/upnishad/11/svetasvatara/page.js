@@ -166,7 +166,7 @@ function PrashnaUpanishad() {
                                                     </div>
                                                 </div>
                                                 <h2 className="lg:text-3xl text-xl font-bold mb-4 py-3 text-center">
-                                                    Sanskrit Shloka
+                                                    Sanskrit Mantra
                                                 </h2>
                                                 <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl  leading-10 martel-black">
                                                     {currentMantra.shlok

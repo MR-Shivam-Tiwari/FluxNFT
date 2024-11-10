@@ -2,9 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-
+import axios from "axios";
 function Navbar() {
   const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [description, setDescription] = useState("");
+  const [screenshot, setScreenshot] = useState(null); // For file upload
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const [showModal, setShowModal] = useState(false);
   const [showslidebar, setslidebarl] = useState(false);
 
@@ -20,6 +28,59 @@ function Navbar() {
   const handleNavigate = (path) => {
     setActivePage(path);
     router.push(path);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "name") setName(value);
+    if (name === "email") setEmail(value);
+    if (name === "phone") setPhone(value);
+    if (name === "description") setDescription(value);
+  };
+
+  // Convert image to Base64
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setScreenshot(reader.result); // The Base64 string is set here
+      };
+      reader.readAsDataURL(file); // Read the image file as a Base64 string
+    }
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Prepare form data
+    const data = {
+      name,
+      email,
+      phone,
+      description,
+      screenshot, // Send the Base64 string of the image
+    };
+
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        "http://localhost:5000/api/bugReports",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json", // Content type is JSON since we are sending Base64 encoded image
+          },
+        }
+      );
+      alert("Bug report submitted successfully!");
+      toggleModal(); // Close modal on success
+    } catch (err) {
+      setError(err.response?.data?.error || "An error occurred");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -130,67 +191,161 @@ function Navbar() {
         </div>
       </header>
       {showModal && (
-        <div id="default-modal" tabIndex="-1" aria-hidden="true" className="fixed inset-0 z-50  flex items-center justify-center w-full bg-black bg-opacity-50">
-        <div className="relative p-4  w-full max-w-2xl">
-          <div className="relative bg-white rounded-lg shadow">
-            <div className="flex items-center justify-between p-4 md:p-5 pb-3 rounded-t">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">Report a Bug</h1>
-                <p className="mt-2 text-gray-500">Help us improve by reporting any issues you encounter.</p>
+        <div
+          id="default-modal"
+          tabIndex="-1"
+          aria-hidden="true"
+          className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-50"
+        >
+          <div className="relative p-4 w-full max-w-2xl">
+            <div className="relative bg-white rounded-lg shadow">
+              <div className="flex items-center justify-between p-4 md:p-5 pb-3 rounded-t">
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900">
+                    Report a Bug
+                  </h1>
+                  <p className="mt-2 text-gray-500">
+                    Help us improve by reporting any issues you encounter.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-10 h-10 inline-flex justify-center items-center"
+                  onClick={toggleModal}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"
+                    />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
+                </button>
               </div>
-              <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-10 h-10 inline-flex justify-center items-center" onClick={toggleModal}>
-                <svg className="w-5  h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7l-6 6"/>
-                </svg>
-                <span className="sr-only">Close modal</span>
-              </button>
-            </div>
-            <div className="w-full max-w-2xl mx-auto  px-3 sm:px-6 lg:px-5 overflow-y-auto sm:max-h-screen">
-              <div className="space-y-3">
-                <form className="space-y-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                      <div className="mt-1">
-                        <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="name" placeholder="Enter your name" required />
+              <div className="w-full max-w-2xl mx-auto px-3 sm:px-6 lg:px-5 overflow-y-auto sm:max-h-screen">
+                <div className="space-y-3">
+                  <form className="space-y-3" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Name
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                            id="name"
+                            name="name"
+                            value={name}
+                            onChange={handleInputChange}
+                            placeholder="Enter your name"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Email (optional)
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={handleInputChange}
+                            placeholder="Enter your email"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid lg:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          htmlFor="phone"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Phone Number (optional)
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                            id="phone"
+                            name="phone"
+                            value={phone}
+                            onChange={handleInputChange}
+                            placeholder="Enter your Phone"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label
+                          className="block mb-1 text-sm font-medium text-gray-900"
+                          htmlFor="file-input"
+                        >
+                          Upload a Screenshot of Bug
+                        </label>
+                        <input
+                          type="file"
+                          name="file-input"
+                          id="file-input"
+                          onChange={handleFileChange}
+                          className="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-300 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400"
+                        />
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email (optional)</label>
+                      <label
+                        htmlFor="description"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Bug Description
+                      </label>
                       <div className="mt-1">
-                        <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="Enter your email" required />
+                        <textarea
+                          className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]"
+                          id="description"
+                          name="description"
+                          placeholder="Describe the bug you encountered"
+                          required
+                          value={description}
+                          onChange={handleInputChange}
+                        ></textarea>
                       </div>
                     </div>
-                  </div>
-                  <div className="grid lg:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number (optional)</label>
-                      <div className="mt-1">
-                        <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="phone" placeholder="Enter your Phone" required />
-                      </div>
+                    {error && (
+                      <div className="text-red-500 text-sm">{error}</div>
+                    )}
+                    <div className="flex lg:justify-end">
+                      <button
+                        type="submit"
+                        className="inline-flex w-full justify-center py-2 px-4 my-3 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                        disabled={loading}
+                      >
+                        {loading ? "Submitting..." : "Submit Bug Report"}
+                      </button>
                     </div>
-                    <div>
-                      <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white" htmlFor="multiple_files">Upload a Screenshot of Bug</label>
-                      <label htmlFor="file-input" className="sr-only">Choose file</label>
-                      <input type="file" name="file-input" id="file-input" className="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-300 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400" />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">Bug Description</label>
-                    <div className="mt-1">
-                      <textarea className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]" id="description" placeholder="Describe the bug you encountered" required></textarea>
-                    </div>
-                  </div>
-                  <div className="flex lg:justify-end  ">
-                    <button type="submit" className="inline-flex w-full justify-center py-2 px-4 my-3 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">Submit Bug Report</button>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      
       )}
       {showslidebar && (
         <div className="fixed inset-0 z-50  w-full h-full bg-black bg-opacity-500">
@@ -274,11 +429,10 @@ function Navbar() {
                           : ""
                       } hover:bg-[#e0e0e0] hover:text-[#8b4513] focus:bg-[#e0e0e0] focus:text-[#8b4513] focus:outline-none disabled:pointer-events-none disabled:opacity-50`}
                       onClick={() => {
-                        router.push("/contact")
+                        router.push("/contact");
                         togglesidebar();
                       }}
                     >
-                      
                       Contact Us
                     </div>
 
@@ -297,10 +451,13 @@ function Navbar() {
                     </div>
                   </ul>
                 </div>
-                <div  onClick={() => {
-                      router.push("/booksearch");
-                      togglesidebar();
-                    }} className="flex border p-2 justify-between rounded bg-gray-300 mt-10 items-center">
+                <div
+                  onClick={() => {
+                    router.push("/booksearch");
+                    togglesidebar();
+                  }}
+                  className="flex border p-2 justify-between rounded bg-gray-300 mt-10 items-center"
+                >
                   <div className="font-bold text-2xl px-2  ">Scripture</div>
                   <button
                     // onClick={toggleModal}

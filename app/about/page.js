@@ -6,10 +6,10 @@ import Image from 'next/image';
 import Footer from '../Footer';
 function about() {
   return (
-    <div><div className=" flex justify-center bg-white">
+    <div><div className=" flex justify-center josefin-sans-bold bg-white">
       <div className="flex flex-col min-h-[100dvh]">
         <main className="flex-1">
-          <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+          <section className="w-full py-12 ">
             <div className="container px-4 md:px-6">
               <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
                 <div className="flex flex-col justify-center space-y-4">
@@ -44,7 +44,7 @@ function about() {
                   </div>
                 </div>
                 <Image
-                  src={dsign}
+                  src='/homeimage/aboutimg.jpg'
                   width="550"
                   height="550" priority={true}
                   alt="About Us"
@@ -120,86 +120,7 @@ function about() {
               </div>
             </div>
           </section>
-          {/* <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">
-            <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm ">
-                Our Team
-              </div>
-              <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                Dedicated to Preserving Hindu Heritage
-              </h2>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
-                The team behind Shashtrsangrah is composed of passionate
-                individuals who are deeply committed to preserving and
-                promoting the rich tapestry of Hindu philosophy, scriptures,
-                and texts. With diverse backgrounds and expertise, we work
-                tirelessly to ensure that these sacred works are accessible
-                to all.
-              </p>
-            </div>
-            <div className="flex flex-col items-start space-y-4">
-              <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm ">
-                Testimonials
-              </div>
-              <div className="grid gap-4">
-                <div className="bg-white p-4 rounded-lg shadow-sm ">
-                  <p className="text-gray-500 ">
-                    "Shashtrsangrah has been a game-changer for me. I've\n
-                    been able to deepen my understanding of Hindu\n
-                    philosophy and connect with these sacred texts in a
-                    way\n I never thought possible. The platform is truly
-                    a\n blessing."
-                  </p>
-                  <div className="mt-4 flex items-center">
-                    <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                      <img
-                        className="aspect-square h-full w-full"
-                        src="/placeholder-user.jpg"
-                      />
-                    </span>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium leading-none">
-                        Jyoti Desai
-                      </p>
-                      <p className="text-sm text-gray-500 ">
-                        Student
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm ">
-                  <p className="text-gray-500 ">
-                    "As a lifelong student of Hindu philosophy, I'm\n
-                    incredibly grateful for the resources available on\n
-                    Shashtrsangrah. The platform has made it so much
-                    easier\n for me to access and explore these sacred
-                    texts, and\n I've gained invaluable insights that have
-                    enriched my\n spiritual journey."
-                  </p>
-                  <div className="mt-4 flex items-center">
-                    <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                      <img
-                        className="aspect-square h-full w-full"
-                        src="/placeholder-user.jpg"
-                      />
-                    </span>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium leading-none">
-                        Ravi Kumar
-                      </p>
-                      <p className="text-sm text-gray-500 ">
-                        Scholar
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+
           <section className="w-full py-12 md:py-24 lg:py-32 border-t">
             <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
               <div className="space-y-3">
@@ -214,17 +135,22 @@ function about() {
               </div>
               <div className="mx-auto w-full max-w-sm space-y-2">
                 <form className="flex gap-2">
-                  <input
+                  {/* <input
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 max-w-lg flex-1"
                     placeholder="Enter your email"
                     type="email"
-                  />
-                  <button
-                    className="inline-flex bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-                    type="submit"
-                  >
-                    Join Us
-                  </button>
+                  /> */}
+                  <div className='w-full'>
+
+                    <Link href='/contact'>
+                      <button
+                        className="inline-flex w-full bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+
+                      >
+                        Contact Us
+                      </button>
+                    </Link>
+                  </div>
                 </form>
               </div>
             </div>

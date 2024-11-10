@@ -2,7 +2,7 @@
 function Donate() {
   return (
     <div >
-      <div className="bg-white  min-h-screen flex flex-col">
+      <div className="bg-white martel-sans-bold  min-h-screen flex flex-col">
         <main className="flex-1 container mx-auto py-20 px-6 md:px-12">
           <div className="grid  gap-12">
             <div>

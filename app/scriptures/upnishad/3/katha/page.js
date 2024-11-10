@@ -111,15 +111,15 @@ function KathaUpanishad() {
                             <div className="flex  space-x-4">
                                 <div className="">
                                     <div className="flex items-center justify-center gap-3 w-full text-gray-600 font-bold">
-                                        <div className="lg:block hidden">Select Mantra</div>
+                                        <div className="lg:block hidden">Select Sloka</div>
                                         <select
                                             value={currentMantraIndex}
                                             onChange={handleSelectMantra}
-                                            className="flex h-10 w-[330px] items-center josefin-sans-bold pt-2.5  gap-1 justify-between bg-white text-black  font-bold rounded-md border border-input bg-background px-3 py-2 text-xl lg:text-xm placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[310px]"
+                                            className="flex h-10 w-[330px] items-center josefin-sans-bold pt-2.5  gap-1 justify-between bg-white text-black  font-bold rounded-md border border-input bg-background px-3 py-2 text-md  placeholder:text-muted-foreground cursor-pointer disabled:opacity-50 lg:w-[310px]"
                                         > 
                                             {Vedas.map((mantra, index) => (
                                                 <option key={index} value={index}>
-                                                    Part {mantra.Part} - Valli {mantra.Valli} - Mantra{" "}
+                                                    Part {mantra.Part} - Valli {mantra.Valli} - Sloka{" "}
                                                     {mantra.mantraNumber}
                                                 </option>
                                             ))}
@@ -172,11 +172,11 @@ function KathaUpanishad() {
                                                                 d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
                                                             />
                                                         </svg>{" "}
-                                                        Mantra {currentMantra.mantraNumber}
+                                                        Sloka {currentMantra.mantraNumber}
                                                     </div>
                                                 </div>
                                                 <h2 className="text-3xl font-bold mb-4 py-3 text-center">
-                                                    Sanskrit Shloka
+                                                    Sanskrit Sloka
                                                 </h2>
                                                 <div className="font-bold text-center text-blue-600 mb-3 text-md lg:text-2xl  leading-14 martel-black">
                                                     {currentMantra.shlok.line1
@@ -277,7 +277,7 @@ function KathaUpanishad() {
                                     </div>
                                 </>
                             ) : (
-                                <div>Mantra not found.</div>
+                                <div>Sloka not found.</div>
                             )}
 
                             <div className="bg-gray-300 w-full p-2 px-3 lg:px-20 flex justify-between fixed bottom-0 left-0">

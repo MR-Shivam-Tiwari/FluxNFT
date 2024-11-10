@@ -129,7 +129,7 @@ function PrashnaUpanishad() {
                                     className="flex h-10 items-center p-5 josefin-sans-bold justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
                                 >
                                     {uniqueMantras.map(({ ShlokaNo, index }) => (
-                                        <option key={index} value={index}>Mantra {ShlokaNo}</option>
+                                        <option key={index} value={index}>Sloka {ShlokaNo}</option>
                                     ))}
                                 </select>
                             </div>
@@ -162,11 +162,11 @@ function PrashnaUpanishad() {
                                                             />
                                                         </svg>{" "}
 
-                                                        Mantra {currentMantra.ShlokaNo}
+                                                        Sloka {currentMantra.ShlokaNo}
                                                     </div>
                                                 </div>
                                                 <h2 className="lg:text-3xl text-xl font-bold mb-4 py-3 text-center">
-                                                    Sanskrit Shloka
+                                                    Sanskrit Sloka
                                                 </h2>
                                                 <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl  leading-10 martel-black">
                                                     {currentMantra.shlok
@@ -267,7 +267,7 @@ function PrashnaUpanishad() {
                                     </div>
                                 </>
                             ) : (
-                                <div>Mantra not found.</div>
+                                <div>Sloka not found.</div>
                             )}
 
                             <div className="bg-gray-300 w-full p-2 px-3 lg:px-20 flex justify-between fixed bottom-0 left-0">

@@ -7,7 +7,7 @@ import Footer from "../Footer";
 function Donation() {
   return (
     <div>
-      <div className="w-full bg-white">
+      <div className="w-full martel-sans-bold bg-white">
         <div className="w-full">
           <div className="relative w-full">
             <Image

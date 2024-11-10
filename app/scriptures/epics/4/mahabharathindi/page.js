@@ -1,11 +1,12 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { EpubView } from "react-reader";
 import { Suspense } from 'react';
 function Ramcharitmanas() {
   const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1722854056413-MB.epub");
+  // const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1731051499171-5_6321012392973042848.epub");//125 mb mb clear
   const [location, setLocation] = useState(null);
   const [books, setBooks] = useState([]);
   const [parvs, setParvs] = useState([]);
@@ -71,7 +72,10 @@ function Ramcharitmanas() {
     router.push(`${pathname}${query}`);
   };
 
-  const onTocLoaded = (toc) => {
+  const memoizedBooks = useMemo(() => books, [books]);
+
+  // Optimize the onTocLoaded function
+  const onTocLoaded = useCallback((toc) => {
     const booksData = toc.map((item, index) => ({
       label: item.label,
       href: item.href,
@@ -79,7 +83,7 @@ function Ramcharitmanas() {
       index: index,
     }));
     setBooks(booksData);
-  };
+  }, []);
 
   const goToPage = (pageNumber) => {
     if (renditionRef.current && pageNumber) {
@@ -109,16 +113,16 @@ function Ramcharitmanas() {
 
   const handleRendition = useCallback((rendition) => {
     renditionRef.current = rendition;
-    renditionRef.current.on("relocated", (location) => {
+    rendition.on("relocated", (location) => {
       updateRoute({ loc: location.start.cfi });
     });
-    renditionRef.current.on("displayError", (error) => {
+    rendition.on("displayError", (error) => {
       console.error("Display Error:", error);
     });
-    renditionRef.current.on("rendered", () => {
+    rendition.on("rendered", () => {
       setLoading(false);
     });
-  }, []);
+  }, [updateRoute]);
 
   const nextPage = () => {
     if (renditionRef.current) {
@@ -250,6 +254,7 @@ function Ramcharitmanas() {
     border: "none",
     cursor: "pointer",
   };
+  const LazyEpubView = useMemo(() => React.lazy(() => import('react-reader').then(module => ({ default: module.EpubView }))), []);
 
   return (
     <div>
@@ -583,7 +588,7 @@ function Ramcharitmanas() {
                 </div>
 
                 <div
-                  className="w-[100%] lg:pb-40 pt-5   py-13 pb-10 min-h-screen bg-orange-200"
+                  className="w-[100%] lg:pb-40 pt-5   py-13 pb-10 min-h-screen bg-white"
                   style={{
                     flex: "1",
                     overflowY: "auto",
@@ -591,16 +596,19 @@ function Ramcharitmanas() {
                     display: "flex",
                   }}
                 >
-                  <EpubView
-                    url={epubFile}
-                    location={location}
-                    // locationChanged={onLocationChanged}
-                    tocChanged={onTocLoaded}
-                    epubOptions={{ flow: "scrolled" }} // Ensure content is scrollable
-                    ref={renditionRef}
-                    getRendition={handleRendition}
-                    style={{ flex: "1", overflowX: "hidden" }}
-                  />
+                  {epubFile && (
+                    <Suspense fallback={<div>Loading book...</div>}>
+                      <LazyEpubView
+                        url={epubFile}
+                        location={location}
+                        tocChanged={onTocLoaded}
+                        epubOptions={{ flow: "scrolled" }}
+                        ref={renditionRef}
+                        getRendition={handleRendition}
+                        style={{ flex: "1", overflowX: "hidden" }}
+                      />
+                    </Suspense>
+                  )}
                 </div>
               </div>
               <div className="bg-orange-100 w-full p-1.5 lg:px-20 flex justify-between fixed bottom-0 left-0">
@@ -649,10 +657,12 @@ function Ramcharitmanas() {
   );
 }
 
-export default function MahabharatHindi() {
+function MahabharatHindi() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Ramcharitmanas />
     </Suspense>
   );
 }
+
+export default MahabharatHindi;

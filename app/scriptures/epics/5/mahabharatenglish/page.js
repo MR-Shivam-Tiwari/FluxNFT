@@ -1,8 +1,9 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation";
-import React, { useState, useRef, useCallback, useEffect, Suspense } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { EpubView } from "react-reader";
+import { Suspense } from 'react';
 
 function MahabharataEnglish() {
   const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1722853578550-KMGMB+18++VOL.epub");

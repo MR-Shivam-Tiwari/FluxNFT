@@ -33,7 +33,7 @@ function MundakoUpnishad() {
         setSelectedKhanda(khanda);
         setSelectedShloka(shloka);
 
-        // Update current mantra index based on Shloka
+        // Update current Sloka index based on Shloka
         const mantraIndex = Vedas.findIndex((shlok) => 
             parseInt(shlok.Mundaka) === chapter &&
             parseInt(shlok.Khanda) === khanda &&
@@ -190,7 +190,7 @@ function MundakoUpnishad() {
                                 >
                                     {khandaData.map((shloka, index) => (
                                         <option className="font-bold " key={index} value={shloka.ShlokaNo}>
-                                            Mantra {shloka.ShlokaNo}
+                                            Sloka {shloka.ShlokaNo}
                                         </option>
                                     ))}
                                 </select>
@@ -238,11 +238,11 @@ function MundakoUpnishad() {
                                                                 d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
                                                             />
                                                         </svg>{" "}
-                                                        Mantra {currentMantra.ShlokaNo}
+                                                        Sloka {currentMantra.ShlokaNo}
                                                     </div>
                                                 </div>
                                                 <h2 className="lg:text-3xl  font-bold mb-4 py-3 text-center">
-                                                    Sanskrit Shloka
+                                                    Sanskrit Sloka
                                                 </h2>
                                                 <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl text-sm leading-10 martel-black">
                                                     {currentMantra.shlok.split("\n").map((line, index) => (
@@ -336,7 +336,7 @@ function MundakoUpnishad() {
                                     </div>
                                 </>
                             ) : (
-                                <div>Mantra not found.</div>
+                                <div>Sloka not found.</div>
                             )}
 
                             <div className="bg-gray-300 w-full p-2 px-3 lg:px-20 flex justify-between fixed bottom-0 left-0">

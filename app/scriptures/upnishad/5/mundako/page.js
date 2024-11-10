@@ -159,7 +159,7 @@ function MundakoUpnishad() {
                                 <select
                                     value={selectedChapter}
                                     onChange={handleChapterChange}
-                                    className="flex font-bold josefin-sans-bold lg:h-10 h-7 items-center justify-between rounded-md shadow border border-input bg-white lg:px-3 lg:py-2 text-[12px] ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 px-3 w-30  lg:text-xl lg:w-40"
+                                    className="flex font-bold josefin-sans-bold lg:h-10 h-7 items-center justify-between rounded-md shadow border border-input bg-white lg:px-3 lg:py-2 text-[12px] ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 px-3 w-30  lg:text-lg lg:w-40"
 
                                 >
                                     {uniqueChapters.map((chapter, index) => (
@@ -171,7 +171,7 @@ function MundakoUpnishad() {
                                 <select
                                     value={selectedKhanda}
                                     onChange={handleKhandaChange}
-                                    className="flex font-bold josefin-sans-bold lg:h-10 h-7 items-center justify-between rounded-md shadow border border-input bg-white lg:px-3 lg:py-2 text-[12px] ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 px-3 w-30  lg:text-xl lg:w-40"
+                                    className="flex font-bold josefin-sans-bold lg:h-10 h-7 items-center justify-between rounded-md shadow border border-input bg-white lg:px-3 lg:py-2 text-[12px] ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 px-3 w-30  lg:text-lg lg:w-40"
 
                                 >
                                     {uniqueKhandas.map((khanda, index) => (
@@ -183,7 +183,7 @@ function MundakoUpnishad() {
                                 <select
                                     value={selectedShloka}
                                     onChange={handleShlokaChange}
-                                    className="flex font-bold josefin-sans-bold lg:h-10 h-7 items-center justify-between rounded-md shadow border border-input bg-white px-3 lg:py-2 text-[12px] ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-30  lg:text-xl lg:w-40"
+                                    className="flex font-bold josefin-sans-bold lg:h-10 h-7 items-center justify-between rounded-md shadow border border-input bg-white px-3 lg:py-2 text-[12px] ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-30  lg:text-lg lg:w-40"
 
                                 >
                                     {khandaData.map((shloka, index) => (
@@ -224,7 +224,7 @@ function MundakoUpnishad() {
                                                     </div>
                                                 </div>
                                                 <h2 className="lg:text-3xl  font-bold mb-4 py-3 text-center">
-                                                    Sanskrit Shloka
+                                                    Sanskrit Mantra
                                                 </h2>
                                                 <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl text-sm leading-10 martel-black">
                                                     {currentMantra.shlok.split("\n").map((line, index) => (

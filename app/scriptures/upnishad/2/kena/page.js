@@ -134,7 +134,7 @@ function KenaUpnishad() {
                   className="flex h-10 items-center p-5 josefin-sans-bold justify-between rounded-md shadow border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-40"
                 >
                   {uniqueMantras.map(({ mantraNumber, index }) => (
-                    <option key={index} value={index}>Mantra {mantraNumber}</option>
+                    <option key={index} value={index}>Sloka {mantraNumber}</option>
                   ))}
                 </select>
               </div>
@@ -165,11 +165,11 @@ function KenaUpnishad() {
                                 d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
                               />
                             </svg>{" "}
-                            Mantra {currentMantra.mantraNumber}
+                            Sloka {currentMantra.mantraNumber}
                           </div>
                         </div>
                         <h2 className="text-3xl font-bold mb-4 py-3 text-center">
-                          Sanskrit Shloka
+                          Sanskrit Sloka
                         </h2>
                         <div className="font-bold text-center text-blue-600 mb-6 lg:text-xl leading-10 martel-black">
                           {currentMantra.shlok.line1
@@ -298,7 +298,7 @@ function KenaUpnishad() {
                   </div>
                 </>
               ) : (
-                <p className="text-center text-gray-500">No mantra found.</p>
+                <p className="text-center text-gray-500">No Sloka found.</p>
               )}
             </div>
           </div>

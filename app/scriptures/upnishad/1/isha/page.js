@@ -137,7 +137,7 @@ function IshaUpanishad() {
                                                         Mantra {currentMantra.mantraNumber}
                                                     </div>
                                                 </div>
-                                                <h2 className="lg:text-3xl text-2xl font-bold lg:mb-4 py-3 text-center">Sanskrit Shloka</h2>
+                                                <h2 className="lg:text-3xl text-2xl font-bold lg:mb-4 py-3 text-center">Sanskrit Mantra</h2>
                                                 <div className="font-bold text-center text-blue-600 mb-3 lg:text-2xl leading-10 martel-black">
 
                                                 </div>
