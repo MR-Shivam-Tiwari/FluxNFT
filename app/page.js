@@ -42,9 +42,7 @@ const Home = () => {
                   Discover the Wisdom of Hindu Scriptures
                 </h2>
                 <p className="mt-4 text-gray-500">
-                  Explore the timeless teachings and profound insights of the
-                  Hindu faith through our extensive collection of sacred
-                  scriptures.
+                  Explore the timeless teachings and profound insights of the Hindu faith through our extensive collection of sacred scriptures.
                 </p>
                 <div className="mt-8 grid grid-cols-1 lg:flex gap-7 justify-center ">
                   <Link href="/scriptures/geeta" shallow>
@@ -125,8 +123,10 @@ const Home = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
                       <div className="absolute bottom-4 left-4 text-white">
-                        <h3 className="text-lg font-bold">Vedas
-                          <p className="text-[11px]">(Rigveda, Yajurveda, Samaveda, and Atharvaveda)</p></h3>
+                        <h3 className="text-lg font-bold">Vedas</h3>
+
+                        <p className="text-[11px]">(Rigveda, Yajurveda, Samaveda, and Atharvaveda)</p>
+
                         <p className="text-sm">Explore the foundational texts</p>
                         <div
                           className="inline-flex items-center mt-2 cursor-pointer text-sm text-indigo-400 hover:text-indigo-500"
