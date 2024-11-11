@@ -396,7 +396,7 @@ const Home = () => {
                 style={{ aspectRatio: "80/80", objectFit: "cover" }}
               />
               <blockquote className="mt-4 text-[#333] ">
-                "The insights I've gained from studying the Upanishads have
+                "The insights I&apos;ve gained from studying the Upanishads have
                 truly transformed my understanding of life and spirituality."
                 <cite className="mt-4 block text-[#666] ">
                   - Anita, Spiritual Seeker
