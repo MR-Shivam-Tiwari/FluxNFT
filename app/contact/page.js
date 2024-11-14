@@ -71,8 +71,6 @@ export default function ContactForm() {
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-600">
               <li>Website and app development services</li>
-              <li>Requesting new book additions to our collection</li>
-              <li>Reporting bugs or issues with our platform</li>
               <li>General inquiries and feedback</li>
             </ul>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -126,8 +124,6 @@ export default function ContactForm() {
                 >
                   <option value="">Select a reason</option>
                   <option value="Website and app development services">Website and app development services</option>
-                  <option value="Requesting new book additions to our collection">Requesting new book additions to our collection</option>
-                  <option value="Reporting bugs or issues with our platform">Reporting bugs or issues with our platform</option>
                   <option value="General inquiries and feedback">General inquiries and feedback</option>
                 </select>
               </div>
