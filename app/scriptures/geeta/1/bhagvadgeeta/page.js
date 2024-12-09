@@ -14,6 +14,7 @@ function BhagavadGitaContent() {
   const [selectedChapter, setSelectedChapter] = useState(initialChapter);
   const [selectedShloka, setSelectedShloka] = useState(initialShloka);
   const [selectedCommentary, setSelectedCommentary] = useState('Shankaracharya');
+  const [commentaryLanguage, setCommentaryLanguage] = useState('English');
 
   // Synchronize state with URL params
   useEffect(() => {
@@ -24,10 +25,10 @@ function BhagavadGitaContent() {
   // Update URL when chapter or shloka changes
   useEffect(() => {
     const params = new URLSearchParams();
-    params.set('chapter', selectedChapter);
-    params.set('shloka', selectedShloka);
+    params.set('chapter', selectedChapter.toString());
+    params.set('shloka', selectedShloka.toString());
     router.replace(`?${params.toString()}`, undefined, { shallow: true });
-  }, [selectedChapter, selectedShloka]);
+  }, [selectedChapter, selectedShloka, router]);
 
   const handleCommentaryClick = (commentary) => {
     setSelectedCommentary(commentary);
@@ -129,10 +130,30 @@ function BhagavadGitaContent() {
             Madhvacharya Commentary
           </button>
         </div>
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={() => setCommentaryLanguage('English')}
+            className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input shadow h-10 px-4 py-2 mr-2 ${commentaryLanguage === 'English' ? 'bg-orange-500' : 'bg-white hover:bg-accent hover:text-accent-foreground'}`}
+          >
+            English
+          </button>
+          <button
+            onClick={() => setCommentaryLanguage('Hindi')}
+            className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input shadow h-10 px-4 py-2 ${commentaryLanguage === 'Hindi' ? 'bg-orange-500' : 'bg-white hover:bg-accent hover:text-accent-foreground'}`}
+          >
+            Hindi
+          </button>
+        </div>
         <div className="my-8 martel-sans-black  p-4 mb-20 bg-orange-400 shadow-lg rounded-md">
-          {selectedCommentary === 'Shankaracharya' && shlokaData?.Shankaracharya && <p>{shlokaData.Shankaracharya.English}</p>}
-          {selectedCommentary === 'Ramanujacharya' && shlokaData?.Ramanujacharya && <p>{shlokaData.Ramanujacharya.English}</p>}
-          {selectedCommentary === 'Madhvacharya' && shlokaData?.Madhvacharya && <p>{shlokaData.Madhvacharya.English}</p>}
+          {selectedCommentary === 'Shankaracharya' && shlokaData?.Shankaracharya && (
+            <p>{shlokaData.Shankaracharya[commentaryLanguage]}</p>
+          )}
+          {selectedCommentary === 'Ramanujacharya' && shlokaData?.Ramanujacharya && (
+            <p>{shlokaData.Ramanujacharya[commentaryLanguage]}</p>
+          )}
+          {selectedCommentary === 'Madhvacharya' && shlokaData?.Madhvacharya && (
+            <p>{shlokaData.Madhvacharya[commentaryLanguage]}</p>
+          )}
           {!shlokaData && <p>Select a commentary to view details.</p>}
         </div>
         <div className="bg-orange-200 w-full p-2 lg:px-20 flex justify-between fixed bottom-0 left-0">
@@ -161,3 +182,4 @@ export default function BhagavadGitaHindi() {
     </Suspense>
   );
 }
+

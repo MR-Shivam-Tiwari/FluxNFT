@@ -18,6 +18,7 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+    domains: ['localhost'],
   },
   webpack: (config) => {
     // Adding a rule to handle .epub files

@@ -44,7 +44,7 @@ function Requestbook() {
     try {
       // Send the data to your backend API using axios
       const response = await axios.post(
-        "http://localhost:5000/api/book-requests",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/book-requests`,
         formData
       );
       if (response.status === 200) {
@@ -192,6 +192,7 @@ function Requestbook() {
                       value="yes"
                       className="text-blue-600 focus:ring-blue-500"
                       onChange={handleChange}
+                      required
                     />
                     <span className="ml-2">Yes</span>
                   </label>
@@ -202,6 +203,7 @@ function Requestbook() {
                       value="no"
                       className="text-blue-600 focus:ring-blue-500"
                       onChange={handleChange}
+                      required
                     />
                     <span className="ml-2">No</span>
                   </label>
@@ -225,6 +227,7 @@ function Requestbook() {
                       value="yes"
                       className="text-blue-600 focus:ring-blue-500"
                       onChange={handleChange}
+                      required
                     />
                     <span className="ml-2">Yes</span>
                   </label>
@@ -235,6 +238,7 @@ function Requestbook() {
                       value="no"
                       className="text-blue-600 focus:ring-blue-500"
                       onChange={handleChange}
+                      required
                     />
                     <span className="ml-2">No</span>
                   </label>

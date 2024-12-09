@@ -38,15 +38,11 @@ function Navbar() {
     if (name === "description") setDescription(value);
   };
 
-  // Convert image to Base64
+  // Handle file change (for screenshot)
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setScreenshot(reader.result); // The Base64 string is set here
-      };
-      reader.readAsDataURL(file); // Read the image file as a Base64 string
+      setScreenshot(file); // Store the file object
     }
   };
 
@@ -54,35 +50,35 @@ function Navbar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare form data
-    const data = {
-      name,
-      email,
-      phone,
-      description,
-      screenshot, // Send the Base64 string of the image
-    };
+    // Prepare FormData object
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("description", description);
+    if (screenshot) {
+      formData.append("screenshot", screenshot); // Add the file to FormData
+    }
 
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:5000/api/bugReports",
-        data,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/bugReports`,
+        formData,
         {
           headers: {
-            "Content-Type": "application/json", // Content type is JSON since we are sending Base64 encoded image
+            "Content-Type": "multipart/form-data", // Ensure correct content type
           },
         }
       );
       alert("Bug report submitted successfully!");
-      toggleModal(); // Close modal on success
+      // You can add more actions on success (e.g., clear form or close modal)
     } catch (err) {
       setError(err.response?.data?.error || "An error occurred");
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className="fixed top-0 left-0 w-full z-50">
       <header className="flex  josefin-sans-bold h-14 lg:h-15 w-full shrink-0 items-center px-4 md:px-6 bg-gray-300">

@@ -92,7 +92,7 @@ function page() {
 
                     </div>
                 </div>
-                <div className=' lg:px-10 px-5 martel-sans-semibold'>
+                {/* <div className=' lg:px-10 px-5 martel-sans-semibold'>
                     <strong>Read the Bhagavad Gita Online in Hindi and English
                     </strong>  <br></br>
 
@@ -122,7 +122,7 @@ function page() {
                     <strong>    Read the Bhagavad Gita Online Anytime </strong>  <br></br>
                     This page is dedicated to those who wish to read the Bhagavad Gita online in Hindi or English. Whether you’re a student of the Gita, a spiritual seeker, or someone looking for inner peace, you can access the entire text of the Bhagavad Gita online for free. Dive into the spiritual wisdom of the Bhagavad Gita in Hindi, read the shlokas, and understand the profound messages that have guided millions over centuries.
                     <br></br> <br></br> <br></br> <br></br>
-                </div>
+                </div> */}
             </div>
         </div >
     )
