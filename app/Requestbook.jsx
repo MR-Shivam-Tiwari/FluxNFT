@@ -69,9 +69,9 @@ function Requestbook() {
       >
         <h2 className="text-2xl font-bold text-gray-900">Request a Book</h2>
         <p className="text-gray-600">
-          Explore our vast collection of Hindu scriptures. If you don’t find the
-          book you’re looking for, you can request it to be added to our
-          collection.
+          Explore our vast collection of Hindu scriptures on Shastra Sangrah. If
+          you don’t find the book you’re looking for, you can request it to be
+          added to our collection on Shastra Sangrah.
         </p>
         <div className="flex space-x-2">
           <button

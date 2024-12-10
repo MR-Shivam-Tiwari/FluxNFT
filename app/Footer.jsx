@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
+import Logo from "./logo.png"
 function Footer() {
   return (
     <footer className="bg-gray-900 josefin-sans-regular text-white py-8 pt-12  ">
@@ -8,22 +9,21 @@ function Footer() {
         <div className="space-y-4">
           <Link href="/" shallow>
             <div className="flex items-center space-x-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                fill="currentColor"
-                className="bi bi-book"
-                viewBox="0 0 16 16"
-              >
-                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
-              </svg>
+              <Image
+                src={Logo}
+                alt="Logo"
+                width={56} // Set according to your size
+                height={56} // Set according to your size
+                className="mb-2 border-gray-300 rounded-full"
+              />
+
               <span className="text-2xl font-bold">Shastra Sangrah</span>
             </div>{" "}
           </Link>
           <p className="text-gray-400">
             Explore the rich Hindu scriptures and texts on Shastra Sangrah. Dive
-            into the wisdom of the Vedas, Upanishads, Epics , and more.
+            into the wisdom of the Vedas, Upanishads, Epics, and more available
+            on Shastra Sangrah.
           </p>
         </div>
         <div className="space-y-4">
@@ -85,6 +85,13 @@ function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/donation" shallow>
+                <div className="hover:text-indigo-500 cursor-pointer">
+                  Donation
+                </div>{" "}
+              </Link>
+            </li>
+            <li>
               <Link href="/privacypolicy" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
                   Privacy Policy
@@ -92,15 +99,10 @@ function Footer() {
               </Link>
             </li>
             <li>
-              <div className="hover:text-indigo-500 cursor-pointer">
-                Terms of Service
-              </div>
-            </li>
-            <li>
-              <Link href="/donation" shallow>
+              <Link href="/termsofservice" shallow>
                 <div className="hover:text-indigo-500 cursor-pointer">
-                  Donation
-                </div>{" "}
+                  Terms of Service
+                </div>
               </Link>
             </li>
           </ul>

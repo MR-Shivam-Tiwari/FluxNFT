@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
+import Logo from "./logo.png"
 function Navbar() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -101,7 +103,13 @@ function Navbar() {
           className="mr-3 ml-2 gap-1   lg:flex flex  items-center cursor-pointer"
           onClick={() => router.push("/")}
         >
-          {/* <img src={logo} alt="" className='h-9 w-9 mb-2 border-gray-300 rounded-full' /> */}
+          <Image
+            src={Logo}
+            alt="Logo"
+            width={36} // Set according to your size
+            height={36} // Set according to your size
+            className="mb-2 border-gray-300 rounded-full"
+          />
           <span className="text-[#8b4513] font-bold lg:text-[30px] md:text-xl text-xl">
             ShastraSangrah
           </span>

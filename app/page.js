@@ -24,7 +24,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl animate-fadeInSlideUp">
-            Explore the Wisdom of Hindu Scriptures
+            Explore the Wisdom of Hindu Scriptures on Shastra Sangrah.
           </h1>
           <p className="mt-4 text-lg sm:text-xl animate-fadeInSlideUp delay-500">
             Discover the timeless teachings and profound insights of the Hindu faith.
@@ -42,8 +42,7 @@ const Home = () => {
                   Discover the Wisdom of Hindu Scriptures
                 </h2>
                 <p className="mt-4 text-gray-500">
-                  Explore the timeless teachings and profound insights of the Hindu faith through our extensive collection of sacred scriptures.
-                </p>
+                  Explore the timeless teachings and profound insights of the Hindu faith through our extensive collection of sacred scriptures on Shastra Sangrah.     </p>
                 <div className="mt-8 grid grid-cols-1 lg:flex gap-7 justify-center ">
                   <Link href="/scriptures/geeta" shallow>
                     <div
@@ -246,8 +245,7 @@ const Home = () => {
               Explore Our Interactive Tools
             </h2>
             <p className="mt-4 text-gray-500 text-center">
-              Enhance your spiritual journey with our interactive tools and
-              resources.
+              Enhance your spiritual journey with our interactive tools and resources on Shastra Sangrah.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
               <div className="bg-white rounded-lg  overflow-hidden shadow-xl hover:scale-105 hover:shadow-2xl  transform duration-500">
@@ -262,8 +260,7 @@ const Home = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-bold">Scripture Search</h3>
                   <p className="mt-2 text-gray-500">
-                    Easily find and explore specific verses, passages, and
-                    teachings from the Hindu scriptures.
+                    Easily find and explore specific verses, passages, and teachings from the Hindu scriptures on Shastra Sangrah.
                   </p>
                   <Link href='/booksearch' shallow>
                     <div
@@ -303,8 +300,7 @@ const Home = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-bold">Discussion</h3>
                   <p className="mt-2 text-gray-500">
-                    Connect with like-minded individuals, share insights, and
-                    engage in thought-provoking discussions.
+                    Connect with like-minded individuals on Shastra Sangrah, share insights, and engage in thought-provoking discussions
                   </p>
                   <Link href='/discussion' shallow>
                     <div

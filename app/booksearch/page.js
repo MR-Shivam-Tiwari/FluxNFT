@@ -181,35 +181,41 @@ function BookCard({ books }) {
     // const sortedBooks = books.sort((a, b) => a.name.localeCompare(b.name));
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {books.map((book) => (
-                <div
-                    key={book.id}
-                    onClick={() => handleClick(book.route)}
-                    style={{ cursor: 'pointer' }}
-                    className="relative rounded-lg overflow-hidden  shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
-                >
-                    <div className=" relative group bg-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="">
+            <div className="mb-6  text-orange-600 text-center josefin-sans-bold font-bold">
 
-                        <Image
-                            src={book.src}
-                            alt={book.name}
-                            width={250}
-                            height={300} priority={true}
-                            className="w-full lg:h-[350px] object-cover rounded-t-md"
-                            style={{ aspectRatio: '250 / 300', objectFit: 'cover', objectPosition: 'top' }} // Added objectPosition: 'top'
-                        // loading="lazy"
-                        />
+                Search and discover a vast collection of Hindu scriptures on Shastra Sangrah.
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {books.map((book) => (
+                    <div
+                        key={book.id}
+                        onClick={() => handleClick(book.route)}
+                        style={{ cursor: 'pointer' }}
+                        className="relative rounded-lg overflow-hidden  shadow-xl hover:scale-105 hover:shadow-2xl transform duration-500 cursor-pointer"
+                    >
+                        <div className=" relative group bg-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-300">
 
-                        <div className="absolute inset-0 rounded-t-md bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <span className="text-white font-medium text-lg">Read Book</span>
-                        </div>
-                        <div className="px-4 p-2">
-                            <h3 className="text-[16px] font-bold  flex flex-wrap ">{book.name}</h3> 
+                            <Image
+                                src={book.src}
+                                alt={book.name}
+                                width={250}
+                                height={300} priority={true}
+                                className="w-full lg:h-[350px] object-cover rounded-t-md"
+                                style={{ aspectRatio: '250 / 300', objectFit: 'cover', objectPosition: 'top' }} // Added objectPosition: 'top'
+                            // loading="lazy"
+                            />
+
+                            <div className="absolute inset-0 rounded-t-md bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                <span className="text-white font-medium text-lg">Read Book</span>
+                            </div>
+                            <div className="px-4 p-2">
+                                <h3 className="text-[16px] font-bold  flex flex-wrap ">{book.name}</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }
@@ -229,7 +235,7 @@ function SearchBook() {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-            <div className="mb-8 flex items-center">
+            <div className="mb-4 flex items-center">
                 <input
                     className="flex h-10 border bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                     placeholder="Search for books..."
