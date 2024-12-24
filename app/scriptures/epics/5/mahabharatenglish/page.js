@@ -6,7 +6,7 @@ import { EpubView } from "react-reader";
 import { Suspense } from 'react';
 
 function MahabharataEnglish() {
-  const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1722853578550-KMGMB+18++VOL.epub");
+  const [epubFile, setEpubFile] = useState("https://ik.imagekit.io/6ih0ldnvx/KMGMB-18-VOL.epub?updatedAt=1735039126668");
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loc, setLocation] = useState(null);

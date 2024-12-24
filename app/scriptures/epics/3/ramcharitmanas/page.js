@@ -5,7 +5,7 @@ import React, { useState, useRef, useCallback, useEffect, useMemo } from "react"
 import { EpubView } from "react-reader";
 import { Suspense } from 'react';
 function Ramcharitmanas() {
-  const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1722854123778-Ramcharitr.epub");
+  const [epubFile, setEpubFile] = useState("https://ik.imagekit.io/6ih0ldnvx/RamCharitManas.epub?updatedAt=1735039636168");
   const [location, setLocation] = useState(null);
   const [books, setBooks] = useState([]);
   const [parvs, setParvs] = useState([]);

@@ -18,19 +18,14 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    domains: ['localhost'],
   },
   webpack: (config) => {
     // Adding a rule to handle .epub files
     config.module.rules.push({
       test: /\.epub$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'static/epubs/',
-          publicPath: '/_next/static/epubs/',
-        },
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/epubs/[name][ext]', // File output structure
       },
     });
 

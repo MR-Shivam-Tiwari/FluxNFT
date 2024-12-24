@@ -11,6 +11,7 @@ function AstavakraGeetaEnglish() {
   const searchParams = useSearchParams();
 
   const [epubFile, setEpubFile] = useState(mahabharataEpub);
+  // const [epubFile, setEpubFile] = useState("https://ik.imagekit.io/6ih0ldnvx/astwakra%20(1).epub?updatedAt=1735040359480");
   const [locationState, setLocationState] = useState(null);
   const [books, setBooks] = useState([]);
   const [selectedBookIndex, setSelectedBookIndex] = useState(

@@ -15,17 +15,12 @@ function MundakoUpnishad() {
     const [currentMantraIndex, setCurrentMantraIndex] = useState(0);
     const [commentryopen, setcommentryopen] = useState(false);
     const [selectedLanguageCommentry, setSelectedLanguageCommentry] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState(null);
+
 
     useEffect(() => {
-        const mantraNumber = parseInt(searchParams.get("ShlokaNo") || "1", 10);
-        if (mantraNumber > 0 && mantraNumber <= Vedas.length) {
-            setCurrentMantraIndex(mantraNumber - 1);
-        } else {
-            setCurrentMantraIndex(0);
-        }
-    }, [searchParams]);
-    useEffect(() => {
-        const chapter = parseInt(searchParams.get('Mundaka')) || 1;
+        const chapter = parseInt(searchParams.get('aitareya')) || 1;
         const khanda = parseInt(searchParams.get('Khanda')) || 1;
         const shloka = parseInt(searchParams.get('ShlokaNo')) || 1;
 
@@ -49,11 +44,19 @@ function MundakoUpnishad() {
     // Handle Chapter change
     const handleChapterChange = (event) => {
         const newChapter = parseInt(event.target.value, 10);
-        updateURL(newChapter, 1, 1); // Reset khanda and shloka to 1 when chapter changes
+        const newKhanda = 1; // Reset khanda to 1 when chapter changes
+        const newShloka = 1; // Reset shloka to 1 when chapter changes
+        setSelectedChapter(newChapter);
+        setSelectedKhanda(newKhanda);
+        setSelectedShloka(newShloka);
+        updateURL(newChapter, newKhanda, newShloka);
     };
     const handleKhandaChange = (event) => {
         const newKhanda = parseInt(event.target.value, 10);
-        updateURL(selectedChapter, newKhanda, 1); // Reset shloka to 1 when khanda changes
+        const newShloka = 1; // Reset shloka to 1 when khanda changes
+        setSelectedKhanda(newKhanda);
+        setSelectedShloka(newShloka);
+        updateURL(selectedChapter, newKhanda, newShloka);
     };
 
     // Handle Shloka change
@@ -370,3 +373,4 @@ export default function Mundako() {
         </Suspense>
     );
 }
+

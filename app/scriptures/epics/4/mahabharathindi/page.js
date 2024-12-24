@@ -5,11 +5,12 @@ import React, { useState, useRef, useCallback, useEffect, useMemo } from "react"
 import { EpubView } from "react-reader";
 import { Suspense } from 'react';
 function Ramcharitmanas() {
-  const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1722854056413-MB.epub");
+  const [epubFile, setEpubFile] = useState("https://ik.imagekit.io/6ih0ldnvx/GeetapressMahabharat.epub?updatedAt=1735034400786");
+  // const [epubFile, setEpubFile] = useState("/GeetapressMahabharat.epub");
   // const [epubFile, setEpubFile] = useState("https://eventidcard.s3.us-east-1.amazonaws.com/1731051499171-5_6321012392973042848.epub");//125 mb mb clear
   const [location, setLocation] = useState(null);
   const [books, setBooks] = useState([]);
-  const [parvs, setParvs] = useState([]);
+  const [parvs, setParvs] = useState([]); 
   const [uparvs, setUparvs] = useState([]);
   const [chapters, setChapters] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
