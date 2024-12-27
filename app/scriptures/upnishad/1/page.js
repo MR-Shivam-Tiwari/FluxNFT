@@ -1,7 +1,8 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-function page() {
+function Page() {
     const formatDescription = (description) => {
         let formattedDescription = description?.replace(/\n/g, "<br /> <br />");
         formattedDescription = formattedDescription?.replace(
@@ -10,12 +11,65 @@ function page() {
         );
         return formattedDescription;
     };
-    const description = `'The Isha Upanishad', a concise yet profound text within Hindu scriptures, explores fundamental questions about existence and spirituality in just 18 verses. It delves into the nature of the self (atman) and the universe (brahman), emphasizing their interconnectedness. \n 'The Upanishad' stresses the importance of detachment from material desires and urges individuals to seek spiritual enlightenment. It advocates for a life of ethical conduct and inner fulfillment rather than pursuit of transient pleasures. \n Through its teachings, the Isha Upanishad encourages seekers to realize the divine essence within themselves and to transcend the cycle of birth and death (samsara) by attaining liberation (moksha). It serves as a guide for spiritual seekers, offering timeless wisdom for navigating life's deeper truths. `;
+
+    const description = `'The Isha Upanishad', a concise yet profound text within Hindu scriptures, explores fundamental questions about existence and spirituality in just 18 verses. It delves into the nature of the self (atman) and the universe (brahman), emphasizing their interconnectedness. \n 'The Upanishad' stresses the importance of detachment from material desires and urges individuals to seek spiritual enlightenment. It advocates for a life of ethical conduct and inner fulfillment rather than pursuit of transient pleasures. \n Through its teachings, the Isha Upanishad encourages seekers to realize the divine essence within themselves and to transcend the cycle of birth and death (samsara) by attaining liberation (moksha). It serves as a guide for spiritual seekers, offering timeless wisdom for navigating life's deeper truths.`;
 
     const formattedDescription = formatDescription(description);
+
     return (
         <div className='bg-gray-200 h-full mt-5'>
             <div className=" ">
+                <Head>
+                    <title>Read Isha Upanishad Online - Explore Timeless Hindu Teachings</title>
+                    <meta
+                        name="description"
+                        content="Discover the profound teachings of the Isha Upanishad. Explore its 18 verses addressing self, universe, detachment, and spiritual enlightenment. Read online now."
+                    />
+                    <meta
+                        name="keywords"
+                        content="Isha Upanishad, Read Isha Upanishad online, Hindu scriptures, Upanishads, spiritual enlightenment, moksha, Vedanta, timeless wisdom"
+                    />
+                    <meta name="author" content="Shashtrsangrah" />
+                    <link rel="canonical" href="https://shashtrsangrah.com/scriptures/upnishad/1/isha" />
+
+                    {/* Open Graph / Facebook */}
+                    <meta property="og:title" content="Read Isha Upanishad Online - Explore Timeless Hindu Teachings" />
+                    <meta
+                        property="og:description"
+                        content="Explore the Isha Upanishad, a principal text of Hindu philosophy. Dive into its teachings on self-realization, detachment, and the ultimate truth."
+                    />
+                    <meta property="og:image" content="/upnishadimage/isha.jpg" />
+                    <meta property="og:url" content="https://shashtrsangrah.com/scriptures/upnishad/1/isha" />
+                    <meta property="og:type" content="article" />
+
+                    {/* Twitter */}
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:title" content="Read Isha Upanishad Online - Explore Timeless Hindu Teachings" />
+                    <meta
+                        name="twitter:description"
+                        content="Understand the profound insights of the Isha Upanishad on spirituality, self, and liberation. Start your journey now."
+                    />
+                    <meta name="twitter:image" content="/upnishadimage/isha.jpg" />
+                    <meta name="twitter:creator" content="@shashtrsangrah" />
+
+                    {/* Structured Data (Schema.org) */}
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                                "@context": "https://schema.org",
+                                "@type": "Book",
+                                "name": "Isha Upanishad",
+                                "description":
+                                    "The Isha Upanishad is a principal Hindu scripture that explores self-realization, detachment, and liberation in just 18 verses.",
+                                "author": "Unknown",
+                                "inLanguage": "Sanskrit",
+                                "image": "https://shashtrsangrah.com/upnishadimage/isha.jpg",
+                                "url": "https://shashtrsangrah.com/scriptures/upnishad/1/isha",
+                            }),
+                        }}
+                    />
+                </Head>
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <Image
@@ -24,7 +78,7 @@ function page() {
                             width="300"
                             height="400" priority={true}
                             className=" w-full rounded-lg shadow-lg"
-                            style={{ aspectRatio: "400/600", objectFit: "cover" ,objectPosition: 'top' }}
+                            style={{ aspectRatio: "400/600", objectFit: "cover", objectPosition: 'top' }}
                         />
                     </div>
                     <div className="flex-1 space-y-4 text-start md:text-left">
@@ -67,7 +121,7 @@ function page() {
                                 {/* <a className="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
               Purchase
             </a> */}
-                                 <div className="w-full">
+                                <div className="w-full">
                                     <Link className="w-full" href='/scriptures/upnishad/1/isha' shallow>
                                         <button
                                             className="inline-flex gap-3 items-center w-full bg-orange-500 hover:bg-orange-400 border-orange-500 shadow justify-center whitespace-nowrap text-xl font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8"
@@ -91,37 +145,7 @@ function page() {
 
                     </div>
                 </div>
-                {/* <div className=' lg:px-10 px-5 martel-sans-semibold'>
-                    <strong>Read the Bhagavad Gita Online in Hindi and English
-                    </strong>  <br></br>
 
-                    Welcome to the ultimate resource for reading the Bhagavad Gita online. Whether you’re seeking to explore the teachings of the Gita in Hindi or English, we’ve got you covered. Immerse yourself in the wisdom of the Bhagavad Gita in Hindi with complete shlokas and their meanings. You can also dive deep into the Bhagavad Gita in English for a clear understanding of its profound messages. <br></br>
-                    <br></br>
-                    <strong className=''> Bhagavad Gita in Hindi - संपूर्ण श्रीमद्भगवद्गीता हिंदी में
-                    </strong> <br></br>
-                    Experience the divine knowledge with the संपूर्ण श्रीमद्भगवद्गीता हिंदी में. This section provides you with all 700 shlokas in Hindi, including their meanings, allowing you to grasp the essence of Krishna’s teachings. Whether you want to study the Bhagavad Gita shlokas in Hindi or download the Bhagavad Gita PDF in Hindi, you’ll find all resources available here.
-                    <br>
-                    </br> <br></br>
-                    <strong>
-
-                        Bhagavad Gita in English - Comprehensive with Meanings
-                    </strong> <br></br>
-                    For those who prefer reading in English, the Bhagavad Gita in English is available with detailed explanations. Each verse is presented with its meaning to help you understand the spiritual guidance provided by Lord Krishna to Arjuna.
-                    <br></br> <br></br>
-                    <strong> Bhagavad Gita PDF Downloads - Hindi, Sanskrit, and English
-                    </strong>   <br></br>
-                    Looking to download the Bhagavad Gita PDF in Hindi, Sanskrit, or English? We offer free downloads, including the highly revered Bhagavad Gita PDF by Gita Press Gorakhpur. Whether you want the original Sanskrit verses or the translated Hindi version, all formats are available for easy access.
-                    <br></br> <br></br>
-                    <strong> Explore and Download Bhagavad Gita - All Versions Available
-                    </strong> <br></br>
-                    Bhagavad Gita PDF in Hindi - For those who want the Hindi text for offline reading.<br></br>
-                    Bhagavad Gita PDF in Sanskrit - For those who seek the original scriptural text.<br></br>
-                    Bhagavad Gita in English PDF - Perfect for English readers seeking clarity and understanding.<br></br>
-                    Bhagavad Gita PDF Free Download - Easily download the Gita in your preferred language.<br></br> <br></br>
-                    <strong>    Read the Bhagavad Gita Online Anytime </strong>  <br></br>
-                    This page is dedicated to those who wish to read the Bhagavad Gita online in Hindi or English. Whether you’re a student of the Gita, a spiritual seeker, or someone looking for inner peace, you can access the entire text of the Bhagavad Gita online for free. Dive into the spiritual wisdom of the Bhagavad Gita in Hindi, read the shlokas, and understand the profound messages that have guided millions over centuries.
-                    <br></br> <br></br> <br></br> <br></br>
-                </div> */}
             </div>
         </div >
     )

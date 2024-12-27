@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,6 +17,28 @@ function page() {
     return (
         <div className='bg-gray-200 h-full mt-5 lg:mt-0'>
             <div className=" ">
+                <Head>
+                    <title>Taittiriya Upanishad - Hindu Scriptures Online</title>
+                    <meta name="description" content="Explore the Taittiriya Upanishad, a key scripture from the Krishna Yajurveda. Learn about its teachings, chapters, and spiritual insights." />
+                    <meta name="keywords" content="Taittiriya Upanishad, Hindu scriptures, Krishna Yajurveda, Vedantic tradition, spiritual knowledge, self-realization" />
+                    <meta name="author" content="Truthology" />
+
+                    <meta property="og:title" content="Taittiriya Upanishad - Hindu Scriptures Online" />
+                    <meta property="og:description" content="Explore the Taittiriya Upanishad, a key scripture from the Krishna Yajurveda. Learn about its teachings, chapters, and spiritual insights." />
+                    <meta property="og:image" content="https://yourdomain.com/path/to/your-image.jpg" />
+                    <meta property="og:url" content="https://yourdomain.com/scriptures/upnishad/7/taittiriya" />
+                    <meta property="og:type" content="website" />
+
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:title" content="Taittiriya Upanishad - Hindu Scriptures Online" />
+                    <meta name="twitter:description" content="Explore the Taittiriya Upanishad, a key scripture from the Krishna Yajurveda. Learn about its teachings, chapters, and spiritual insights." />
+                    <meta name="twitter:image" content="https://yourdomain.com/path/to/your-image.jpg" />
+
+                    <meta name="robots" content="index, follow" />
+                    <link rel="canonical" href="https://yourdomain.com/scriptures/upnishad/7/taittiriya" />
+
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <Image

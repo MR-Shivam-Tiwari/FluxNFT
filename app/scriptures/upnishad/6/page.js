@@ -1,4 +1,5 @@
 
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,6 +18,64 @@ function page() {
     return (
         <div className='bg-gray-200 h-full mt-5 lg:mt-0'>
             <div className=" ">
+                <Head>
+                    <title>Mandukya Upanishad - Explore the Nature of Reality and Consciousness</title>
+                    <meta
+                        name="description"
+                        content="Read the Mandukya Upanishad online, a foundational text in Vedanta and Advaita philosophy that explores the four states of consciousness and the nature of reality. Download PDF for free."
+                    />
+                    <meta
+                        name="keywords"
+                        content="Mandukya Upanishad, Vedanta philosophy, Advaita philosophy, consciousness, Atman, Brahman, Turiya, Read Online, Download PDF, spiritual knowledge"
+                    />
+                    <meta name="author" content="Shastra Sangrah" />
+                    <link rel="canonical" href="https://shashtrsangrah.com/scriptures/upnishad/6/mandukya" />
+
+                    {/* Open Graph / Facebook */}
+                    <meta
+                        property="og:title"
+                        content="Mandukya Upanishad - Explore the Nature of Reality and Consciousness"
+                    />
+                    <meta
+                        property="og:description"
+                        content="Discover the teachings of the Mandukya Upanishad online. Learn about the four states of consciousness, Atman, Brahman, and Turiya. Free PDF download available."
+                    />
+                    <meta property="og:image" content="/upnishadimage/mandukya.jpg" />
+                    <meta property="og:url" content="https://shashtrsangrah.com/scriptures/upnishad/6/mandukya" />
+                    <meta property="og:type" content="article" />
+
+                    {/* Twitter */}
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta
+                        name="twitter:title"
+                        content="Mandukya Upanishad - Explore the Nature of Reality and Consciousness"
+                    />
+                    <meta
+                        name="twitter:description"
+                        content="Read the Mandukya Upanishad online and explore the nature of consciousness, reality, and liberation. Download PDF for free."
+                    />
+                    <meta name="twitter:image" content="/upnishadimage/mandukya.jpg" />
+                    <meta name="twitter:creator" content="@shashtrsangrah" />
+
+                    {/* Structured Data (Schema.org) */}
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                                "@context": "https://schema.org",
+                                "@type": "Book",
+                                "name": "Mandukya Upanishad",
+                                "description":
+                                    "The Mandukya Upanishad addresses the nature of consciousness, the Atman, Brahman, and the four states of being, ultimately guiding to spiritual realization.",
+                                "author": "Unknown",
+                                "inLanguage": "Sanskrit",
+                                "image": "https://shashtrsangrah.com/upnishadimage/mandukya.jpg",
+                                "url": "https://shashtrsangrah.com/scriptures/upnishad/6/mandukya",
+                                "keywords": "Mandukya Upanishad, Vedanta, Advaita, Read Online, Download PDF, Atman, Brahman, consciousness",
+                            }),
+                        }}
+                    />
+                </Head>
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <Image
@@ -25,7 +84,7 @@ function page() {
                             width="300" priority={true}
                             height="400"
                             className=" w-full rounded-lg shadow-lg"
-                            style={{ aspectRatio: "400/600", objectFit: "cover" ,objectPosition: 'top' }}
+                            style={{ aspectRatio: "400/600", objectFit: "cover", objectPosition: 'top' }}
                         />
                     </div>
                     <div className="flex-1 space-y-4 text-start md:text-left">
@@ -68,7 +127,7 @@ function page() {
                                 {/* <a className="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-6  transition-colors"  >
               Purchase
             </a> */}
-                                 <div className="w-full">
+                                <div className="w-full">
                                     <Link className="w-full" href='/scriptures/upnishad/6/mandukya' shallow>
                                         <button
                                             className="inline-flex gap-3 items-center w-full bg-orange-500 hover:bg-orange-400 border-orange-500 shadow justify-center whitespace-nowrap text-xl font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8"
@@ -92,37 +151,7 @@ function page() {
 
                     </div>
                 </div>
-                {/* <div className=' lg:px-10 px-5 martel-sans-semibold'>
-                    <strong>Read the Bhagavad Gita Online in Hindi and English
-                    </strong>  <br></br>
 
-                    Welcome to the ultimate resource for reading the Bhagavad Gita online. Whether you’re seeking to explore the teachings of the Gita in Hindi or English, we’ve got you covered. Immerse yourself in the wisdom of the Bhagavad Gita in Hindi with complete shlokas and their meanings. You can also dive deep into the Bhagavad Gita in English for a clear understanding of its profound messages. <br></br>
-                    <br></br>
-                    <strong className=''> Bhagavad Gita in Hindi - संपूर्ण श्रीमद्भगवद्गीता हिंदी में
-                    </strong> <br></br>
-                    Experience the divine knowledge with the संपूर्ण श्रीमद्भगवद्गीता हिंदी में. This section provides you with all 700 shlokas in Hindi, including their meanings, allowing you to grasp the essence of Krishna’s teachings. Whether you want to study the Bhagavad Gita shlokas in Hindi or download the Bhagavad Gita PDF in Hindi, you’ll find all resources available here.
-                    <br>
-                    </br> <br></br>
-                    <strong>
-
-                        Bhagavad Gita in English - Comprehensive with Meanings
-                    </strong> <br></br>
-                    For those who prefer reading in English, the Bhagavad Gita in English is available with detailed explanations. Each verse is presented with its meaning to help you understand the spiritual guidance provided by Lord Krishna to Arjuna.
-                    <br></br> <br></br>
-                    <strong> Bhagavad Gita PDF Downloads - Hindi, Sanskrit, and English
-                    </strong>   <br></br>
-                    Looking to download the Bhagavad Gita PDF in Hindi, Sanskrit, or English? We offer free downloads, including the highly revered Bhagavad Gita PDF by Gita Press Gorakhpur. Whether you want the original Sanskrit verses or the translated Hindi version, all formats are available for easy access.
-                    <br></br> <br></br>
-                    <strong> Explore and Download Bhagavad Gita - All Versions Available
-                    </strong> <br></br>
-                    Bhagavad Gita PDF in Hindi - For those who want the Hindi text for offline reading.<br></br>
-                    Bhagavad Gita PDF in Sanskrit - For those who seek the original scriptural text.<br></br>
-                    Bhagavad Gita in English PDF - Perfect for English readers seeking clarity and understanding.<br></br>
-                    Bhagavad Gita PDF Free Download - Easily download the Gita in your preferred language.<br></br> <br></br>
-                    <strong>    Read the Bhagavad Gita Online Anytime </strong>  <br></br>
-                    This page is dedicated to those who wish to read the Bhagavad Gita online in Hindi or English. Whether you’re a student of the Gita, a spiritual seeker, or someone looking for inner peace, you can access the entire text of the Bhagavad Gita online for free. Dive into the spiritual wisdom of the Bhagavad Gita in Hindi, read the shlokas, and understand the profound messages that have guided millions over centuries.
-                    <br></br> <br></br> <br></br> <br></br>
-                </div> */}
             </div>
         </div >
     )

@@ -16,6 +16,48 @@ function page() {
     return (
         <div className='bg-gray-200 h-full mt-5 lg:mt-0'>
             <div className=" ">
+                <Head>
+                    <title>Brihadaranyaka Upanishad - Read Online Free | Explore Hindu Scriptures</title>
+                    <meta
+                        name="description"
+                        content="Read the Brihadaranyaka Upanishad online for free. Explore its profound spiritual teachings, metaphysical insights, and the path to self-realization as part of the Shukla Yajurveda."
+                    />
+                    <meta
+                        property="og:title"
+                        content="Brihadaranyaka Upanishad - Read Online Free | Explore Hindu Scriptures"
+                    />
+                    <meta
+                        property="og:description"
+                        content="Dive into the teachings of the Brihadaranyaka Upanishad, part of the Shukla Yajurveda. Learn about Atman, Brahman, and the path to spiritual liberation."
+                    />
+                    <meta
+                        property="og:image"
+                        content="https://yourdomain.com/upnishadimage/brihad.jpg"
+                    />
+                    <meta
+                        property="og:url"
+                        content="https://yourdomain.com/scriptures/upnishad/10/brihadaranyaka"
+                    />
+                    <meta property="og:type" content="article" />
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta
+                        name="twitter:title"
+                        content="Brihadaranyaka Upanishad - Explore the Teachings of the Shukla Yajurveda"
+                    />
+                    <meta
+                        name="twitter:description"
+                        content="Discover the timeless wisdom of the Brihadaranyaka Upanishad. Learn about consciousness, self-inquiry, and spiritual liberation."
+                    />
+                    <meta
+                        name="twitter:image"
+                        content="https://yourdomain.com/upnishadimage/brihad.jpg"
+                    />
+                    <link
+                        rel="canonical"
+                        href="https://yourdomain.com/scriptures/upnishad/10/brihadaranyaka"
+                    />
+                </Head>
+
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <Image
@@ -93,37 +135,7 @@ function page() {
 
                     </div>
                 </div>
-                {/* <div className=' lg:px-10 px-5 martel-sans-semibold'>
-                    <strong>Read the Bhagavad Gita Online in Hindi and English
-                    </strong>  <br></br>
 
-                    Welcome to the ultimate resource for reading the Bhagavad Gita online. Whether you’re seeking to explore the teachings of the Gita in Hindi or English, we’ve got you covered. Immerse yourself in the wisdom of the Bhagavad Gita in Hindi with complete shlokas and their meanings. You can also dive deep into the Bhagavad Gita in English for a clear understanding of its profound messages. <br></br>
-                    <br></br>
-                    <strong className=''> Bhagavad Gita in Hindi - संपूर्ण श्रीमद्भगवद्गीता हिंदी में
-                    </strong> <br></br>
-                    Experience the divine knowledge with the संपूर्ण श्रीमद्भगवद्गीता हिंदी में. This section provides you with all 700 shlokas in Hindi, including their meanings, allowing you to grasp the essence of Krishna’s teachings. Whether you want to study the Bhagavad Gita shlokas in Hindi or download the Bhagavad Gita PDF in Hindi, you’ll find all resources available here.
-                    <br>
-                    </br> <br></br>
-                    <strong>
-
-                        Bhagavad Gita in English - Comprehensive with Meanings
-                    </strong> <br></br>
-                    For those who prefer reading in English, the Bhagavad Gita in English is available with detailed explanations. Each verse is presented with its meaning to help you understand the spiritual guidance provided by Lord Krishna to Arjuna.
-                    <br></br> <br></br>
-                    <strong> Bhagavad Gita PDF Downloads - Hindi, Sanskrit, and English
-                    </strong>   <br></br>
-                    Looking to download the Bhagavad Gita PDF in Hindi, Sanskrit, or English? We offer free downloads, including the highly revered Bhagavad Gita PDF by Gita Press Gorakhpur. Whether you want the original Sanskrit verses or the translated Hindi version, all formats are available for easy access.
-                    <br></br> <br></br>
-                    <strong> Explore and Download Bhagavad Gita - All Versions Available
-                    </strong> <br></br>
-                    Bhagavad Gita PDF in Hindi - For those who want the Hindi text for offline reading.<br></br>
-                    Bhagavad Gita PDF in Sanskrit - For those who seek the original scriptural text.<br></br>
-                    Bhagavad Gita in English PDF - Perfect for English readers seeking clarity and understanding.<br></br>
-                    Bhagavad Gita PDF Free Download - Easily download the Gita in your preferred language.<br></br> <br></br>
-                    <strong>    Read the Bhagavad Gita Online Anytime </strong>  <br></br>
-                    This page is dedicated to those who wish to read the Bhagavad Gita online in Hindi or English. Whether you’re a student of the Gita, a spiritual seeker, or someone looking for inner peace, you can access the entire text of the Bhagavad Gita online for free. Dive into the spiritual wisdom of the Bhagavad Gita in Hindi, read the shlokas, and understand the profound messages that have guided millions over centuries.
-                    <br></br> <br></br> <br></br> <br></br>
-                </div> */}
             </div>
         </div >
     )

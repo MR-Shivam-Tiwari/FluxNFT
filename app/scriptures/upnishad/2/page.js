@@ -16,15 +16,67 @@ function page() {
     return (
         <div className='bg-gray-200 h-full mt-5 lg:mt-0  '>
             <div className=" ">
+                <Head>
+                    <title>Read Kena Upanishad Online - Explore Timeless Hindu Teachings</title>
+                    <meta
+                        name="description"
+                        content="Discover the profound teachings of the Kena Upanishad. Explore its philosophical insights into Brahman, self, and the nature of reality. Read online now."
+                    />
+                    <meta
+                        name="keywords"
+                        content="Kena Upanishad, Read Kena Upanishad online, Hindu scriptures, Upanishads, Brahman, Atman, Vedanta, spiritual wisdom, timeless teachings"
+                    />
+                    <meta name="author" content="Shastra Sangrah" />
+                    <link rel="canonical" href="https://shashtrsangrah.com/scriptures/upnishad/2/kena" />
+
+                    {/* Open Graph / Facebook */}
+                    <meta property="og:title" content="Read Kena Upanishad Online - Explore Timeless Hindu Teachings" />
+                    <meta
+                        property="og:description"
+                        content="Dive into the philosophical depths of the Kena Upanishad. Learn about Brahman, self, and the interconnectedness of all existence."
+                    />
+                    <meta property="og:image" content="/upnishadimage/kena.jpg" />
+                    <meta property="og:url" content="https://shashtrsangrah.com/scriptures/upnishad/2/kena" />
+                    <meta property="og:type" content="article" />
+
+                    {/* Twitter */}
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:title" content="Read Kena Upanishad Online - Explore Timeless Hindu Teachings" />
+                    <meta
+                        name="twitter:description"
+                        content="Understand the timeless teachings of the Kena Upanishad on Brahman, self, and the essence of existence. Start exploring today."
+                    />
+                    <meta name="twitter:image" content="/upnishadimage/kena.jpg" />
+                    <meta name="twitter:creator" content="@shashtrsangrah" />
+
+                    {/* Structured Data (Schema.org) */}
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                                "@context": "https://schema.org",
+                                "@type": "Book",
+                                "name": "Kena Upanishad",
+                                "description":
+                                    "The Kena Upanishad is a profound Hindu scripture that explores the essence of Brahman, self-realization, and the ultimate reality.",
+                                "author": "Unknown",
+                                "inLanguage": "Sanskrit",
+                                "image": "https://shashtrsangrah.com/upnishadimage/kena.jpg",
+                                "url": "https://shashtrsangrah.com/scriptures/upnishad/2/kena",
+                            }),
+                        }}
+                    />
+                </Head>
+
                 <div className="flex flex-col md:flex-row items-start justify-center gap-8 p-6 md:p-12 bg-gray-200 ">
                     <div className="flex-1 flex justify-center max-w-md">
                         <Image
                             src="/upnishadimage/kena.jpg"
                             alt="Book Cover"
                             width="300"
-                            height="400"priority={true}
+                            height="400" priority={true}
                             className=" w-full rounded-lg shadow-lg"
-                            style={{ aspectRatio: "400/600", objectFit: "cover" ,objectPosition: 'top' }}
+                            style={{ aspectRatio: "400/600", objectFit: "cover", objectPosition: 'top' }}
                         />
                     </div>
                     <div className="flex-1 space-y-4 text-start md:text-left">
@@ -91,37 +143,7 @@ function page() {
 
                     </div>
                 </div>
-                {/* <div className=' lg:px-10 px-5 martel-sans-semibold'>
-                    <strong>Read the Bhagavad Gita Online in Hindi and English
-                    </strong>  <br></br>
 
-                    Welcome to the ultimate resource for reading the Bhagavad Gita online. Whether you’re seeking to explore the teachings of the Gita in Hindi or English, we’ve got you covered. Immerse yourself in the wisdom of the Bhagavad Gita in Hindi with complete shlokas and their meanings. You can also dive deep into the Bhagavad Gita in English for a clear understanding of its profound messages. <br></br>
-                    <br></br>
-                    <strong className=''> Bhagavad Gita in Hindi - संपूर्ण श्रीमद्भगवद्गीता हिंदी में
-                    </strong> <br></br>
-                    Experience the divine knowledge with the संपूर्ण श्रीमद्भगवद्गीता हिंदी में. This section provides you with all 700 shlokas in Hindi, including their meanings, allowing you to grasp the essence of Krishna’s teachings. Whether you want to study the Bhagavad Gita shlokas in Hindi or download the Bhagavad Gita PDF in Hindi, you’ll find all resources available here.
-                    <br>
-                    </br> <br></br>
-                    <strong>
-
-                        Bhagavad Gita in English - Comprehensive with Meanings
-                    </strong> <br></br>
-                    For those who prefer reading in English, the Bhagavad Gita in English is available with detailed explanations. Each verse is presented with its meaning to help you understand the spiritual guidance provided by Lord Krishna to Arjuna.
-                    <br></br> <br></br>
-                    <strong> Bhagavad Gita PDF Downloads - Hindi, Sanskrit, and English
-                    </strong>   <br></br>
-                    Looking to download the Bhagavad Gita PDF in Hindi, Sanskrit, or English? We offer free downloads, including the highly revered Bhagavad Gita PDF by Gita Press Gorakhpur. Whether you want the original Sanskrit verses or the translated Hindi version, all formats are available for easy access.
-                    <br></br> <br></br>
-                    <strong> Explore and Download Bhagavad Gita - All Versions Available
-                    </strong> <br></br>
-                    Bhagavad Gita PDF in Hindi - For those who want the Hindi text for offline reading.<br></br>
-                    Bhagavad Gita PDF in Sanskrit - For those who seek the original scriptural text.<br></br>
-                    Bhagavad Gita in English PDF - Perfect for English readers seeking clarity and understanding.<br></br>
-                    Bhagavad Gita PDF Free Download - Easily download the Gita in your preferred language.<br></br> <br></br>
-                    <strong>    Read the Bhagavad Gita Online Anytime </strong>  <br></br>
-                    This page is dedicated to those who wish to read the Bhagavad Gita online in Hindi or English. Whether you’re a student of the Gita, a spiritual seeker, or someone looking for inner peace, you can access the entire text of the Bhagavad Gita online for free. Dive into the spiritual wisdom of the Bhagavad Gita in Hindi, read the shlokas, and understand the profound messages that have guided millions over centuries.
-                    <br></br> <br></br> <br></br> <br></br>
-                </div> */}
             </div>
         </div >
     )
