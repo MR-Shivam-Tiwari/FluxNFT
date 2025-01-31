@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
 
         {/* Google Tag Manager */}
         <Script
+          id="google-tag-manager"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
@@ -48,11 +49,9 @@ export default function RootLayout({ children }) {
         {/* End Google Tag Manager */}
 
         {/* Google Analytics (gtag.js) */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-F08EGV49EE" />
         <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-F08EGV49EE"
-        />
-        <Script
+          id="google-analytics"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
