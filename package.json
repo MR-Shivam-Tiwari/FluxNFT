@@ -23,6 +23,7 @@
     "react-image-file-resizer": "^0.4.8",
     "react-pdf": "^9.1.0",
     "react-reader": "^2.0.11",
+    "sharp": "^0.33.5",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {

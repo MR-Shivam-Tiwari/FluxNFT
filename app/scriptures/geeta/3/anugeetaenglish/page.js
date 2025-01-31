@@ -13,6 +13,7 @@ function AnugitaHindi() {
         return chapterFromUrl ? parseInt(chapterFromUrl) : 1;
     });
 
+    // First useEffect: added 'router' and 'searchParams' as dependencies
     useEffect(() => {
         if (!searchParams.get('selectedChapter')) {
             const newSearchParams = new URLSearchParams(searchParams.toString());
@@ -20,14 +21,15 @@ function AnugitaHindi() {
             router.replace(`?${newSearchParams.toString()}`);
         }
         localStorage.setItem('selectedChapter', selectedChapter);
-    }, [selectedChapter]);
+    }, [selectedChapter, router, searchParams]); // Fix: Add router and searchParams
 
+    // Second useEffect: added 'selectedChapter' as a dependency
     useEffect(() => {
         const chapterFromUrl = parseInt(searchParams.get('selectedChapter'));
         if (chapterFromUrl && chapterFromUrl !== selectedChapter) {
             setSelectedChapter(chapterFromUrl);
         }
-    }, [searchParams]);
+    }, [searchParams, selectedChapter]); // Fix: Add selectedChapter
 
     const chapters = [...new Set(Data.map((item) => item.Chapter))];
 
@@ -77,7 +79,7 @@ function AnugitaHindi() {
       };
     
     return (
-        <div className="mt-6" style={{ backgroundImage: 'url("/bgg.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="mt-6" style={{ backgroundImage: "url('/bgg.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="min-h-screen flex flex-col items-center">
                 <div className="bg-orange-100 w-full p-2 lg:px-7 gap-3 flex items-center justify-center">
                     <div></div>
@@ -96,8 +98,8 @@ function AnugitaHindi() {
                             </button>
                         ))}
                     </div>
-
                 </div>
+
                 <div className="flex-1 flex items-center text-start p-4 lg:px-40 pb-20">
                     <div className="text-center">
                         {chapterData.map((item, index) => (
@@ -115,10 +117,11 @@ function AnugitaHindi() {
                         ))}
                     </div>
                 </div>
+
                 <div className="bg-orange-100 w-full p-2 lg:px-20 flex justify-between fixed bottom-0 left-0">
                     <button
                         onClick={() => handleChapterSelect(Math.max(selectedChapter - 1, 1))}
-                        className="inline-flex items-center justify-center w-[140px] whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4  bg-[#374151] text-white"
+                        className="inline-flex items-center justify-center w-[140px] whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-9 px-4 bg-[#374151] text-white"
                     >
                         Previous
                     </button>
@@ -143,4 +146,4 @@ export default function AnugitaEnglish() {
         <AnugitaHindi />
       </Suspense>
     );
-  }
+}

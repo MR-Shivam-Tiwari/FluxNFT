@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import Head from 'next/head';
 function page() {
     const formatDescription = (description) => {
         let formattedDescription = description?.replace(/\n/g, "<br /> <br />");

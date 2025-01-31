@@ -18,20 +18,19 @@ function PrashnaUpanishad() {
     const [currentMantraIndex, setCurrentMantraIndex] = useState(0);
     useEffect(() => {
         const chapter = searchParams.get("chapter") || defaultKhanda;
-        const ShlokaNo = parseInt(searchParams.get("mantra") || "1", 10) - 1; // Adjust for 0-based index
-
-        // Ensure that both chapter and mantra are set properly on page load
+        const ShlokaNo = parseInt(searchParams.get("mantra") || "1", 10) - 1;
         setSelectedKhanda(chapter);
         setCurrentMantraIndex(ShlokaNo);
-    }, [searchParams]);
+    }, [searchParams, defaultKhanda]); // Add defaultKhanda to the dependency array
+    
 
     useEffect(() => {
-        // When currentMantraIndex or selectedKhanda changes, update the mantra and chapter
         const currentMantra = filteredVedas[currentMantraIndex];
         if (currentMantra) {
             setSelectedMantra(currentMantraIndex);
         }
-    }, [currentMantraIndex, selectedKhanda]);
+    }, [currentMantraIndex, selectedKhanda, filteredVedas]); // Add filteredVedas to the dependency array
+    
 
     const handleKhandaChange = (event) => {
         const newKhanda = event.target.value;

@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import '../globals.css'; // Import global styles
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Script from 'next/script'; // Import Script component
 
 // Load the Inter font from Google Fonts
 const inter = Inter({ subsets: ['latin'] });
@@ -32,7 +33,8 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" href="/homeimage/shashtrasangrahlogo.png" />
 
         {/* Google Tag Manager */}
-        <script
+        <Script
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -46,8 +48,12 @@ export default function RootLayout({ children }) {
         {/* End Google Tag Manager */}
 
         {/* Google Analytics (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F08EGV49EE"></script>
-        <script
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-F08EGV49EE"
+        />
+        <Script
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

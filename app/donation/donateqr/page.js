@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-
+import Image from 'next/image';
 export default function DonationPage() {
     const [isQRModalOpen, setQRModalOpen] = useState(false)
     const [copySuccess, setCopySuccess] = useState(false)
@@ -25,10 +25,14 @@ export default function DonationPage() {
                         className="inline-block relative cursor-pointer group"
                         onClick={() => setQRModalOpen(true)}
                     >
-                        <img
+                        <Image
                             src="/donation/donataion_qr.png"
                             alt="QR Code for Donation"
-                            className="w-48 h-48 mx-auto rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
+                            width={200}  // Set an appropriate width
+                            height={200}  // Set an appropriate height
+                            className="rounded-lg"  // Use Tailwind CSS classes for styling if needed
+                            style={{ objectFit: 'contain' }}
+                            // className="w-48 h-48 mx-auto rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-opacity duration-300 rounded-lg flex items-center justify-center">
                             <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
@@ -85,11 +89,15 @@ export default function DonationPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                        <img
-                            src="/donation/donataion_qr.png"
-                            alt="Enlarged QR Code"
-                            className="w-full h-auto rounded-lg"
+                        <Image
+                            src="/donation/donataion_qr.png"  // Ensure correct path to public folder
+                            alt="donation"
+                            width={500}  // Set an appropriate width
+                            height={500}  // Set an appropriate height
+                            className="rounded-lg"  // Use Tailwind CSS classes for styling if needed
+                            style={{ objectFit: 'contain' }}  // This ensures the image keeps its aspect ratio without stretching
                         />
+                        
                     </div>
                 </div>
             )}

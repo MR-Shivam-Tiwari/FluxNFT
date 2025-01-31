@@ -22,16 +22,16 @@ function KenaUpnishad() {
     const mantraNumber = parseInt(searchParams.get("mantra") || "1", 10) - 1;
     setSelectedKhanda(Chapter);
     setCurrentMantraIndex(mantraNumber);
-  }, [searchParams]);
+  }, [searchParams, defaultKhanda]); // Add defaultKhanda as a dependency
+  
 
   useEffect(() => {
-    // When currentMantraIndex changes, update selectedMantra and selectedKhanda
     const currentMantra = filteredVedas[currentMantraIndex];
     if (currentMantra) {
-      // setSelectedKhanda(currentMantra.Part); // Update Chapter
-      setSelectedMantra(currentMantraIndex); // Update mantra
+      setSelectedMantra(currentMantraIndex);
     }
-  }, [currentMantraIndex, selectedKhanda]); // Add selectedKhanda as dependency
+  }, [currentMantraIndex, filteredVedas]); // Add filteredVedas as a dependency
+   // Add selectedKhanda as dependency
 
   const handleKhandaChange = (event) => {
     const newKhanda = event.target.value;

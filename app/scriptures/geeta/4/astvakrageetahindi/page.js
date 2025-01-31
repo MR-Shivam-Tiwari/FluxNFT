@@ -14,20 +14,20 @@ function Astvakrahindi() {
     });
 
     useEffect(() => {
-        if (!searchParams.get('selectedChapter')) {
-            const newSearchParams = new URLSearchParams(searchParams.toString());
-            newSearchParams.set('selectedChapter', selectedChapter);
-            router.replace(`?${newSearchParams.toString()}`);
+        const chapterFromUrl = searchParams.get('selectedChapter');
+        // Check if the chapter in URL is different than selectedChapter in state
+        if (chapterFromUrl && parseInt(chapterFromUrl) !== selectedChapter) {
+            setSelectedChapter(parseInt(chapterFromUrl)); // Sync with the URL query
         }
-        localStorage.setItem('selectedChapter', selectedChapter);
-    }, [selectedChapter]);
+    }, [searchParams]); // Trigger when searchParams change
 
     useEffect(() => {
-        const chapterFromUrl = parseInt(searchParams.get('selectedChapter'));
-        if (chapterFromUrl && chapterFromUrl !== selectedChapter) {
-            setSelectedChapter(chapterFromUrl);
-        }
-    }, [searchParams]);
+        // Update URL whenever selectedChapter changes
+        const newSearchParams = new URLSearchParams(searchParams.toString());
+        newSearchParams.set('selectedChapter', selectedChapter);
+        router.replace(`?${newSearchParams.toString()}`); // Update URL
+        localStorage.setItem('selectedChapter', selectedChapter);
+    }, [selectedChapter, router, searchParams]); // Trigger when selectedChapter changes
 
     const chapters = [...new Set(Data.map((item) => item.Chapter))];
 
@@ -38,15 +38,11 @@ function Astvakrahindi() {
     const handleChapterSelect = (chapter) => {
         const chapterNum = parseInt(chapter);
         setSelectedChapter(chapterNum);
-        const newSearchParams = new URLSearchParams(searchParams.toString());
-        newSearchParams.set('selectedChapter', chapterNum);
-        router.push(`?${newSearchParams.toString()}`);
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0); // Scroll to top
     };
 
     const formatDescription = (Text) => {
         if (!Text) return '';
-
         let formattedDescription = Text.replace(/\n/g, '<br />');
         formattedDescription = formattedDescription.replace(/'([^']*)'/g, '</br></br><p style="color: #ea580c; font-size:21px; line-height: 1.5;">$1</p> ');
         formattedDescription = formattedDescription.replace(/`([^`]*)`/g, '<div style=" color:gray; font-weight: bold; margin-top:5px;  font-size:16px; line-height: 1.5;">$1</div> </br> <span style="color:#ea580c;" >Translation</span>');
@@ -55,8 +51,8 @@ function Astvakrahindi() {
 
     const styles = {
         scrollbar: {
-          scrollbarWidth: 'thin', /* For Firefox */
-          scrollbarColor: '#c0c0c0 #f0f0f0', /* For Firefox */
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#c0c0c0 #f0f0f0',
           overflowX: 'auto',
         },
         customScrollbar: `
@@ -74,8 +70,8 @@ function Astvakrahindi() {
             border: 2px solid #f0f0f0;
           }
         `,
-      };
-    
+    };
+
     return (
         <div className="mt-6" style={{ backgroundImage: 'url("/bgg.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="min-h-screen flex flex-col items-center">
@@ -96,7 +92,6 @@ function Astvakrahindi() {
                             </button>
                         ))}
                     </div>
-
                 </div>
                 <div className="flex-1 flex items-center text-start p-4 lg:px-40 pb-20">
                     <div className="text-center">
@@ -106,9 +101,9 @@ function Astvakrahindi() {
                                     Chapter {item.Chapter}
                                 </div>
                                 <div
-                                    className="text-md text-gray-800  yatra-one-regular text-start"
+                                    className="text-md text-gray-800 yatra-one-regular text-start"
                                     dangerouslySetInnerHTML={{
-                                        __html:formatDescription(item.Text),
+                                        __html: formatDescription(item.Text),
                                     }}
                                 ></div>
                             </div>
@@ -137,11 +132,10 @@ function Astvakrahindi() {
     );
 }
 
-
 export default function Astvakra() {
     return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <Astvakrahindi />
-      </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+            <Astvakrahindi />
+        </Suspense>
     );
-  }
+}

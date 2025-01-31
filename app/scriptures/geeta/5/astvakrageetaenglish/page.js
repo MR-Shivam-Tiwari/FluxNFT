@@ -27,14 +27,15 @@ function AstavakraGeetaEnglish() {
     const params = new URLSearchParams(searchParams);
     params.set("selectedBookIndex", selectedBookIndex.toString());
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [selectedBookIndex, pathname, router]);
+  }, [selectedBookIndex, searchParams, pathname, router]); // Add searchParams here
+  
 
   useEffect(() => {
     const chapterFromUrl = searchParams.get("selectedBookIndex");
     if (chapterFromUrl && parseInt(chapterFromUrl) !== selectedBookIndex) {
       setSelectedBookIndex(parseInt(chapterFromUrl));
     }
-  }, [searchParams]);
+  }, [searchParams, selectedBookIndex]);
 
 
 

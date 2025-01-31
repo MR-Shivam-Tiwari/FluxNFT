@@ -19,11 +19,12 @@ function PrashnaUpanishad() {
     useEffect(() => {
         const Prashna = searchParams.get("Prashna") || defaultKhanda;
         const ShlokaNo = parseInt(searchParams.get("mantra") || "1", 10) - 1; // Adjust for 0-based index
-
+    
         // Ensure that both Prashna and mantra are set properly on page load
         setSelectedKhanda(Prashna);
         setCurrentMantraIndex(ShlokaNo);
-    }, [searchParams]);
+    }, [searchParams, defaultKhanda]); // Add defaultKhanda here
+    
 
     useEffect(() => {
         // When currentMantraIndex or selectedKhanda changes, update the mantra and Prashna
@@ -31,7 +32,8 @@ function PrashnaUpanishad() {
         if (currentMantra) {
             setSelectedMantra(currentMantraIndex);
         }
-    }, [currentMantraIndex, selectedKhanda]);
+    }, [currentMantraIndex, selectedKhanda, filteredVedas]); // Add filteredVedas here
+    
 
     const handleKhandaChange = (event) => {
         const newKhanda = event.target.value;

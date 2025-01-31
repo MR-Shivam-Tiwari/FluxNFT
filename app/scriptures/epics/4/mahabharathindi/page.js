@@ -59,7 +59,7 @@ function Ramcharitmanas() {
     }
   }, [searchParams, books, parvs, uparvs, chapters]);
 
-  const updateRoute = (newParams) => {
+  const updateRoute = useCallback((newParams) => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     Object.entries(newParams).forEach(([key, value]) => {
       if (value === null) {
@@ -71,7 +71,7 @@ function Ramcharitmanas() {
     const search = current.toString();
     const query = search ? `?${search}` : "";
     router.push(`${pathname}${query}`);
-  };
+  }, [searchParams, pathname, router]);
 
   const memoizedBooks = useMemo(() => books, [books]);
 
