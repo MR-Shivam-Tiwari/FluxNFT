@@ -97,7 +97,7 @@ export default function PDFViewer() {
                 <div className="border rounded h-[calc(100vh-80px)] w-full overflow-y-scroll mt-4">
                     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
                         <Viewer
-                            fileUrl="/atharvved.pdf"
+                            fileUrl="https://ik.imagekit.io/6ih0ldnvx/atharvved.pdf?updatedAt=1738322642760"
                             plugins={[
                                 defaultLayoutPluginInstance,
                                 toolbarPluginInstance,

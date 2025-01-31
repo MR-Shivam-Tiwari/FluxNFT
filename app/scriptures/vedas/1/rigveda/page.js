@@ -97,7 +97,7 @@ export default function PDFViewer() {
                 <div className="border rounded h-[calc(100vh-80px)] w-full overflow-y-scroll mt-4">
                     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
                         <Viewer
-                            fileUrl="/Rigveda.pdf"
+                            fileUrl="https://ik.imagekit.io/6ih0ldnvx/Rigveda.pdf?updatedAt=1738322490481"
                             plugins={[
                                 defaultLayoutPluginInstance,
                                 toolbarPluginInstance,
