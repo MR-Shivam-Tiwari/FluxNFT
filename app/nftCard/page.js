@@ -17,11 +17,11 @@ export default function NFTCard({ nft, onLike }) {
       {/* Image */}
       <div className="relative overflow-hidden h-64 rounded-t-xl bg-gradient-to-br from-[#7F5AF0]/30 to-[#00E0FF]/30">
         <img
-          src={nft.image || "/placeholder.svg"}
-          alt={nft.name}
-          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
-          loading="lazy"
-        />
+  src={nft?.image || "/placeholder.svg"}
+  alt={nft?.name || "NFT"}
+  className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+  loading="lazy"
+/>
 
         {/* Overlay Buy button */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 flex items-end p-5 transition-opacity duration-300">
