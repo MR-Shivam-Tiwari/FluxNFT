@@ -100,11 +100,16 @@ export default function FeaturedCollections() {
                   <span>Total Items</span>
                   <span className="text-white">{collection.items}</span>
                 </div>
+
+
+                
               </div>
 
               <button className="w-full py-3 rounded-xl bg-pink-600 text-white font-semibold shadow-lg hover:bg-pink-700 transition-colors duration-300">
                 View Collection
               </button>
+
+              
             </div>
           </div>
         ))}
