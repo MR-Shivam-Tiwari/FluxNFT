@@ -23,36 +23,28 @@ export default function Navbar({ walletConnected, setWalletConnected }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 relative">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 cursor-pointer group select-none">
-            {/* Custom NFT-style SVG Logo */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 64 64"
-              fill="none"
-              className="transition-transform transform group-hover:scale-110"
-            >
-              <defs>
-                <linearGradient id="logo-gradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop stopColor="#7F5AF0" offset="0%" />
-                  <stop stopColor="#00E0FF" offset="100%" />
-                </linearGradient>
-              </defs>
-              <circle cx="32" cy="32" r="30" fill="url(#logo-gradient)" opacity="0.2" />
-              <path
-                d="M18 20 L46 32 L18 44 Z"
-                stroke="url(#logo-gradient)"
-                strokeWidth="3"
-                fill="url(#logo-gradient)"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-400 text-3xl font-extrabold">
-              FluxNFT
-            </span>
-          </Link>
+         <Link
+  href="/"
+  className="flex items-center gap-3 cursor-pointer group select-none"
+>
+  {/* NFT Logo Image */}
+  <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-gradient-to-br from-[#7F5AF0]/20 to-[#00E0FF]/20 p-[2px] transition-transform duration-300 group-hover:scale-110 group-hover:shadow-[0_0_15px_#00E0FF55]">
+    <div className="bg-black rounded-xl w-full h-full flex items-center justify-center">
+      <img
+        src="/logo.png"
+        alt="FluxNFT Logo"
+        className="w-10 h-10 object-contain drop-shadow-[0_0_8px_#00E0FF99]"
+        loading="lazy"
+      />
+    </div>
+  </div>
+
+  {/* Logo Text */}
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7F5AF0] to-[#00E0FF] text-3xl font-extrabold tracking-tight transition-all duration-300 group-hover:from-[#00E0FF] group-hover:to-[#7F5AF0]">
+    FluxNFT
+  </span>
+</Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 font-semibold text-gray-300">
